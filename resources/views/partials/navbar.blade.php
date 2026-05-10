@@ -1,4 +1,4 @@
-<header class="fixed top-0 z-50 w-full bg-transparent">
+<header id="navbar" class="fixed top-0 z-50 w-full bg-transparent transition-all duration-300 border-b border-transparent">
     <div class="mx-auto flex w-full max-w-[1440px] items-center justify-between gap-4 px-4 py-3 sm:px-6 lg:px-8">
         <a href="/" class="flex items-center gap-3">
             <span class="grid h-11 w-11 place-items-center rounded-2xl bg-gradient-to-r from-cyan-400 to-blue-500 text-[15px] font-extrabold tracking-tight text-black shadow-[0_0_15px_rgba(34,211,238,0.5)]">GV</span>
@@ -27,3 +27,18 @@
         </div>
     </div>
 </header>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 150) {
+                navbar.classList.remove('bg-transparent', 'border-transparent');
+                navbar.classList.add('bg-[#050810]/90', 'backdrop-blur-md', 'border-white/5', 'shadow-[0_10px_30px_rgba(0,0,0,0.8)]');
+            } else {
+                navbar.classList.add('bg-transparent', 'border-transparent');
+                navbar.classList.remove('bg-[#050810]/90', 'backdrop-blur-md', 'border-white/5', 'shadow-[0_10px_30px_rgba(0,0,0,0.8)]');
+            }
+        });
+    });
+</script>
