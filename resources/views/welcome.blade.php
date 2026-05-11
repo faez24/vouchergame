@@ -48,17 +48,55 @@
             .smoke-c { animation: smoke-c 22s ease-in-out infinite; }
             .smoke-d { animation: smoke-d 16s ease-in-out infinite reverse; }
             .smoke-e { animation: smoke-e 10s ease-in-out infinite; }
+            
+            /* Efek Smoke Berjalan */
+            @keyframes slide-smoke {
+                0% { background-position: 0 0; }
+                100% { background-position: -200vw 0; }
+            }
+            .moving-smoke-1 {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 300%;
+                height: 100%;
+                background-image: url('https://raw.githubusercontent.com/danielstuart14/CSS_FOG_ANIMATION/master/fog1.png');
+                background-repeat: repeat-x;
+                background-size: cover;
+                opacity: 0.9;
+                filter: brightness(1.2) contrast(1.2);
+                animation: slide-smoke 60s linear infinite;
+                mix-blend-mode: screen;
+            }
+            .moving-smoke-2 {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 300%;
+                height: 100%;
+                background-image: url('https://raw.githubusercontent.com/danielstuart14/CSS_FOG_ANIMATION/master/fog2.png');
+                background-repeat: repeat-x;
+                background-size: cover;
+                opacity: 0.8;
+                filter: brightness(1.2) contrast(1.2);
+                animation: slide-smoke 40s linear infinite;
+                mix-blend-mode: screen;
+            }
         </style>
 
     </head>
-    <body class="min-h-screen bg-[#344050] text-white font-sans selection:bg-cyan-500 selection:text-white">
+    <body class="min-h-screen bg-[#344050] text-white font-sans selection:bg-cyan-500 selection:text-white overflow-x-hidden">
 
-        @include('partials.navbar')
-
-        <div class="relative min-h-screen bg-[#344050] bg-noise overflow-hidden">
+        <div class="relative min-h-screen bg-[#344050] bg-noise overflow-hidden flex flex-col">
             
+            @include('partials.navbar')
+
             {{-- Smoky War-Zone Background Atmosphere --}}
             <div class="pointer-events-none fixed inset-0 overflow-hidden z-0">
+                {{-- Efek Smoke Berjalan Overlay --}}
+                <div class="moving-smoke-1"></div>
+                <div class="moving-smoke-2"></div>
+                
                 {{-- Vignette --}}
                 <div class="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-black/60"></div>
                 <div class="absolute inset-0 bg-gradient-to-r from-black/50 via-transparent to-black/50"></div>
