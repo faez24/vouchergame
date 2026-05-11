@@ -52,7 +52,7 @@
          Mobile: normal below the banner (mt-6)
          Desktop (md+): absolutely/negatively positioned to overlap banner bottom
     --}}
-    <div class="mt-6 md:-mt-36 relative z-20 w-full max-w-[1440px] mx-auto px-3 sm:px-4 lg:px-6">
+    <div class="mt-6 md:-mt-20 relative z-20 w-full max-w-[1440px] mx-auto px-3 sm:px-4 lg:px-6">
 
         {{-- header --}}
         <div class="flex items-center justify-between mb-4 px-1">
@@ -67,8 +67,8 @@
              style="-ms-overflow-style:none;scrollbar-width:none;">
 
             {{-- Card 1: Valorant VP --}}
-            <div class="flex-shrink-0 snap-center w-[155px] sm:w-[175px] md:w-[195px] cursor-pointer" style="filter:drop-shadow(0 20px 30px rgba(0,0,0,0.7));">
-                <div class="bg-[#1c2030] border border-white/10 rounded-2xl overflow-hidden hover:border-cyan-500/40 transition-colors duration-300 h-full" style="box-shadow: 0 1px 0 rgba(255,255,255,0.08) inset, 4px 8px 0 rgba(0,0,0,0.4), 8px 16px 0 rgba(0,0,0,0.2);">
+            <div class="flex-shrink-0 snap-center w-[155px] sm:w-[175px] md:w-[195px] cursor-pointer">
+                <div class="bg-[#1c2030] border border-white/10 rounded-2xl overflow-hidden shadow-[0_8px_30px_rgba(0,0,0,0.6)] hover:shadow-[0_0_30px_rgba(34,211,238,0.25)] hover:border-cyan-500/40 transition-all duration-300 hover:-translate-y-1 h-full" >
                     <div class="h-28 sm:h-32 bg-[#1a1f2e] relative overflow-hidden">
                         <img src="https://images.unsplash.com/photo-1542751371-adc38448a05e?w=400&h=400&fit=crop" class="w-full h-full object-cover opacity-70" />
                         <div class="absolute top-2 right-2 bg-pink-500 text-white text-[9px] sm:text-[10px] font-black px-1.5 py-0.5 rounded-md shadow-[0_0_8px_rgba(236,72,153,0.8)]">20% OFF</div>
@@ -86,8 +86,8 @@
             </div>
 
             {{-- Card 2: Mobile Legends --}}
-            <div class="flex-shrink-0 snap-center w-[155px] sm:w-[175px] md:w-[195px] cursor-pointer" style="filter:drop-shadow(0 20px 30px rgba(0,0,0,0.7));">
-                <div class="bg-[#1c2030] border border-white/10 rounded-2xl overflow-hidden hover:border-pink-500/40 transition-colors duration-300 h-full" style="box-shadow: 0 1px 0 rgba(255,255,255,0.08) inset, 4px 8px 0 rgba(0,0,0,0.4), 8px 16px 0 rgba(0,0,0,0.2);">
+            <div class="flex-shrink-0 snap-center w-[155px] sm:w-[175px] md:w-[195px] cursor-pointer" >
+                <div class="bg-[#1c2030] border border-white/10 rounded-2xl overflow-hidden shadow-[0_8px_30px_rgba(0,0,0,0.6)] hover:shadow-[0_0_30px_rgba(236,72,153,0.25)] hover:border-pink-500/40 transition-all duration-300 hover:-translate-y-1 h-full" >
                     <div class="h-28 sm:h-32 bg-[#1a1f2e] relative overflow-hidden">
                         <img src="https://images.unsplash.com/photo-1556438064-2d7646166914?w=400&h=400&fit=crop" class="w-full h-full object-cover opacity-70" />
                         <div class="absolute top-2 right-2 bg-pink-500 text-white text-[9px] sm:text-[10px] font-black px-1.5 py-0.5 rounded-md shadow-[0_0_8px_rgba(236,72,153,0.8)]">15% OFF</div>
@@ -105,8 +105,8 @@
             </div>
 
             {{-- Card 3: Free Fire --}}
-            <div class="flex-shrink-0 snap-center w-[155px] sm:w-[175px] md:w-[195px] cursor-pointer" style="filter:drop-shadow(0 20px 30px rgba(0,0,0,0.7));">
-                <div class="bg-[#1c2030] border border-white/10 rounded-2xl overflow-hidden hover:border-cyan-500/40 transition-colors duration-300 h-full" style="box-shadow: 0 1px 0 rgba(255,255,255,0.08) inset, 4px 8px 0 rgba(0,0,0,0.4), 8px 16px 0 rgba(0,0,0,0.2);">
+            <div class="flex-shrink-0 snap-center w-[155px] sm:w-[175px] md:w-[195px] cursor-pointer" >
+                <div class="bg-[#1c2030] border border-white/10 rounded-2xl overflow-hidden shadow-[0_8px_30px_rgba(0,0,0,0.6)] hover:shadow-[0_0_30px_rgba(34,211,238,0.25)] hover:border-cyan-500/40 transition-all duration-300 hover:-translate-y-1 h-full" >
                     <div class="h-28 sm:h-32 bg-[#1a1f2e] relative overflow-hidden">
                         <img src="https://images.unsplash.com/photo-1560253023-3ec5d502959f?w=400&h=400&fit=crop" class="w-full h-full object-cover opacity-70" />
                         <div class="absolute top-2 right-2 bg-cyan-500 text-black text-[9px] sm:text-[10px] font-black px-1.5 py-0.5 rounded-md shadow-[0_0_8px_rgba(34,211,238,0.8)]">10% OFF</div>
@@ -124,8 +124,8 @@
             </div>
 
             {{-- Card 4: Genshin Impact --}}
-            <div class="flex-shrink-0 snap-center w-[155px] sm:w-[175px] md:w-[195px] cursor-pointer" style="filter:drop-shadow(0 20px 30px rgba(0,0,0,0.7));">
-                <div class="bg-[#1c2030] border border-white/10 rounded-2xl overflow-hidden hover:border-pink-500/40 transition-colors duration-300 h-full" style="box-shadow: 0 1px 0 rgba(255,255,255,0.08) inset, 4px 8px 0 rgba(0,0,0,0.4), 8px 16px 0 rgba(0,0,0,0.2);">
+            <div class="flex-shrink-0 snap-center w-[155px] sm:w-[175px] md:w-[195px] cursor-pointer" >
+                <div class="bg-[#1c2030] border border-white/10 rounded-2xl overflow-hidden shadow-[0_8px_30px_rgba(0,0,0,0.6)] hover:shadow-[0_0_30px_rgba(236,72,153,0.25)] hover:border-pink-500/40 transition-all duration-300 hover:-translate-y-1 h-full" >
                     <div class="h-28 sm:h-32 bg-[#1a1f2e] relative overflow-hidden">
                         <img src="https://images.unsplash.com/photo-1552820728-8b83bb6b773f?w=400&h=400&fit=crop" class="w-full h-full object-cover opacity-70" />
                         <div class="absolute top-2 right-2 bg-pink-500 text-white text-[9px] sm:text-[10px] font-black px-1.5 py-0.5 rounded-md shadow-[0_0_8px_rgba(236,72,153,0.8)]">25% OFF</div>
@@ -143,8 +143,8 @@
             </div>
 
             {{-- Card 5: PUBG Mobile --}}
-            <div class="flex-shrink-0 snap-center w-[155px] sm:w-[175px] md:w-[195px] cursor-pointer" style="filter:drop-shadow(0 20px 30px rgba(0,0,0,0.7));">
-                <div class="bg-[#1c2030] border border-white/10 rounded-2xl overflow-hidden hover:border-cyan-500/40 transition-colors duration-300 h-full" style="box-shadow: 0 1px 0 rgba(255,255,255,0.08) inset, 4px 8px 0 rgba(0,0,0,0.4), 8px 16px 0 rgba(0,0,0,0.2);">
+            <div class="flex-shrink-0 snap-center w-[155px] sm:w-[175px] md:w-[195px] cursor-pointer" >
+                <div class="bg-[#1c2030] border border-white/10 rounded-2xl overflow-hidden shadow-[0_8px_30px_rgba(0,0,0,0.6)] hover:shadow-[0_0_30px_rgba(34,211,238,0.25)] hover:border-cyan-500/40 transition-all duration-300 hover:-translate-y-1 h-full" >
                     <div class="h-28 sm:h-32 bg-[#1a1f2e] relative overflow-hidden">
                         <img src="https://images.unsplash.com/photo-1542751371-adc38448a05e?w=400&h=400&fit=crop" class="w-full h-full object-cover opacity-70" />
                         <div class="absolute top-2 right-2 bg-cyan-500 text-black text-[9px] sm:text-[10px] font-black px-1.5 py-0.5 rounded-md shadow-[0_0_8px_rgba(34,211,238,0.8)]">30% OFF</div>

@@ -1,7 +1,7 @@
 <!-- Game Shortcuts: horizontal scrollable icon row -->
 <section class="mt-6">
     <div class="flex items-center lg:justify-center gap-3 mb-4">
-        <h2 class="text-sm font-bold text-gray-400 uppercase tracking-wider">Akses Cepat</h2>
+        <h2 class="text-sm font-bold text-gray-400 uppercase tracking-wider">Populer Games</h2>
         <div class="flex-1 lg:hidden h-px bg-gradient-to-r from-white/10 to-transparent"></div>
     </div>
     <div class="flex gap-4 overflow-x-auto lg:justify-center pb-3 scrollbar-hide snap-x snap-mandatory" style="-ms-overflow-style:none;scrollbar-width:none;">
