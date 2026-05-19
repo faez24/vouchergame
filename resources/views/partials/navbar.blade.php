@@ -6,10 +6,10 @@
         </a>
 
         <nav class="hidden items-center gap-8 md:flex">
-            <a href="#home" class="text-sm text-gray-300 hover:text-white transition-colors">Home</a>
-            <a href="#games" class="text-sm text-gray-300 hover:text-white transition-colors">Games</a>
-            <a href="#voucher" class="text-sm text-gray-300 hover:text-white transition-colors">Voucher</a>
-            <a href="#promo" class="text-sm text-gray-300 hover:text-white transition-colors">Promo</a>
+            <a href="{{ url('/#home') }}" class="text-sm text-gray-300 hover:text-white transition-colors">Home</a>
+            <a href="{{ url('/#games') }}" class="text-sm text-gray-300 hover:text-white transition-colors">Games</a>
+            <a href="{{ url('/#voucher') }}" class="text-sm text-gray-300 hover:text-white transition-colors">Voucher</a>
+            <a href="{{ url('/#promo') }}" class="text-sm text-gray-300 hover:text-white transition-colors">Promo</a>
         </nav>
 
         <div class="flex items-center gap-3 sm:gap-4">
@@ -19,11 +19,22 @@
                     <path d="m20 20-3.5-3.5"></path>
                 </svg>
             </button>
-            <div class="hidden sm:flex items-center gap-2 px-3 py-1.5 bg-white/[0.03] backdrop-blur-md hover:border-cyan-500/50 rounded-lg transition-colors border border-white/10 hover:shadow-[0_0_10px_rgba(34,211,238,0.2)]">
-                <svg viewBox="0 0 24 24" class="w-4 h-4 text-cyan-400 drop-shadow-[0_0_5px_rgba(34,211,238,0.8)]" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 7h16a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7Z"></path><path d="M17 11h4"></path></svg>
-                <span class="text-white text-sm font-medium">Rp 0</span>
-            </div>
-            <a href="#" class="hidden sm:inline-block px-5 py-2 bg-pink-500 hover:bg-pink-400 rounded-lg text-white text-sm font-bold transition-all shadow-[0_0_15px_rgba(236,72,153,0.5)]">Masuk</a>
+
+            {{-- Cart Icon — Shopee/Tokped style shopping bag --}}
+            <a href="{{ url('/cart') }}" aria-label="Keranjang"
+               class="relative flex items-center justify-center w-10 h-10 rounded-xl border border-white/10 bg-white/[0.04] hover:border-cyan-500/50 hover:bg-cyan-500/10 hover:shadow-[0_0_12px_rgba(34,211,238,0.2)] transition-all group">
+                {{-- Shopping bag SVG (Shopee/Tokped style) --}}
+                <svg viewBox="0 0 24 24" class="w-[22px] h-[22px] text-gray-300 group-hover:text-cyan-400 transition-colors" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                    {{-- Bag body --}}
+                    <path d="M6 2h12l2 5v13a2 2 0 01-2 2H6a2 2 0 01-2-2V7l2-5z"/>
+                    {{-- Handle arc --}}
+                    <path d="M9 7a3 3 0 006 0"/>
+                </svg>
+                {{-- Badge --}}
+                <span id="cart-badge" class="hidden absolute -top-1.5 -right-1.5 min-w-[18px] h-[18px] px-1 rounded-full bg-pink-500 text-white text-[10px] font-black flex items-center justify-center shadow-[0_0_8px_rgba(236,72,153,0.8)] border border-[#344050]">0</span>
+            </a>
+
+            <a href="{{ url('/login') }}" class="hidden sm:inline-block px-5 py-2 bg-pink-500 hover:bg-pink-400 rounded-lg text-white text-sm font-bold transition-all shadow-[0_0_15px_rgba(236,72,153,0.5)]">Masuk</a>
         </div>
     </div>
 </header>
