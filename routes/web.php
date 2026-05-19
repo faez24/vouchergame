@@ -9,3 +9,11 @@ Route::get('/', function () {
 Route::get('/topup/mobile-legends', function () {
     return view('topupgame.topupml');
 })->name('topup.ml');
+
+Route::get('/login', function () {
+    return view('auth.login');
+})->name('login');
+
+Route::get('/cart', function () {
+    return view('cart');
+})->name('cart');

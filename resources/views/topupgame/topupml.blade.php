@@ -111,21 +111,10 @@
         </div>
 
         {{-- Navbar --}}
-        <nav class="sticky top-0 z-50 w-full border-b border-white/5 bg-[#1e2433]/80 backdrop-blur-xl">
-            <div class="max-w-[1200px] mx-auto px-4 h-14 flex items-center gap-3">
-                <a href="{{ url('/') }}" class="flex items-center gap-2 text-gray-400 hover:text-white transition-colors text-sm">
-                    <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"/>
-                    </svg>
-                    Kembali
-                </a>
-                <div class="h-4 w-px bg-white/10"></div>
-                <span class="text-white font-bold text-sm">Top Up Mobile Legends</span>
-            </div>
-        </nav>
+        @include('partials.navbar')
 
         <div class="relative z-10 flex-1">
-        <div class="max-w-[1200px] mx-auto px-4 pt-6 pb-10 space-y-6">
+        <div class="max-w-[1200px] mx-auto px-4 pt-24 pb-10 space-y-6">
 
             {{-- Hero Banner --}}
             <div class="relative rounded-2xl overflow-hidden border border-white/10 shadow-[0_8px_40px_rgba(0,0,0,0.6)]">
@@ -300,10 +289,22 @@
                     </div>
                 </div>
                 
-                {{-- Right Button --}}
-                <div class="w-full sm:w-auto">
-                    <button onclick="openCheckoutModal()" id="btn-beli" disabled class="w-full sm:w-[200px] py-3.5 rounded-xl bg-gray-300 text-gray-500 font-bold text-sm transition-all shadow-none flex items-center justify-center gap-2 disabled:cursor-not-allowed">
-                        Beli sekarang
+                {{-- Right Buttons --}}
+                <div class="flex items-center gap-3 w-full sm:w-auto">
+                    {{-- Tambah ke Keranjang: hanya muncul saat > 1 item --}}
+                    <button onclick="addToCart()" id="btn-cart"
+                        class="hidden flex-1 sm:flex-none sm:w-[180px] py-3.5 rounded-xl border border-cyan-500/50 text-cyan-400 font-bold text-sm transition-all hover:bg-cyan-500/10 items-center justify-center gap-2">
+                        <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/>
+                            <line x1="3" y1="6" x2="21" y2="6"/>
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M16 10a4 4 0 01-8 0"/>
+                        </svg>
+                        Keranjang
+                    </button>
+                    {{-- Beli Sekarang --}}
+                    <button onclick="openCheckoutModal()" id="btn-beli" disabled
+                        class="flex-1 sm:flex-none sm:w-[180px] py-3.5 rounded-xl bg-gray-300 text-gray-500 font-bold text-sm transition-all shadow-none flex items-center justify-center gap-2 disabled:cursor-not-allowed">
+                        Beli Sekarang
                     </button>
                 </div>
 
@@ -384,30 +385,33 @@
     </div>
 
     <script>
-        let selectedPkg = null;
+        // ─── State ───────────────────────────────────────────────
+        const selectedPkgs = new Map(); // index → { label, price, priceNum }
         let selectedPayName = null;
-        let selectedPrice = null;
-        let selectedProduct = null;
 
+        function parseRupiah(str) {
+            return parseInt(str.replace(/[^0-9]/g, '')) || 0;
+        }
+        function formatRupiah(num) {
+            return 'Rp ' + num.toLocaleString('id-ID');
+        }
+
+        // ─── Toggle package selection (multi-select) ─────────────
         function selectPackage(id, label, price) {
-            if (selectedPkg !== null) {
-                const prev = document.getElementById('pkg-' + selectedPkg);
-                if (prev) {
-                    prev.classList.remove('selected');
-                    prev.querySelector('.check-icon')?.classList.add('hidden');
-                    prev.querySelector('.check-icon')?.classList.remove('flex');
-                }
-            }
-            selectedPkg = id;
-            selectedPrice = price;
-            selectedProduct = label;
-            
             const card = document.getElementById('pkg-' + id);
-            card.classList.add('selected');
             const check = card.querySelector('.check-icon');
-            check?.classList.remove('hidden');
-            check?.classList.add('flex');
 
+            if (selectedPkgs.has(id)) {
+                selectedPkgs.delete(id);
+                card.classList.remove('selected');
+                check?.classList.add('hidden');
+                check?.classList.remove('flex');
+            } else {
+                selectedPkgs.set(id, { label, price, priceNum: parseRupiah(price) });
+                card.classList.add('selected');
+                check?.classList.remove('hidden');
+                check?.classList.add('flex');
+            }
             updateSummaryBar();
         }
 
@@ -416,41 +420,110 @@
             updateSummaryBar();
         }
 
+        // ─── Update floating bar ──────────────────────────────────
         function updateSummaryBar() {
-            const bar = document.getElementById('floating-bar');
-            const btn = document.getElementById('btn-beli');
-            
-            if (selectedPkg !== null || selectedPayName !== null) {
-                // Show floating bar
+            const bar    = document.getElementById('floating-bar');
+            const btnBuy = document.getElementById('btn-beli');
+            const btnCart = document.getElementById('btn-cart');
+            const count  = selectedPkgs.size;
+
+            // Show/hide bar
+            if (count > 0 || selectedPayName) {
                 bar.classList.remove('translate-y-[120%]');
                 bar.classList.add('translate-y-0');
+            } else {
+                bar.classList.add('translate-y-[120%]');
+                bar.classList.remove('translate-y-0');
             }
 
-            document.getElementById('float-product').textContent = selectedProduct || 'Pilih Diamond';
-            document.getElementById('float-payment').textContent = selectedPayName || 'Pilih Metode Pembayaran';
-            document.getElementById('float-price').textContent = selectedPrice || 'Rp -';
-
-            if (selectedPkg !== null && selectedPayName !== null) {
-                // Activate button
-                btn.disabled = false;
-                btn.classList.remove('bg-gray-300', 'text-gray-500');
-                btn.classList.add('bg-blue-600', 'hover:bg-blue-700', 'text-white', 'shadow-lg', 'shadow-blue-600/30');
+            // Product label
+            if (count === 0) {
+                document.getElementById('float-product').textContent = 'Pilih Diamond';
+            } else if (count === 1) {
+                document.getElementById('float-product').textContent = [...selectedPkgs.values()][0].label;
             } else {
-                btn.disabled = true;
-                btn.classList.add('bg-gray-300', 'text-gray-500');
-                btn.classList.remove('bg-blue-600', 'hover:bg-blue-700', 'text-white', 'shadow-lg', 'shadow-blue-600/30');
+                document.getElementById('float-product').textContent = count + ' item dipilih';
+            }
+
+            document.getElementById('float-payment').textContent = selectedPayName || 'Pilih Metode Pembayaran';
+
+            // Total price
+            const total = [...selectedPkgs.values()].reduce((s, i) => s + i.priceNum, 0);
+            document.getElementById('float-price').textContent = total > 0 ? formatRupiah(total) : 'Rp -';
+
+            // Show cart button only when > 1 item selected
+            if (count > 1) {
+                btnCart.classList.remove('hidden');
+                btnCart.classList.add('flex');
+            } else {
+                btnCart.classList.add('hidden');
+                btnCart.classList.remove('flex');
+            }
+
+            // Activate buy button when ≥1 item AND payment selected
+            if (count > 0 && selectedPayName) {
+                btnBuy.disabled = false;
+                btnBuy.classList.remove('bg-gray-300', 'text-gray-500', 'cursor-not-allowed');
+                btnBuy.classList.add('bg-blue-600', 'hover:bg-blue-700', 'text-white', 'shadow-lg', 'shadow-blue-600/30');
+            } else {
+                btnBuy.disabled = true;
+                btnBuy.classList.add('bg-gray-300', 'text-gray-500');
+                btnBuy.classList.remove('bg-blue-600', 'hover:bg-blue-700', 'text-white', 'shadow-lg', 'shadow-blue-600/30');
             }
         }
 
-        function openCheckoutModal() {
-            if (selectedPkg === null || selectedPayName === null) return;
-
-            const uid = document.getElementById('user-id').value.trim();
+        // ─── Add to cart (localStorage) ──────────────────────────
+        function addToCart() {
+            const uid  = document.getElementById('user-id').value.trim();
             const zone = document.getElementById('zone-id').value.trim();
+            if (!uid || !zone) {
+                showToast('⚠️', 'Isi User ID dan Zone ID dulu!');
+                document.getElementById('user-id').focus();
+                return;
+            }
+            const cart = JSON.parse(localStorage.getItem('gv_cart') || '[]');
+            selectedPkgs.forEach((item, idx) => {
+                cart.push({
+                    id: Date.now() + '_' + idx,
+                    game: 'Mobile Legends',
+                    gameId: 'ml',
+                    gameColor: '#f97316',
+                    label: item.label,
+                    price: item.price,
+                    priceNum: item.priceNum,
+                    userId: uid,
+                    zoneId: zone
+                });
+            });
+            localStorage.setItem('gv_cart', JSON.stringify(cart));
+            updateCartBadge();
+            showToast('🛒', selectedPkgs.size + ' item ditambahkan ke keranjang!');
+        }
 
-            document.getElementById('modal-product').textContent = selectedProduct;
-            document.getElementById('modal-payment').textContent = selectedPayName;
-            document.getElementById('modal-price').textContent = selectedPrice;
+        function updateCartBadge() {
+            const cart  = JSON.parse(localStorage.getItem('gv_cart') || '[]');
+            const badge = document.getElementById('cart-badge');
+            if (!badge) return;
+            if (cart.length > 0) {
+                badge.textContent = cart.length > 9 ? '9+' : cart.length;
+                badge.classList.remove('hidden');
+            } else {
+                badge.classList.add('hidden');
+            }
+        }
+
+        // ─── Checkout modal ───────────────────────────────────────
+        function openCheckoutModal() {
+            if (selectedPkgs.size === 0 || !selectedPayName) return;
+            const uid  = document.getElementById('user-id').value.trim();
+            const zone = document.getElementById('zone-id').value.trim();
+            const items = [...selectedPkgs.values()];
+            const count = items.length;
+            const total = items.reduce((s, i) => s + i.priceNum, 0);
+
+            document.getElementById('modal-product').textContent  = count === 1 ? items[0].label : count + ' item';
+            document.getElementById('modal-payment').textContent  = selectedPayName;
+            document.getElementById('modal-price').textContent    = formatRupiah(total);
 
             if (uid && zone) {
                 document.getElementById('modal-uid').textContent = uid + ' (' + zone + ')';
@@ -458,10 +531,9 @@
             } else {
                 document.getElementById('modal-uid').textContent = 'Belum diisi';
                 document.getElementById('modal-uid-input-wrap').classList.remove('hidden');
-                document.getElementById('modal-uid-text').value = uid;
+                document.getElementById('modal-uid-text').value  = uid;
                 document.getElementById('modal-zone-text').value = zone;
             }
-
             const modal = document.getElementById('checkout-modal');
             modal.classList.remove('hidden');
             modal.classList.add('flex');
@@ -476,18 +548,14 @@
         }
 
         function confirmOrder() {
-            const inputWrap = document.getElementById('modal-uid-input-wrap');
-            if (!inputWrap.classList.contains('hidden')) {
-                const mUid = document.getElementById('modal-uid-text').value.trim();
+            const wrap = document.getElementById('modal-uid-input-wrap');
+            if (!wrap.classList.contains('hidden')) {
+                const mUid  = document.getElementById('modal-uid-text').value.trim();
                 const mZone = document.getElementById('modal-zone-text').value.trim();
-                if (!mUid || !mZone) { 
-                    showToast('⚠️', 'Mohon lengkapi User ID dan Zone ID!'); 
-                    return; 
-                }
+                if (!mUid || !mZone) { showToast('⚠️', 'Mohon lengkapi User ID dan Zone ID!'); return; }
                 document.getElementById('user-id').value = mUid;
                 document.getElementById('zone-id').value = mZone;
             }
-
             closeCheckoutModal();
             showToast('🎉', 'Pesanan berhasil dikonfirmasi!');
         }
@@ -495,11 +563,13 @@
         function showToast(icon, msg) {
             const t = document.getElementById('toast');
             document.getElementById('toast-icon').textContent = icon;
-            document.getElementById('toast-msg').textContent = msg;
+            document.getElementById('toast-msg').textContent  = msg;
             t.classList.remove('hidden');
             clearTimeout(window._toastTimer);
             window._toastTimer = setTimeout(() => t.classList.add('hidden'), 3000);
         }
+
+        document.addEventListener('DOMContentLoaded', updateCartBadge);
     </script>
 </body>
 </html>
