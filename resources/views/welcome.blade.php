@@ -180,10 +180,12 @@
 
                     {{-- Baris pertama: selalu tampil --}}
                     <div class="grid grid-cols-3 sm:grid-cols-4 lg:grid-cols-5 gap-2 sm:gap-4" id="games-populer-first">
-                        <article class="relative rounded-lg overflow-hidden bg-[#161920]/80 backdrop-blur-md border border-white/5 card-3d hover:border-cyan-500/50 group transition-all duration-300">
-                            <div class="card-img-wrap bg-[#1a1f2e]"><img src="https://images.unsplash.com/photo-1556438064-2d7646166914?w=600&h=800&fit=crop" alt="Mobile Legends"/></div>
-                            <div class="p-3 bg-transparent"><div class="inline-block px-2 py-0.5 rounded-full bg-pink-500 text-white text-[10px] font-bold shadow-[0_0_8px_rgba(236,72,153,0.6)]">Populer</div><h3 class="mt-2 text-sm font-extrabold">Mobile Legends</h3></div>
-                        </article>
+                        <a href="{{ route('topup.ml') }}" class="block">
+                            <article class="relative rounded-lg overflow-hidden bg-[#161920]/80 backdrop-blur-md border border-white/5 card-3d hover:border-cyan-500/50 group transition-all duration-300">
+                                <div class="card-img-wrap bg-[#1a1f2e]"><img src="https://images.unsplash.com/photo-1556438064-2d7646166914?w=600&h=800&fit=crop" alt="Mobile Legends"/></div>
+                                <div class="p-3 bg-transparent"><div class="inline-block px-2 py-0.5 rounded-full bg-pink-500 text-white text-[10px] font-bold shadow-[0_0_8px_rgba(236,72,153,0.6)]">Populer</div><h3 class="mt-2 text-sm font-extrabold">Mobile Legends</h3></div>
+                            </article>
+                        </a>
                         <article class="relative rounded-lg overflow-hidden bg-[#161920]/80 backdrop-blur-md border border-white/5 card-3d hover:border-cyan-500/50 group transition-all duration-300">
                             <div class="card-img-wrap bg-[#1a1f2e]"><img src="https://images.unsplash.com/photo-1560253023-3ec5d502959f?w=600&h=800&fit=crop" alt="Free Fire"/></div>
                             <div class="p-3 bg-transparent"><div class="inline-block px-2 py-0.5 rounded-full bg-pink-500 text-white text-[10px] font-bold shadow-[0_0_8px_rgba(236,72,153,0.6)]">Populer</div><h3 class="mt-2 text-sm font-extrabold">Free Fire</h3></div>
