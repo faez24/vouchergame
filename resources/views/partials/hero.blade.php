@@ -31,9 +31,9 @@
 
         {{-- content --}}
         <div class="relative z-10 w-full max-w-[1440px] mx-auto h-full flex flex-col justify-center px-5 sm:px-10 md:px-16 lg:px-24 pt-20 pb-6">
-            <h1 class="text-3xl sm:text-5xl md:text-7xl lg:text-8xl font-black text-white tracking-tighter leading-none drop-shadow-[0_0_15px_rgba(255,255,255,0.4)]">HOME</h1>
-            <h2 class="text-xl sm:text-3xl md:text-5xl font-bold tracking-widest text-transparent bg-clip-text bg-gradient-to-r from-cyan-300 to-pink-500 mt-0.5">REVIEWS</h2>
-            <p class="text-xs sm:text-base md:text-xl text-gray-300 font-light tracking-wide mt-1">Video gaming</p>
+            <h1 class="text-3xl sm:text-5xl md:text-7xl lg:text-8xl font-black text-white tracking-tighter leading-none drop-shadow-[0_0_15px_rgba(255,255,255,0.4)]">GAME</h1>
+            <h2 class="text-xl sm:text-3xl md:text-5xl font-bold tracking-widest text-transparent bg-clip-text bg-gradient-to-r from-cyan-300 to-pink-500 mt-0.5">VAULT</h2>
+            <p class="text-xs sm:text-base md:text-xl text-gray-300 font-light tracking-wide mt-1">Marketplace Top Up & Voucher Digital Termurah</p>
 
             <div class="mt-4 sm:mt-6 flex flex-row gap-2 sm:gap-4 w-fit">
                 <a href="#games"

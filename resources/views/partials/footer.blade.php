@@ -5,7 +5,7 @@
     <div class="absolute top-0 right-0 w-64 h-64 bg-pink-500/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 pointer-events-none"></div>
     <div class="absolute bottom-0 left-0 w-80 h-80 bg-cyan-500/10 rounded-full blur-3xl translate-y-1/2 -translate-x-1/4 pointer-events-none"></div>
 
-    <div class="max-w-[1440px] mx-auto w-full px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
+    <div class="max-w-[1440px] mx-auto w-full px-4 sm:px-6 lg:px-8 pt-12 sm:pt-16 pb-6">
         <div class="grid grid-cols-2 md:grid-cols-3 gap-8 lg:grid-cols-5 xl:gap-16 relative z-10">
         <div class="col-span-2 md:col-span-3 lg:col-span-2">
             <a href="/" class="flex items-center gap-3 w-fit mb-6">
@@ -69,5 +69,4 @@
         </div>
     </div>
         </div>
-    </div>
 </footer>

@@ -6,7 +6,7 @@
     </div>
     <div class="flex gap-4 overflow-x-auto lg:justify-center pb-3 scrollbar-hide snap-x snap-mandatory" style="-ms-overflow-style:none;scrollbar-width:none;">
         <!-- ML -->
-        <a href="#" class="group flex flex-col items-center gap-2 flex-shrink-0 snap-start">
+        <a href="{{ route('topup.ml') }}" class="group flex flex-col items-center gap-2 flex-shrink-0 snap-start">
             <div class="w-16 h-16 sm:w-[72px] sm:h-[72px] rounded-2xl bg-gradient-to-br from-orange-500 to-orange-600 grid place-items-center shadow-[0_8px_15px_rgba(0,0,0,0.5),0_0_10px_rgba(249,115,22,0.3)] transition-all duration-300 ring-2 ring-transparent group-hover:ring-orange-400/50">
                 <span class="text-white font-black text-lg">ML</span>
             </div>

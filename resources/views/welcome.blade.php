@@ -82,6 +82,46 @@
                 animation: slide-smoke 40s linear infinite;
                 mix-blend-mode: screen;
             }
+
+            /* === Expand/Collapse Grid === */
+            .games-extra-grid {
+                display: grid;
+                grid-template-rows: 0fr;
+                opacity: 0;
+                transition: grid-template-rows 0.45s cubic-bezier(.4,0,.2,1),
+                            opacity 0.35s ease,
+                            margin-top 0.35s ease;
+                margin-top: 0;
+            }
+            .games-extra-grid.expanded {
+                grid-template-rows: 1fr;
+                opacity: 1;
+                margin-top: 0.5rem;
+            }
+            .games-extra-grid > div {
+                overflow: hidden;
+            }
+            /* Arrow rotate animation */
+            .btn-lihat-semua .arrow-icon {
+                transition: transform 0.3s cubic-bezier(.4,0,.2,1);
+            }
+            .btn-lihat-semua.expanded .arrow-icon {
+                transform: rotate(90deg);
+            }
+            /* Card pop-in animation */
+            @keyframes card-pop {
+                from { opacity: 0; transform: translateY(14px) scale(0.97); }
+                to   { opacity: 1; transform: translateY(0)   scale(1);    }
+            }
+            .games-extra-grid.expanded article {
+                animation: card-pop 0.35s ease forwards;
+            }
+            .games-extra-grid.expanded article:nth-child(1) { animation-delay: 0.05s; }
+            .games-extra-grid.expanded article:nth-child(2) { animation-delay: 0.10s; }
+            .games-extra-grid.expanded article:nth-child(3) { animation-delay: 0.15s; }
+            .games-extra-grid.expanded article:nth-child(4) { animation-delay: 0.20s; }
+            .games-extra-grid.expanded article:nth-child(5) { animation-delay: 0.25s; }
+            .games-extra-grid.expanded article:nth-child(6) { animation-delay: 0.30s; }
         </style>
 
     </head>
@@ -124,44 +164,106 @@
 
 
                 <section class="mt-8">
-                    <div class="flex items-end justify-between gap-4 mb-4">
-                        <div>
-                            <p class="inline-flex w-fit rounded-full bg-cyan-500/10 border border-cyan-500/20 text-cyan-400 px-3 py-1 text-xs font-bold uppercase tracking-wide shadow-[0_0_10px_rgba(34,211,238,0.1)]">Game Populer</p>
-                            <h2 class="mt-2 text-2xl font-extrabold">🔥 Game Populer</h2>
+                    <div class="mb-5 flex items-end justify-between border-b border-white/5 pb-3">
+                        <div class="flex items-center gap-3">
+                            <div class="flex flex-col justify-center items-center gap-1">
+                                <div class="w-1.5 h-1.5 bg-pink-500 rotate-45 animate-pulse shadow-[0_0_8px_rgba(236,72,153,0.8)]"></div>
+                                <div class="w-0.5 h-6 bg-gradient-to-b from-pink-500 to-transparent"></div>
+                            </div>
+                            <div>
+                                <p class="text-[10px] font-bold text-pink-500 uppercase tracking-[0.2em] mb-0.5">Top Picks</p>
+                                <h2 class="text-xl sm:text-2xl font-black uppercase italic tracking-wider text-white drop-shadow-md">Game Populer</h2>
+                            </div>
                         </div>
-                        <a href="#footer" class="text-sm text-pink-400 hover:text-pink-300 font-medium transition-all hover:drop-shadow-[0_0_8px_rgba(236,72,153,0.8)]">Lihat Semua</a>
+
                     </div>
 
-                    <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3 sm:gap-4">
-                        <article class="relative rounded-lg overflow-hidden bg-[#161920]/80 backdrop-blur-md border border-white/5 card-3d hover:border-cyan-500/50 group transition-all duration-300">
-                            <div class="card-img-wrap bg-[#1a1f2e]"><img src="https://images.unsplash.com/photo-1556438064-2d7646166914?w=600&h=800&fit=crop" alt="Mobile Legends"/></div>
-                            <div class="p-3 bg-transparent"><div class="inline-block px-2 py-0.5 rounded-full bg-pink-500 text-white text-[10px] font-bold shadow-[0_0_8px_rgba(236,72,153,0.6)]">Populer</div><h3 class="mt-2 text-sm font-extrabold">Mobile Legends</h3></div>
-                        </article>
+                    {{-- Baris pertama: selalu tampil --}}
+                    <div class="grid grid-cols-3 sm:grid-cols-4 lg:grid-cols-5 gap-2 sm:gap-4" id="games-populer-first">
+                        <a href="{{ route('topup.ml') }}" class="block">
+                            <article class="relative rounded-lg overflow-hidden bg-[#161920]/80 backdrop-blur-md border border-white/5 card-3d hover:border-cyan-500/50 group transition-all duration-300">
+                                <div class="card-img-wrap bg-[#1a1f2e]"><img src="https://images.unsplash.com/photo-1556438064-2d7646166914?w=600&h=800&fit=crop" alt="Mobile Legends"/></div>
+                                <div class="p-3 bg-transparent"><div class="inline-block px-2 py-0.5 rounded-full bg-pink-500 text-white text-[10px] font-bold shadow-[0_0_8px_rgba(236,72,153,0.6)]">Populer</div><h3 class="mt-2 text-sm font-extrabold">Mobile Legends</h3></div>
+                            </article>
+                        </a>
                         <article class="relative rounded-lg overflow-hidden bg-[#161920]/80 backdrop-blur-md border border-white/5 card-3d hover:border-cyan-500/50 group transition-all duration-300">
                             <div class="card-img-wrap bg-[#1a1f2e]"><img src="https://images.unsplash.com/photo-1560253023-3ec5d502959f?w=600&h=800&fit=crop" alt="Free Fire"/></div>
                             <div class="p-3 bg-transparent"><div class="inline-block px-2 py-0.5 rounded-full bg-pink-500 text-white text-[10px] font-bold shadow-[0_0_8px_rgba(236,72,153,0.6)]">Populer</div><h3 class="mt-2 text-sm font-extrabold">Free Fire</h3></div>
                         </article>
                         <article class="relative rounded-lg overflow-hidden bg-[#161920]/80 backdrop-blur-md border border-white/5 card-3d hover:border-cyan-500/50 group transition-all duration-300">
                             <div class="card-img-wrap bg-[#1a1f2e]"><img src="https://images.unsplash.com/photo-1542751371-adc38448a05e?w=600&h=800&fit=crop" alt="PUBG Mobile"/></div>
-                            <div class="p-3 bg-transparent"><h3 class="mt-2 text-sm font-extrabold">PUBG Mobile</h3></div>
+                            <div class="p-3 bg-transparent"><div class="inline-block px-2 py-0.5 rounded-full bg-pink-500 text-white text-[10px] font-bold shadow-[0_0_8px_rgba(236,72,153,0.6)]">Populer</div><h3 class="mt-2 text-sm font-extrabold">PUBG Mobile</h3></div>
                         </article>
                         <article class="relative rounded-lg overflow-hidden bg-[#161920]/80 backdrop-blur-md border border-white/5 card-3d hover:border-cyan-500/50 group transition-all duration-300">
                             <div class="card-img-wrap bg-[#1a1f2e]"><img src="https://images.unsplash.com/photo-1552820728-8b83bb6b773f?w=600&h=800&fit=crop" alt="Genshin Impact"/></div>
                             <div class="p-3 bg-transparent"><div class="inline-block px-2 py-0.5 rounded-full bg-cyan-500 text-black text-[10px] font-bold shadow-[0_0_8px_rgba(34,211,238,0.6)]">Baru</div><h3 class="mt-2 text-sm font-extrabold">Genshin Impact</h3></div>
                         </article>
+                        <article class="relative rounded-lg overflow-hidden bg-[#161920]/80 backdrop-blur-md border border-white/5 card-3d hover:border-cyan-500/50 group transition-all duration-300">
+                            <div class="card-img-wrap bg-[#1a1f2e]"><img src="https://images.unsplash.com/photo-1615680022647-99c397cbcaea?w=600&h=800&fit=crop" alt="Valorant"/></div>
+                            <div class="p-3 bg-transparent"><div class="inline-block px-2 py-0.5 rounded-full bg-pink-500 text-white text-[10px] font-bold shadow-[0_0_8px_rgba(236,72,153,0.6)]">Populer</div><h3 class="mt-2 text-sm font-extrabold">Valorant</h3></div>
+                        </article>
+                        <article class="relative lg:hidden rounded-lg overflow-hidden bg-[#161920]/80 backdrop-blur-md border border-white/5 card-3d hover:border-cyan-500/50 group transition-all duration-300">
+                            <div class="card-img-wrap bg-[#1a1f2e]"><img src="https://images.unsplash.com/photo-1593305841991-05c297ba4575?w=600&h=800&fit=crop" alt="Honkai Star Rail"/></div>
+                            <div class="p-3 bg-transparent"><div class="inline-block px-2 py-0.5 rounded-full bg-cyan-500 text-black text-[10px] font-bold shadow-[0_0_8px_rgba(34,211,238,0.6)]">Baru</div><h3 class="mt-2 text-sm font-extrabold">Honkai Star Rail</h3></div>
+                        </article>
                     </div>
+
+                    {{-- Baris extra: tersembunyi, expand saat klik Lihat Semua --}}
+                    <div class="games-extra-grid" id="games-populer-extra">
+                        <div class="grid grid-cols-3 sm:grid-cols-4 lg:grid-cols-5 gap-2 sm:gap-4">
+                            <article class="relative rounded-lg overflow-hidden bg-[#161920]/80 backdrop-blur-md border border-white/5 card-3d hover:border-cyan-500/50 group transition-all duration-300">
+                                <div class="card-img-wrap bg-[#1a1f2e]"><img src="https://images.unsplash.com/photo-1511512578047-dfb367046420?w=600&h=800&fit=crop" alt="Call of Duty Mobile"/></div>
+                                <div class="p-3 bg-transparent"><div class="inline-block px-2 py-0.5 rounded-full bg-pink-500 text-white text-[10px] font-bold shadow-[0_0_8px_rgba(236,72,153,0.6)]">Populer</div><h3 class="mt-2 text-sm font-extrabold">Call of Duty Mobile</h3></div>
+                            </article>
+                            <article class="relative rounded-lg overflow-hidden bg-[#161920]/80 backdrop-blur-md border border-white/5 card-3d hover:border-cyan-500/50 group transition-all duration-300">
+                                <div class="card-img-wrap bg-[#1a1f2e]"><img src="https://images.unsplash.com/photo-1536240478700-b869ad10f984?w=600&h=800&fit=crop" alt="Apex Legends"/></div>
+                                <div class="p-3 bg-transparent"><h3 class="mt-2 text-sm font-extrabold">Apex Legends</h3></div>
+                            </article>
+                            <article class="relative rounded-lg overflow-hidden bg-[#161920]/80 backdrop-blur-md border border-white/5 card-3d hover:border-cyan-500/50 group transition-all duration-300">
+                                <div class="card-img-wrap bg-[#1a1f2e]"><img src="https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=600&h=800&fit=crop" alt="League of Legends"/></div>
+                                <div class="p-3 bg-transparent"><h3 class="mt-2 text-sm font-extrabold">League of Legends</h3></div>
+                            </article>
+                            <article class="relative rounded-lg overflow-hidden bg-[#161920]/80 backdrop-blur-md border border-white/5 card-3d hover:border-cyan-500/50 group transition-all duration-300">
+                                <div class="card-img-wrap bg-[#1a1f2e]"><img src="https://images.unsplash.com/photo-1579952363873-27f3bade9f55?w=600&h=800&fit=crop" alt="Clash of Clans"/></div>
+                                <div class="p-3 bg-transparent"><h3 class="mt-2 text-sm font-extrabold">Clash of Clans</h3></div>
+                            </article>
+                            <article class="relative rounded-lg overflow-hidden bg-[#161920]/80 backdrop-blur-md border border-white/5 card-3d hover:border-cyan-500/50 group transition-all duration-300">
+                                <div class="card-img-wrap bg-[#1a1f2e]"><img src="https://images.unsplash.com/photo-1606144042614-b2417e99c4e3?w=600&h=800&fit=crop" alt="Fortnite"/></div>
+                                <div class="p-3 bg-transparent"><div class="inline-block px-2 py-0.5 rounded-full bg-pink-500 text-white text-[10px] font-bold shadow-[0_0_8px_rgba(236,72,153,0.6)]">Populer</div><h3 class="mt-2 text-sm font-extrabold">Fortnite</h3></div>
+                            </article>
+                        </div>
+                    </div>
+
+                    <div class="mt-6 flex justify-center">
+                        <button
+                            id="btn-lihat-semua-populer"
+                            onclick="toggleGamesSection('games-populer-extra', 'btn-lihat-semua-populer', 'label-lihat-populer')"
+                            class="btn-lihat-semua group flex items-center gap-2 text-sm font-bold text-pink-400 uppercase tracking-widest transition-all hover:text-white hover:drop-shadow-[0_0_8px_rgba(236,72,153,0.8)] cursor-pointer bg-transparent border-none outline-none"
+                        >
+                            <span id="label-lihat-populer">Lihat Semua</span>
+                            <svg class="arrow-icon w-4 h-4 text-pink-500 group-hover:text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M9 5l7 7-7 7"/></svg>
+                        </button>
+                    </div>
+
+
                 </section>
 
                 <section class="mt-8">
-                    <div class="flex items-end justify-between gap-4 mb-4">
-                        <div>
-                            <p class="inline-flex w-fit rounded-full bg-cyan-500/10 border border-cyan-500/20 text-cyan-400 px-3 py-1 text-xs font-bold uppercase tracking-wide shadow-[0_0_10px_rgba(34,211,238,0.1)]">Kategori Lain</p>
-                            <h2 class="mt-2 text-xl font-extrabold">Web Store</h2>
+                    <div class="mb-5 flex items-end justify-between border-b border-white/5 pb-3">
+                        <div class="flex items-center gap-3">
+                            <div class="flex flex-col justify-center items-center gap-1">
+                                <div class="w-1.5 h-1.5 bg-cyan-400 rotate-45 animate-pulse shadow-[0_0_8px_rgba(34,211,238,0.8)]"></div>
+                                <div class="w-0.5 h-6 bg-gradient-to-b from-cyan-400 to-transparent"></div>
+                            </div>
+                            <div>
+                                <p class="text-[10px] font-bold text-cyan-400 uppercase tracking-[0.2em] mb-0.5">Kategori Lain</p>
+                                <h2 class="text-xl sm:text-2xl font-black uppercase italic tracking-wider text-white drop-shadow-md">Web Store</h2>
+                            </div>
                         </div>
-                        <a href="#footer" class="text-sm text-pink-400 hover:text-pink-300 font-medium transition-all hover:drop-shadow-[0_0_8px_rgba(236,72,153,0.8)]">Lihat Semua</a>
+
                     </div>
 
-                    <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3 sm:gap-4">
+                    <div class="grid grid-cols-3 sm:grid-cols-4 lg:grid-cols-5 gap-2 sm:gap-4">
                         <article class="relative rounded-lg overflow-hidden bg-[#161920]/80 backdrop-blur-md border border-white/5 card-3d hover:border-cyan-500/50 group transition-all duration-300">
                             <div class="card-img-wrap"><img src="https://images.unsplash.com/photo-1579952363873-27f3bade9f55?w=600&h=800&fit=crop" alt="Steam Wallet"/></div>
                             <div class="p-3 bg-transparent"><div class="inline-block px-2 py-0.5 rounded-full bg-pink-500 text-white text-[10px] font-bold shadow-[0_0_8px_rgba(236,72,153,0.6)]">Promo</div><h3 class="mt-2 text-sm font-extrabold">Steam Wallet</h3></div>
@@ -183,18 +285,33 @@
                             <div class="p-3 bg-transparent"><h3 class="mt-2 text-sm font-extrabold">Google Play</h3></div>
                         </article>
                     </div>
+
+                    <div class="mt-6 flex justify-center">
+                        <a href="#footer" class="group flex items-center gap-2 text-sm font-bold text-cyan-400 uppercase tracking-widest transition-all hover:text-white hover:drop-shadow-[0_0_8px_rgba(34,211,238,0.8)]">
+                            <span>Lihat Semua</span>
+                            <svg class="w-4 h-4 transition-transform group-hover:translate-x-1 text-cyan-400 group-hover:text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M9 5l7 7-7 7"/></svg>
+                        </a>
+                    </div>
+
+
                 </section>
 
                 <section class="mt-8">
-                    <div class="flex items-end justify-between gap-4 mb-4">
-                        <div>
-                            <p class="inline-flex w-fit rounded-full bg-cyan-500/10 border border-cyan-500/20 text-cyan-400 px-3 py-1 text-xs font-bold uppercase tracking-wide shadow-[0_0_10px_rgba(34,211,238,0.1)]">Baru Ditambahkan</p>
-                            <h2 class="mt-2 text-2xl font-extrabold">✨ Baru Ditambahkan</h2>
+                    <div class="mb-5 flex items-end justify-between border-b border-white/5 pb-3">
+                        <div class="flex items-center gap-3">
+                            <div class="flex flex-col justify-center items-center gap-1">
+                                <div class="w-1.5 h-1.5 bg-pink-500 rotate-45 animate-pulse shadow-[0_0_8px_rgba(236,72,153,0.8)]"></div>
+                                <div class="w-0.5 h-6 bg-gradient-to-b from-pink-500 to-transparent"></div>
+                            </div>
+                            <div>
+                                <p class="text-[10px] font-bold text-pink-500 uppercase tracking-[0.2em] mb-0.5">Fresh Drops</p>
+                                <h2 class="text-xl sm:text-2xl font-black uppercase italic tracking-wider text-white drop-shadow-md">Baru Ditambahkan</h2>
+                            </div>
                         </div>
-                        <a href="#footer" class="text-sm text-pink-400 hover:text-pink-300 font-medium transition-all hover:drop-shadow-[0_0_8px_rgba(236,72,153,0.8)]">Lihat Semua</a>
+
                     </div>
 
-                    <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3 sm:gap-4">
+                    <div class="grid grid-cols-3 sm:grid-cols-4 lg:grid-cols-5 gap-2 sm:gap-4">
                         <article class="relative rounded-lg overflow-hidden bg-[#161920]/80 backdrop-blur-md border border-white/5 card-3d hover:border-cyan-500/50 group transition-all duration-300">
                             <div class="card-img-wrap bg-[#1a1f2e]"><img src="https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=600&h=800&fit=crop" alt="Wuthering Waves"/></div>
                             <div class="p-3 bg-transparent"><div class="inline-block px-2 py-0.5 rounded-full bg-cyan-500 text-black text-[10px] font-bold shadow-[0_0_8px_rgba(34,211,238,0.6)]">Baru</div><h3 class="mt-2 text-sm font-extrabold">Wuthering Waves</h3></div>
@@ -208,18 +325,33 @@
                             <div class="p-3 bg-transparent"><div class="inline-block px-2 py-0.5 rounded-full bg-cyan-500 text-black text-[10px] font-bold shadow-[0_0_8px_rgba(34,211,238,0.6)]">Baru</div><h3 class="mt-2 text-sm font-extrabold">Zenless Zone Zero</h3></div>
                         </article>
                     </div>
+
+                    <div class="mt-6 flex justify-center">
+                        <a href="#footer" class="group flex items-center gap-2 text-sm font-bold text-pink-400 uppercase tracking-widest transition-all hover:text-white hover:drop-shadow-[0_0_8px_rgba(236,72,153,0.8)]">
+                            <span>Lihat Semua</span>
+                            <svg class="w-4 h-4 transition-transform group-hover:translate-x-1 text-pink-500 group-hover:text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M9 5l7 7-7 7"/></svg>
+                        </a>
+                    </div>
+
+
                 </section>
 
                 <section class="mt-8">
-                    <div class="flex items-end justify-between gap-4 mb-4" id="voucher">
-                        <div>
-                            <p class="inline-flex w-fit rounded-full bg-cyan-500/10 border border-cyan-500/20 text-cyan-400 px-3 py-1 text-xs font-bold uppercase tracking-wide shadow-[0_0_10px_rgba(34,211,238,0.1)]">Voucher Populer</p>
-                            <h2 class="mt-2 text-xl font-extrabold">Voucher Populer</h2>
+                    <div class="mb-5 flex items-end justify-between border-b border-white/5 pb-3" id="voucher">
+                        <div class="flex items-center gap-3">
+                            <div class="flex flex-col justify-center items-center gap-1">
+                                <div class="w-1.5 h-1.5 bg-cyan-400 rotate-45 animate-pulse shadow-[0_0_8px_rgba(34,211,238,0.8)]"></div>
+                                <div class="w-0.5 h-6 bg-gradient-to-b from-cyan-400 to-transparent"></div>
+                            </div>
+                            <div>
+                                <p class="text-[10px] font-bold text-cyan-400 uppercase tracking-[0.2em] mb-0.5">Best Deals</p>
+                                <h2 class="text-xl sm:text-2xl font-black uppercase italic tracking-wider text-white drop-shadow-md">Voucher Populer</h2>
+                            </div>
                         </div>
-                        <a href="#footer" class="text-sm text-pink-400 hover:text-pink-300 font-medium transition-all hover:drop-shadow-[0_0_8px_rgba(236,72,153,0.8)]">Lihat Semua</a>
+
                     </div>
 
-                    <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3 sm:gap-4">
+                    <div class="grid grid-cols-3 sm:grid-cols-4 lg:grid-cols-5 gap-2 sm:gap-4">
                         <article class="relative rounded-lg overflow-hidden bg-[#161920]/80 backdrop-blur-md border border-white/5 card-3d hover:border-cyan-500/50 group transition-all duration-300">
                             <div class="card-img-wrap"><img src="https://images.unsplash.com/photo-1589241062272-c0a000072dfa?w=600&h=800&fit=crop" alt="Steam Wallet"/></div>
                             <div class="p-3 bg-transparent"><div class="inline-block px-2 py-0.5 rounded-full bg-pink-500 text-white text-[10px] font-bold shadow-[0_0_8px_rgba(236,72,153,0.6)]">Promo</div><h3 class="mt-2 text-sm font-extrabold">Steam Wallet</h3></div>
@@ -241,11 +373,44 @@
                             <div class="p-3 bg-transparent"><div class="inline-block px-2 py-0.5 rounded-full bg-pink-500 text-white text-[10px] font-bold shadow-[0_0_8px_rgba(236,72,153,0.6)]">Populer</div><h3 class="mt-2 text-sm font-extrabold">Garena Shells</h3></div>
                         </article>
                     </div>
+
+                    <div class="mt-6 flex justify-center">
+                        <a href="#footer" class="group flex items-center gap-2 text-sm font-bold text-cyan-400 uppercase tracking-widest transition-all hover:text-white hover:drop-shadow-[0_0_8px_rgba(34,211,238,0.8)]">
+                            <span>Lihat Semua</span>
+                            <svg class="w-4 h-4 transition-transform group-hover:translate-x-1 text-cyan-400 group-hover:text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M9 5l7 7-7 7"/></svg>
+                        </a>
+                    </div>
+
+
                 </section>
             </main>
 
             @include('partials.footer')
             </div>
         </div>
+
+        <script>
+            function toggleGamesSection(extraId, btnId, labelId) {
+                const extra  = document.getElementById(extraId);
+                const btn    = document.getElementById(btnId);
+                const label  = document.getElementById(labelId);
+                const isOpen = extra.classList.contains('expanded');
+
+                if (isOpen) {
+                    extra.classList.remove('expanded');
+                    btn.classList.remove('expanded');
+                    label.textContent = 'Lihat Semua';
+                } else {
+                    extra.classList.add('expanded');
+                    btn.classList.add('expanded');
+                    label.textContent = 'Tutup';
+
+                    // Smooth scroll ke baris extra agar kelihatan
+                    setTimeout(() => {
+                        extra.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                    }, 100);
+                }
+            }
+        </script>
     </body>
 </html>
