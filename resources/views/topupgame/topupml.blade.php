@@ -183,9 +183,8 @@
                             @endphp
 
                             @foreach($payments as $pay)
-                            <label class="pay-card cursor-pointer relative block bg-[#1e2433] border border-white/10 rounded-xl p-3 hover:border-cyan-500/50 transition-all">
-                                <input type="radio" name="payment" value="{{ $pay['id'] }}" class="peer hidden" onchange="selectPayment('{{ $pay['name'] }}')">
-                                <div class="absolute inset-0 border-2 border-transparent rounded-xl peer-checked:border-cyan-400 transition-all pointer-events-none"></div>
+                            <label class="pay-card cursor-pointer relative block bg-[#1e2433] border-2 border-white/10 rounded-xl p-3 hover:border-cyan-500/50 transition-all [&:has(input:checked)]:border-cyan-400 [&:has(input:checked)]:bg-cyan-900/20">
+                                <input type="radio" name="payment" value="{{ $pay['id'] }}" class="hidden" onchange="selectPayment('{{ $pay['name'] }}')">
                                 <div class="flex items-center gap-4">
                                     <div class="w-16 h-10 bg-white rounded-lg p-1.5 flex items-center justify-center relative z-10 transition-colors">
                                         <img src="{{ $pay['icon'] }}" class="max-w-full max-h-full object-contain" alt="{{ $pay['name'] }}">
@@ -194,13 +193,22 @@
                                         <p class="text-white font-bold text-sm">{{ $pay['name'] }}</p>
                                         <p class="text-gray-500 text-xs">{{ $pay['desc'] }}</p>
                                     </div>
-                                    <div class="w-5 h-5 rounded-full border-2 border-gray-600 peer-checked:border-cyan-400 flex items-center justify-center relative z-10">
-                                        <div class="w-2.5 h-2.5 rounded-full bg-cyan-400 scale-0 peer-checked:scale-100 transition-transform"></div>
+                                    <div class="outer-circle w-5 h-5 rounded-full border-2 border-gray-600 flex items-center justify-center relative z-10 transition-colors">
+                                        <div class="inner-circle w-2.5 h-2.5 rounded-full bg-cyan-400 scale-0 transition-transform"></div>
                                     </div>
                                 </div>
                             </label>
                             @endforeach
                         </div>
+                        
+                        <style>
+                            .pay-card:has(input:checked) .outer-circle {
+                                border-color: #22d3ee;
+                            }
+                            .pay-card:has(input:checked) .inner-circle {
+                                transform: scale(1);
+                            }
+                        </style>
                     </div>
 
                 </div>
@@ -556,8 +564,12 @@
                 document.getElementById('user-id').value = mUid;
                 document.getElementById('zone-id').value = mZone;
             }
-            closeCheckoutModal();
-            showToast('🎉', 'Pesanan berhasil dikonfirmasi!');
+            
+            // Calculate total and save for checkout dummy page
+            const total = [...selectedPkgs.values()].reduce((s, i) => s + i.priceNum, 0);
+            localStorage.setItem('gv_checkout_total', formatRupiah(total));
+            
+            window.location.href = '/checkout';
         }
 
         function showToast(icon, msg) {
