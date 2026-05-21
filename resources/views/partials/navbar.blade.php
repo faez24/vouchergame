@@ -8,7 +8,7 @@
         <nav class="hidden items-center gap-8 md:flex">
             <a href="{{ url('/') }}" class="text-sm text-gray-300 hover:text-white transition-colors">Home</a>
             <a href="{{ url('/#games') }}" class="text-sm text-gray-300 hover:text-white transition-colors">Games</a>
-            <a href="{{ url('/#voucher') }}" class="text-sm text-gray-300 hover:text-white transition-colors">Voucher</a>
+            <a href="{{ url('voucher') }}" class="text-sm text-gray-300 hover:text-white transition-colors">Voucher</a>
         </nav>
 
         <div class="flex items-center gap-3 sm:gap-4">
@@ -89,7 +89,7 @@
             </a>
 
             {{-- Voucher --}}
-            <a href="{{ url('/#voucher') }}" onclick="setActiveMobileMenu(this)" class="mobile-nav-link opacity-60 flex flex-col w-max group transition-opacity duration-300">
+            <a href="{{ url('/voucher') }}" onclick="setActiveMobileMenu(this)" class="mobile-nav-link opacity-60 flex flex-col w-max group transition-opacity duration-300">
                 <div class="flex items-center gap-3">
                     <span class="italic font-bold text-white text-[1.3rem]">Voucher</span>
                     {{-- Notification badge (Optional) --}}
