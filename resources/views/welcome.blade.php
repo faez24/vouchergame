@@ -385,6 +385,7 @@
                 </section>
             </main>
 
+            @include('partials.flashsale-checkout')
             @include('partials.footer')
             </div>
         </div>
