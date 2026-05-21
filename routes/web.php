@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\GoogleAuthController;
 
 Route::get('/', function () {
@@ -17,6 +18,13 @@ Route::get('/login', function () {
 
 Route::get('/auth/google', [GoogleAuthController::class, 'redirect']);
 Route::get('/auth-google-callback', [GoogleAuthController::class, 'callback']);
+
+Route::post('/logout', function (\Illuminate\Http\Request $request) {
+    Auth::logout();
+    $request->session()->invalidate();
+    $request->session()->regenerateToken();
+    return back();
+})->name('logout');
 
 Route::get('/cart', function () {
     return view('cart');
