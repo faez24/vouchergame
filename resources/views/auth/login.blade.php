@@ -152,101 +152,26 @@
                             <span class="grid h-12 w-12 place-items-center rounded-2xl bg-gradient-to-r from-cyan-400 to-blue-500 text-[16px] font-extrabold tracking-tight text-black shadow-[0_0_20px_rgba(34,211,238,0.5)]">GV</span>
                             <span class="text-2xl font-bold tracking-tight text-white drop-shadow">GameVault</span>
                         </a>
-                        <h1 class="text-2xl font-black text-white">Selamat Datang Kembali</h1>
+                        <h1 class="text-2xl font-black text-white">Selamat Datang</h1>
                         <p class="text-gray-400 text-sm mt-1.5">Masuk untuk melanjutkan top up favoritmu</p>
                     </div>
 
                     {{-- Social Login --}}
-                    <div class="grid grid-cols-2 gap-3 mb-6">
-                        <button id="btn-google" class="social-btn flex items-center justify-center gap-2.5 py-2.5 rounded-xl text-sm font-semibold text-gray-200">
-                            <svg class="w-5 h-5" viewBox="0 0 24 24">
-                                <path fill="#EA4335" d="M5.27 9.77A7.5 7.5 0 0 1 12 4.5c1.96 0 3.73.73 5.08 1.92l3.78-3.78A12 12 0 0 0 12 0C7.37 0 3.36 2.55 1.23 6.3l4.04 3.47Z"/>
-                                <path fill="#34A853" d="M16.04 18.01A7.48 7.48 0 0 1 12 19.5a7.5 7.5 0 0 1-6.72-4.23L1.22 18.7A12 12 0 0 0 12 24c3.06 0 5.96-1.1 8.15-3.08l-4.11-2.91Z"/>
-                                <path fill="#FBBC05" d="M19.5 12c0-.67-.07-1.32-.18-1.95H12v3.72h4.23a3.6 3.6 0 0 1-1.57 2.36l4.1 2.9C20.4 17.23 19.5 14.8 19.5 12Z"/>
-                                <path fill="#4285F4" d="M5.28 14.27A7.43 7.43 0 0 1 4.5 12c0-.8.14-1.57.38-2.3L.85 6.23A12 12 0 0 0 0 12c0 1.97.48 3.83 1.32 5.47l3.96-3.2Z"/>
-                            </svg>
-                            Google
-                        </button>
-                        <button id="btn-discord" class="social-btn flex items-center justify-center gap-2.5 py-2.5 rounded-xl text-sm font-semibold text-gray-200">
-                            <svg class="w-5 h-5" viewBox="0 0 24 24" fill="#5865F2">
-                                <path d="M20.32 4.37A19.8 19.8 0 0 0 15.56 3c-.21.38-.46.9-.63 1.3a18.27 18.27 0 0 0-5.86 0C8.9 3.9 8.64 3.38 8.43 3A19.74 19.74 0 0 0 3.67 4.38C.53 9.15-.32 13.8.1 18.38a19.9 19.9 0 0 0 6.07 3.07c.49-.67.93-1.38 1.3-2.13a12.97 12.97 0 0 1-2.05-1c.17-.12.34-.25.5-.38a14.15 14.15 0 0 0 12.16 0l.5.38c-.65.39-1.34.72-2.05 1 .37.75.81 1.46 1.3 2.13a19.84 19.84 0 0 0 6.08-3.07c.5-5.22-.84-9.74-3.59-13.01ZM8.02 15.67c-1.26 0-2.3-1.16-2.3-2.6s1.01-2.61 2.3-2.61c1.28 0 2.33 1.17 2.3 2.61 0 1.44-1.02 2.6-2.3 2.6Zm7.96 0c-1.26 0-2.3-1.16-2.3-2.6s1.02-2.61 2.3-2.61c1.28 0 2.33 1.17 2.3 2.61 0 1.44-1.01 2.6-2.3 2.6Z"/>
-                            </svg>
-                            Discord
-                        </button>
+                    <div class="mb-6">
+                        <a href="{{ url('/auth/google') }}" id="btn-google" class="btn-login flex w-full items-center justify-center gap-3 py-3.5 rounded-xl text-sm font-semibold text-white tracking-wider cursor-pointer">
+                            <span class="bg-white p-1 rounded-full relative z-10 flex items-center justify-center">
+                                <svg class="w-5 h-5" viewBox="0 0 24 24">
+                                    <path fill="#EA4335" d="M5.27 9.77A7.5 7.5 0 0 1 12 4.5c1.96 0 3.73.73 5.08 1.92l3.78-3.78A12 12 0 0 0 12 0C7.37 0 3.36 2.55 1.23 6.3l4.04 3.47Z"/>
+                                    <path fill="#34A853" d="M16.04 18.01A7.48 7.48 0 0 1 12 19.5a7.5 7.5 0 0 1-6.72-4.23L1.22 18.7A12 12 0 0 0 12 24c3.06 0 5.96-1.1 8.15-3.08l-4.11-2.91Z"/>
+                                    <path fill="#FBBC05" d="M19.5 12c0-.67-.07-1.32-.18-1.95H12v3.72h4.23a3.6 3.6 0 0 1-1.57 2.36l4.1 2.9C20.4 17.23 19.5 14.8 19.5 12Z"/>
+                                    <path fill="#4285F4" d="M5.28 14.27A7.43 7.43 0 0 1 4.5 12c0-.8.14-1.57.38-2.3L.85 6.23A12 12 0 0 0 0 12c0 1.97.48 3.83 1.32 5.47l3.96-3.2Z"/>
+                                </svg>
+                            </span>
+                            <span class="relative z-10 font-black">MASUK DENGAN GOOGLE</span>
+                        </a>
                     </div>
-
+                    
                     {{-- Divider --}}
-                    <div class="flex items-center gap-3 mb-6">
-                        <div class="divider-line"></div>
-                        <span class="text-gray-500 text-xs font-medium whitespace-nowrap">atau masuk dengan email</span>
-                        <div class="divider-line"></div>
-                    </div>
-
-                    {{-- Form --}}
-                    <form id="login-form" onsubmit="handleLogin(event)" class="space-y-4">
-
-                        <div>
-                            <label for="email" class="block text-gray-400 text-xs font-semibold mb-1.5 uppercase tracking-wider">Email</label>
-                            <div class="relative">
-                                <span class="absolute left-3.5 top-1/2 -translate-y-1/2 text-gray-500">
-                                    <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                                        <path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
-                                    </svg>
-                                </span>
-                                <input id="email" type="email" placeholder="nama@email.com" required
-                                    class="input-field w-full rounded-xl pl-10 pr-4 py-3 text-white text-sm placeholder-gray-600">
-                            </div>
-                            <p id="email-error" class="hidden text-pink-500 text-xs mt-1.5 flex items-center gap-1">
-                                <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01"/></svg>
-                                Format email tidak valid
-                            </p>
-                        </div>
-
-                        <div>
-                            <div class="flex items-center justify-between mb-1.5">
-                                <label for="password" class="block text-gray-400 text-xs font-semibold uppercase tracking-wider">Password</label>
-                                <a href="#" class="text-cyan-400 text-xs hover:text-cyan-300 transition-colors">Lupa password?</a>
-                            </div>
-                            <div class="relative">
-                                <span class="absolute left-3.5 top-1/2 -translate-y-1/2 text-gray-500">
-                                    <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/>
-                                    </svg>
-                                </span>
-                                <input id="password" type="password" placeholder="Minimal 8 karakter" required
-                                    class="input-field w-full rounded-xl pl-10 pr-12 py-3 text-white text-sm placeholder-gray-600">
-                                <button type="button" id="toggle-pass" class="eye-toggle absolute right-3.5 top-1/2 -translate-y-1/2" onclick="togglePassword()">
-                                    <svg id="eye-icon" class="w-4 h-4 text-gray-500 transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                                        <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
-                                        <path stroke-linecap="round" stroke-linejoin="round" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.477 0 8.268 2.943 9.542 7-1.274 4.057-5.065 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/>
-                                    </svg>
-                                </button>
-                            </div>
-                            <p id="pass-error" class="hidden text-pink-500 text-xs mt-1.5">Password minimal 8 karakter</p>
-                        </div>
-
-                        <div class="flex items-center gap-2.5 pt-1">
-                            <input id="remember" type="checkbox" class="w-4 h-4 rounded accent-cyan-400 cursor-pointer">
-                            <label for="remember" class="text-gray-400 text-sm cursor-pointer select-none">Ingat saya</label>
-                        </div>
-
-                        <button id="btn-login" type="submit"
-                            class="btn-login w-full py-3.5 rounded-xl text-white font-black text-sm tracking-wider mt-2 flex items-center justify-center gap-2">
-                            <span id="btn-text">MASUK SEKARANG</span>
-                            <svg id="btn-spinner" class="hidden w-4 h-4 animate-spin" fill="none" viewBox="0 0 24 24">
-                                <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
-                                <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.37 0 0 5.37 0 12h4z"></path>
-                            </svg>
-                        </button>
-
-                    </form>
-
-                    {{-- Register link --}}
-                    <p class="text-center text-sm text-gray-500 mt-6">
-                        Belum punya akun?
-                        <a href="{{ url('/register') }}" class="text-cyan-400 hover:text-cyan-300 font-semibold transition-colors">Daftar gratis</a>
-                    </p>
-
                 </div>
             </div>
 
@@ -277,66 +202,6 @@
     </div>
 
     <script>
-        function togglePassword() {
-            const input = document.getElementById('password');
-            const icon = document.getElementById('eye-icon');
-            if (input.type === 'password') {
-                input.type = 'text';
-                icon.innerHTML = `<path stroke-linecap="round" stroke-linejoin="round" d="M13.875 18.825A10.05 10.05 0 0112 19c-4.478 0-8.268-2.943-9.543-7a9.97 9.97 0 011.563-3.029m5.858.908a3 3 0 114.243 4.243M9.878 9.878l4.242 4.242M9.88 9.88l-3.29-3.29m7.532 7.532l3.29 3.29M3 3l3.59 3.59m0 0A9.953 9.953 0 0112 5c4.478 0 8.268 2.943 9.543 7a10.025 10.025 0 01-4.132 5.411m0 0L21 21"/>`;
-            } else {
-                input.type = 'password';
-                icon.innerHTML = `<path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.477 0 8.268 2.943 9.542 7-1.274 4.057-5.065 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/>`;
-            }
-        }
-
-        function handleLogin(e) {
-            e.preventDefault();
-            let valid = true;
-
-            const email = document.getElementById('email').value.trim();
-            const pass = document.getElementById('password').value;
-            const emailErr = document.getElementById('email-error');
-            const passErr = document.getElementById('pass-error');
-
-            // Validate email
-            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-            if (!emailRegex.test(email)) {
-                emailErr.classList.remove('hidden');
-                valid = false;
-            } else {
-                emailErr.classList.add('hidden');
-            }
-
-            // Validate password
-            if (pass.length < 8) {
-                passErr.classList.remove('hidden');
-                valid = false;
-            } else {
-                passErr.classList.add('hidden');
-            }
-
-            if (!valid) return;
-
-            // Show loading state
-            const btn = document.getElementById('btn-login');
-            const btnText = document.getElementById('btn-text');
-            const spinner = document.getElementById('btn-spinner');
-            btn.disabled = true;
-            btn.style.opacity = '0.7';
-            btnText.textContent = 'Memproses...';
-            spinner.classList.remove('hidden');
-
-            // Simulate API call
-            setTimeout(() => {
-                btn.disabled = false;
-                btn.style.opacity = '1';
-                btnText.textContent = 'MASUK SEKARANG';
-                spinner.classList.add('hidden');
-                showToast('✅', 'Login berhasil! Mengarahkan...');
-                setTimeout(() => { window.location.href = '/'; }, 1500);
-            }, 1800);
-        }
-
         function showToast(icon, msg) {
             const t = document.getElementById('toast');
             document.getElementById('toast-icon').textContent = icon;
@@ -345,10 +210,6 @@
             clearTimeout(window._toastTimer);
             window._toastTimer = setTimeout(() => t.classList.add('hidden'), 3000);
         }
-
-        // Social button placeholders
-        document.getElementById('btn-google').addEventListener('click', () => showToast('🔧', 'Login Google belum tersedia'));
-        document.getElementById('btn-discord').addEventListener('click', () => showToast('🔧', 'Login Discord belum tersedia'));
     </script>
 </body>
 </html>
