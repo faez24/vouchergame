@@ -32,7 +32,16 @@
                 <span id="cart-badge" class="hidden absolute -top-1.5 -right-1.5 min-w-[18px] h-[18px] px-1 rounded-full bg-pink-500 text-white text-[10px] font-black flex items-center justify-center shadow-[0_0_8px_rgba(236,72,153,0.8)] border border-[#344050]">0</span>
             </a>
 
-            <a href="{{ url('/login') }}" class="hidden md:inline-block px-5 py-2 bg-pink-500 hover:bg-pink-400 rounded-lg text-white text-sm font-bold transition-all shadow-[0_0_15px_rgba(236,72,153,0.5)]">Masuk</a>
+            @auth
+                <div class="hidden md:flex items-center gap-3">
+                    <img src="{{ auth()->user()->avatar ?? 'https://ui-avatars.com/api/?name=' . urlencode(auth()->user()->name) . '&background=ec4899&color=fff' }}" 
+                         alt="{{ auth()->user()->name }}" 
+                         class="w-10 h-10 rounded-full border border-pink-500/50 object-cover shadow-[0_0_10px_rgba(236,72,153,0.3)]">
+                    <span class="text-sm font-bold text-white max-w-[120px] truncate">{{ auth()->user()->name }}</span>
+                </div>
+            @else
+                <a href="{{ url('/login') }}" class="hidden md:inline-block px-5 py-2 bg-pink-500 hover:bg-pink-400 rounded-lg text-white text-sm font-bold transition-all shadow-[0_0_15px_rgba(236,72,153,0.5)]">Masuk</a>
+            @endauth
 
             {{-- Mobile Hamburger Menu Button --}}
             <button id="mobile-menu-btn" aria-label="Menu" class="md:hidden relative p-2 text-gray-300 hover:text-white transition-colors">
