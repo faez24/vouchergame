@@ -29,9 +29,55 @@
 
       {{-- ── STEP 1 ── --}}
       <div id="fs-s1">
-        <h3 class="text-white font-black text-lg mb-1">Metode Pembayaran</h3>
-        <p class="text-gray-500 text-xs mb-1">Mobile Legends · 86 Diamonds · <span class="text-pink-400 font-bold">15% OFF</span></p>
-        <p class="text-gray-500 text-xs mb-5">Pilih cara pembayaran yang kamu inginkan</p>
+        <h3 class="text-white font-black text-lg mb-1">Ringkasan Pesanan</h3>
+        <p class="text-gray-500 text-xs mb-5">Lengkapi data dan periksa pesanan</p>
+
+        {{-- User ID input --}}
+        <div class="mb-4">
+          <label class="block text-gray-400 text-xs font-semibold mb-1.5 uppercase tracking-wider">User ID &amp; Zone ID</label>
+          <div class="flex gap-2">
+            <input id="fs-uid" type="text" placeholder="User ID"
+              class="flex-1 bg-[#252d40] border border-white/10 rounded-xl px-4 py-3 text-white text-sm placeholder-gray-600 outline-none focus:border-pink-500/50 transition-all">
+            <input id="fs-zone" type="text" placeholder="Zone"
+              class="w-24 bg-[#252d40] border border-white/10 rounded-xl px-4 py-3 text-white text-sm placeholder-gray-600 outline-none focus:border-pink-500/50 transition-all">
+          </div>
+        </div>
+
+        {{-- Item --}}
+        <div class="bg-[#1e2433] rounded-xl px-4 py-3 flex items-center justify-between gap-3 mb-3">
+          <div>
+            <p class="text-white font-bold text-sm">Mobile Legends · 86 Diamonds</p>
+            <p class="text-pink-400 text-xs font-bold mt-0.5">15% OFF Flash Sale</p>
+          </div>
+          <span class="text-pink-400 font-bold text-sm flex-shrink-0">Rp 21.250</span>
+        </div>
+
+        {{-- Total --}}
+        <div class="bg-gradient-to-r from-pink-500/10 to-rose-500/10 border border-pink-500/20 rounded-xl px-4 py-4 flex items-center justify-between mb-4">
+          <span class="text-gray-300 text-sm font-bold">Total Pembayaran</span>
+          <span class="text-pink-400 font-black text-xl">Rp 21.250</span>
+        </div>
+
+        <button onclick="fsGoStep2()" class="fs-btn-grad w-full py-3.5 rounded-xl text-white font-black text-sm tracking-wider"><span>Lanjut ke Pembayaran →</span></button>
+      </div>
+
+      {{-- ── STEP 2 ── --}}
+      <div id="fs-s2" style="display:none;">
+        <div class="flex items-center gap-2 mb-5">
+          <button onclick="fsGoStep1()" class="text-gray-400 hover:text-white transition-colors">
+            <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"/></svg>
+          </button>
+          <div>
+            <h3 class="text-white font-black text-lg">Metode Pembayaran</h3>
+            <p class="text-gray-500 text-xs">Pilih cara pembayaran yang kamu inginkan</p>
+          </div>
+        </div>
+
+        {{-- Identitas --}}
+        <div class="bg-[#252d40] rounded-xl px-4 py-3 mb-4 flex items-center justify-between">
+          <span class="text-gray-400 text-xs font-semibold uppercase tracking-wider" id="fs-s2-uid">ID: —</span>
+          <span class="text-pink-400 font-bold text-sm">Rp 21.250</span>
+        </div>
 
         {{-- Payment options --}}
         <div class="space-y-3 mb-5" id="fs-pay-opts">
@@ -50,53 +96,6 @@
           </label>
         </div>
 
-        <button onclick="fsGoStep2()" class="fs-btn-grad w-full py-3.5 rounded-xl text-white font-black text-sm tracking-wider"><span>Lanjut ke Ringkasan →</span></button>
-      </div>
-
-      {{-- ── STEP 2 ── --}}
-      <div id="fs-s2" style="display:none;">
-        <div class="flex items-center gap-2 mb-5">
-          <button onclick="fsGoStep1()" class="text-gray-400 hover:text-white transition-colors">
-            <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"/></svg>
-          </button>
-          <div>
-            <h3 class="text-white font-black text-lg">Ringkasan Pesanan</h3>
-            <p class="text-gray-500 text-xs">Periksa sebelum membayar</p>
-          </div>
-        </div>
-
-        {{-- Metode bayar --}}
-        <div class="bg-[#252d40] rounded-xl px-4 py-3 mb-3 flex items-center justify-between">
-          <span class="text-gray-400 text-xs font-semibold uppercase tracking-wider">Metode Bayar</span>
-          <span id="fs-s2-pay" class="text-pink-400 font-bold text-sm">—</span>
-        </div>
-
-        {{-- Item --}}
-        <div class="bg-[#1e2433] rounded-xl px-4 py-3 flex items-center justify-between gap-3 mb-3">
-          <div>
-            <p class="text-white font-bold text-sm">Mobile Legends · 86 Diamonds</p>
-            <p class="text-gray-500 text-xs" id="fs-s2-uid">ID: — (—)</p>
-          </div>
-          <span class="text-pink-400 font-bold text-sm flex-shrink-0">Rp 21.250</span>
-        </div>
-
-        {{-- Total --}}
-        <div class="bg-gradient-to-r from-pink-500/10 to-rose-500/10 border border-pink-500/20 rounded-xl px-4 py-4 flex items-center justify-between mb-4">
-          <span class="text-gray-300 text-sm font-bold">Total Pembayaran</span>
-          <span class="text-pink-400 font-black text-xl">Rp 21.250</span>
-        </div>
-
-        {{-- User ID input --}}
-        <div class="mb-4">
-          <label class="block text-gray-400 text-xs font-semibold mb-1.5 uppercase tracking-wider">User ID &amp; Zone ID</label>
-          <div class="flex gap-2">
-            <input id="fs-uid" type="text" placeholder="User ID"
-              class="flex-1 bg-[#252d40] border border-white/10 rounded-xl px-4 py-3 text-white text-sm placeholder-gray-600 outline-none focus:border-pink-500/50 transition-all">
-            <input id="fs-zone" type="text" placeholder="Zone"
-              class="w-24 bg-[#252d40] border border-white/10 rounded-xl px-4 py-3 text-white text-sm placeholder-gray-600 outline-none focus:border-pink-500/50 transition-all">
-          </div>
-        </div>
-
         <button onclick="fsConfirm()" class="fs-btn-grad w-full py-3.5 rounded-xl text-white font-black text-sm tracking-wider"><span>✓ KONFIRMASI &amp; BAYAR</span></button>
       </div>
     </div>
@@ -110,6 +109,7 @@ function openFlashSaleModal(){
   fsGoStep1();
   if(document.getElementById('fs-uid')) document.getElementById('fs-uid').value='';
   if(document.getElementById('fs-zone')) document.getElementById('fs-zone').value='';
+  document.getElementById('fs-s2-uid').textContent='ID: —';
   document.body.style.overflow='hidden';
 }
 function fsClose(){
@@ -123,20 +123,21 @@ function fsGoStep1(){
   document.getElementById('fs-dot2').className='fs-step-dot inactive';
 }
 function fsGoStep2(){
-  const pay=document.querySelector('input[name="fs_pay"]:checked');
-  if(!pay){alert('Pilih metode pembayaran dulu!');return;}
-  document.getElementById('fs-s2-pay').textContent=pay.value;
+  const uid=document.getElementById('fs-uid').value.trim();
+  const zone=document.getElementById('fs-zone').value.trim();
+  if(!uid||!zone){alert('Mohon isi User ID dan Zone ID terlebih dahulu!');return;}
+  document.getElementById('fs-s2-uid').textContent='ID: '+uid+' ('+zone+')';
+
   document.getElementById('fs-s1').style.display='none';
   document.getElementById('fs-s2').style.display='block';
   document.getElementById('fs-dot1').className='fs-step-dot done';
   document.getElementById('fs-dot2').className='fs-step-dot active';
 }
 function fsConfirm(){
-  const uid=document.getElementById('fs-uid').value.trim();
-  const zone=document.getElementById('fs-zone').value.trim();
-  if(!uid||!zone){alert('Mohon isi User ID dan Zone ID terlebih dahulu!');return;}
-  document.getElementById('fs-s2-uid').textContent='ID: '+uid+' ('+zone+')';
+  const pay=document.querySelector('input[name="fs_pay"]:checked');
+  if(!pay){alert('Pilih metode pembayaran dulu!');return;}
+  
   fsClose();
-  alert('✅ Pesanan Flash Sale berhasil! Silakan lanjutkan pembayaran.');
+  window.location.href = "{{ url('/checkout') }}";
 }
 </script>
