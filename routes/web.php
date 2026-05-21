@@ -21,3 +21,7 @@ Route::get('/cart', function () {
 Route::get('/checkout', function () {
     return view('checkout');
 })->name('checkout');
+
+Route::get('/voucher', function () {
+    return view('voucher');
+})->name('voucher');
