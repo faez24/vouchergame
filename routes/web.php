@@ -29,3 +29,7 @@ Route::get('/checkout', function () {
 Route::get('/voucher', function () {
     return view('voucher');
 })->name('voucher');
+
+Route::get('/games', function () {
+    return view('games');
+})->name('games');
