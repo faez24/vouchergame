@@ -62,11 +62,17 @@
             </h3>
         </div>
 
-        {{-- cards --}}
-        <div class="flex gap-10 md:gap-12 overflow-x-auto lg:justify-center px-6 pt-4 pb-12 scrollbar-hide snap-x snap-mandatory"
-             style="-ms-overflow-style:none;scrollbar-width:none;">
+        <div class="relative w-full group/slider overflow-visible">
+            {{-- Prev Arrow --}}
+            <button onclick="document.getElementById('flash-sale-slider').scrollBy({ left: -250, behavior: 'smooth' })" class="hidden md:flex absolute -left-5 top-[38%] -translate-y-1/2 w-11 h-11 rounded-full bg-[#1c2030]/90 backdrop-blur-md border border-white/10 text-white items-center justify-center hover:bg-white/10 hover:border-cyan-500/50 transition-all z-30 group shadow-[0_4px_15px_rgba(0,0,0,0.5)]">
+                <svg class="w-5 h-5 group-hover:-translate-x-0.5 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"/></svg>
+            </button>
 
-            {{-- Card 1: Valorant VP --}}
+            {{-- cards --}}
+            <div id="flash-sale-slider" class="flex gap-10 md:gap-12 overflow-x-auto lg:justify-center px-6 pt-4 pb-12 scrollbar-hide snap-x snap-mandatory"
+                 style="-ms-overflow-style:none;scrollbar-width:none;">
+
+                {{-- Card 1: Valorant VP --}}
             <div class="flex-shrink-0 snap-center w-[155px] sm:w-[175px] md:w-[195px] cursor-pointer">
                 <div class="bg-[#1c2030] border border-white/10 rounded-2xl overflow-hidden shadow-[0_8px_30px_rgba(0,0,0,0.6)] hover:shadow-[0_0_30px_rgba(34,211,238,0.25)] hover:border-cyan-500/40 transition-all duration-300 hover:-translate-y-1 h-full" >
                     <div class="h-28 sm:h-32 bg-[#1a1f2e] relative overflow-hidden">
@@ -161,6 +167,12 @@
                 </div>
             </div>
 
+            </div>
+
+            {{-- Next Arrow --}}
+            <button onclick="document.getElementById('flash-sale-slider').scrollBy({ left: 250, behavior: 'smooth' })" class="hidden md:flex absolute -right-5 top-[38%] -translate-y-1/2 w-11 h-11 rounded-full bg-[#1c2030]/90 backdrop-blur-md border border-white/10 text-white items-center justify-center hover:bg-white/10 hover:border-pink-500/50 transition-all z-30 group shadow-[0_4px_15px_rgba(0,0,0,0.5)]">
+                <svg class="w-5 h-5 group-hover:translate-x-0.5 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+            </button>
         </div>
 
         {{-- Pagination Dots --}}

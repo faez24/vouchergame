@@ -32,7 +32,51 @@
                 <span id="cart-badge" class="hidden absolute -top-1.5 -right-1.5 min-w-[18px] h-[18px] px-1 rounded-full bg-pink-500 text-white text-[10px] font-black flex items-center justify-center shadow-[0_0_8px_rgba(236,72,153,0.8)] border border-[#344050]">0</span>
             </a>
 
-            <a href="{{ url('/login') }}" class="hidden md:inline-block px-5 py-2 bg-pink-500 hover:bg-pink-400 rounded-lg text-white text-sm font-bold transition-all shadow-[0_0_15px_rgba(236,72,153,0.5)]">Masuk</a>
+            {{-- User Menu (Desktop & Mobile) --}}
+            <div class="relative" id="user-menu-container">
+                @auth
+                    {{-- Auth: Desktop & Mobile --}}
+                    <button class="user-menu-button flex items-center gap-2 md:gap-3 focus:outline-none transition-transform hover:scale-105">
+                        <img src="{{ auth()->user()->avatar ?? 'https://ui-avatars.com/api/?name=' . urlencode(auth()->user()->name) . '&background=ec4899&color=fff' }}" 
+                             alt="{{ auth()->user()->name }}" 
+                             class="w-8 h-8 md:w-10 md:h-10 rounded-full border border-pink-500/50 object-cover shadow-[0_0_10px_rgba(236,72,153,0.3)]">
+                        <span class="hidden md:inline-block text-sm font-bold text-white max-w-[120px] truncate">{{ auth()->user()->name }}</span>
+                    </button>
+                @else
+                    {{-- Guest: Desktop --}}
+                    <a href="{{ url('/login') }}" class="hidden md:inline-block px-5 py-2 bg-pink-500 hover:bg-pink-400 rounded-lg text-white text-sm font-bold transition-all shadow-[0_0_15px_rgba(236,72,153,0.5)]">Masuk</a>
+                    {{-- Guest: Mobile --}}
+                    <button class="user-menu-button md:hidden relative flex items-center justify-center w-8 h-8 rounded-full border border-white/10 bg-white/[0.04] text-gray-300 hover:text-white hover:bg-white/10 transition-colors focus:outline-none">
+                        <svg viewBox="0 0 24 24" class="w-[18px] h-[18px]" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                            <circle cx="12" cy="7" r="4"></circle>
+                        </svg>
+                    </button>
+                @endauth
+
+                {{-- Dropdown --}}
+                <div class="user-dropdown-menu absolute right-0 mt-3 w-40 bg-[#0a0f16] border border-white/10 rounded-xl shadow-[0_10px_30px_rgba(0,0,0,0.8)] py-2 hidden flex-col z-[100] transform opacity-0 scale-95 transition-all duration-200 origin-top-right">
+                    @auth
+                        <a href="{{ url('/profile') }}" class="flex items-center gap-2 px-4 py-2 text-sm text-gray-300 hover:bg-white/5 hover:text-white transition-colors">
+                            <svg viewBox="0 0 24 24" class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+                            Profil
+                        </a>
+                        <div class="h-[1px] bg-white/10 my-1"></div>
+                        <form method="POST" action="{{ route('logout') }}" class="m-0">
+                            @csrf
+                            <button type="submit" class="flex w-full items-center gap-2 px-4 py-2 text-sm text-red-400 hover:bg-white/5 hover:text-red-300 transition-colors">
+                                <svg viewBox="0 0 24 24" class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path><polyline points="16 17 21 12 16 7"></polyline><line x1="21" y1="12" x2="9" y2="12"></line></svg>
+                                Keluar
+                            </button>
+                        </form>
+                    @else
+                        <a href="{{ url('/login') }}" class="md:hidden flex items-center gap-2 px-4 py-2 text-sm text-gray-300 hover:bg-white/5 hover:text-white transition-colors">
+                            <svg viewBox="0 0 24 24" class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"></path><polyline points="10 17 15 12 10 7"></polyline><line x1="15" y1="12" x2="3" y2="12"></line></svg>
+                            Masuk
+                        </a>
+                    @endauth
+                </div>
+            </div>
 
             {{-- Mobile Hamburger Menu Button --}}
             <button id="mobile-menu-btn" aria-label="Menu" class="md:hidden relative p-2 text-gray-300 hover:text-white transition-colors">
@@ -250,5 +294,38 @@
 
         // Test Dummy Notification Badge
         updateNotifications(1, 0);
+
+        // Handle User Dropdown
+        const userMenuBtn = document.querySelector('.user-menu-button');
+        const userDropdown = document.querySelector('.user-dropdown-menu');
+
+        if (userMenuBtn && userDropdown) {
+            userMenuBtn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                if (userDropdown.classList.contains('hidden')) {
+                    userDropdown.classList.remove('hidden');
+                    setTimeout(() => {
+                        userDropdown.classList.remove('opacity-0', 'scale-95');
+                        userDropdown.classList.add('opacity-100', 'scale-100');
+                    }, 10);
+                } else {
+                    userDropdown.classList.remove('opacity-100', 'scale-100');
+                    userDropdown.classList.add('opacity-0', 'scale-95');
+                    setTimeout(() => {
+                        userDropdown.classList.add('hidden');
+                    }, 200);
+                }
+            });
+
+            document.addEventListener('click', (e) => {
+                if (!userMenuBtn.contains(e.target) && !userDropdown.contains(e.target) && !userDropdown.classList.contains('hidden')) {
+                    userDropdown.classList.remove('opacity-100', 'scale-100');
+                    userDropdown.classList.add('opacity-0', 'scale-95');
+                    setTimeout(() => {
+                        userDropdown.classList.add('hidden');
+                    }, 200);
+                }
+            });
+        }
     });
 </script>
