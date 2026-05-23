@@ -26,7 +26,7 @@
 
         <style>
             .bg-noise { background-image: radial-gradient(rgba(255,255,255,0.025) 0.8px, transparent 0.8px); background-size: 18px 18px; }
-            .card-img-wrap { position: relative; width: 100%; padding-bottom: 133.33%; overflow: hidden; }
+            .card-img-wrap { position: relative; width: 100%; padding-bottom: 100%; overflow: hidden; }
             .card-img-wrap img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
             /* 3D card effect */
             .card-3d {
