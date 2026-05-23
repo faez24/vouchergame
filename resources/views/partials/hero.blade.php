@@ -92,7 +92,7 @@
             </div>
 
             {{-- Card 2: Mobile Legends --}}
-            <div class="flex-shrink-0 snap-center w-[155px] sm:w-[175px] md:w-[195px] cursor-pointer" >
+            <div class="flex-shrink-0 snap-center w-[155px] sm:w-[175px] md:w-[195px] cursor-pointer" onclick="openFlashSaleModal()">
                 <div class="bg-[#1c2030] border border-white/10 rounded-2xl overflow-hidden shadow-[0_8px_30px_rgba(0,0,0,0.6)] hover:shadow-[0_0_30px_rgba(236,72,153,0.25)] hover:border-pink-500/40 transition-all duration-300 hover:-translate-y-1 h-full" >
                     <div class="h-28 sm:h-32 bg-[#1a1f2e] relative overflow-hidden">
                         <img src="https://images.unsplash.com/photo-1556438064-2d7646166914?w=400&h=400&fit=crop" class="w-full h-full object-cover opacity-70" />
