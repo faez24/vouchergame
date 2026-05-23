@@ -3,8 +3,8 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Masuk | GameVault</title>
-    <meta name="description" content="Login ke akun GameVault kamu untuk top up game favorit dengan mudah dan aman.">
+    <title>Masuk | WarGame</title>
+    <meta name="description" content="Login ke akun WarGame kamu untuk top up game favorit dengan mudah dan aman.">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -53,7 +53,7 @@
         @keyframes float-card { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-8px)} }
         .float-card { animation: float-card 6s ease-in-out infinite; }
 
-        @keyframes glow-pulse { 0%,100%{box-shadow:0 0 30px rgba(34,211,238,0.2)} 50%{box-shadow:0 0 60px rgba(34,211,238,0.4),0 0 100px rgba(139,92,246,0.2)} }
+        @keyframes glow-pulse { 0%,100%{box-shadow:0 0 30px rgba(34,197,94,0.2)} 50%{box-shadow:0 0 60px rgba(34,197,94,0.4),0 0 100px rgba(139,92,246,0.2)} }
         .card-glow { animation: glow-pulse 4s ease-in-out infinite; }
 
         .input-field {
@@ -63,8 +63,8 @@
         }
         .input-field:focus {
             outline: none;
-            border-color: rgba(34,211,238,0.5);
-            box-shadow: 0 0 0 3px rgba(34,211,238,0.1);
+            border-color: rgba(34,197,94,0.5);
+            box-shadow: 0 0 0 3px rgba(34,197,94,0.1);
             background: rgba(30,36,51,1);
         }
 
@@ -106,7 +106,7 @@
         }
 
         .eye-toggle { cursor: pointer; }
-        .eye-toggle:hover svg { color: #22d3ee; }
+        .eye-toggle:hover svg { color: #4ade80; }
     </style>
 </head>
 <body class="min-h-screen bg-[#344050] text-white font-sans overflow-x-hidden">
@@ -123,7 +123,7 @@
             <div class="smoke-b absolute top-[25%] right-[-25%] w-[90vw] h-[80vw] max-w-[1100px] max-h-[900px] rounded-full bg-slate-400/12 blur-[140px]"></div>
             <div class="smoke-c absolute bottom-[5%] left-[5%] w-[70vw] h-[60vw] max-w-[900px] max-h-[700px] rounded-full bg-slate-600/12 blur-[110px]"></div>
             {{-- Accent glows --}}
-            <div class="smoke-a absolute top-[20%] left-[5%] w-[30vw] h-[30vw] max-w-[400px] max-h-[400px] rounded-full bg-cyan-400/6 blur-[80px]"></div>
+            <div class="smoke-a absolute top-[20%] left-[5%] w-[30vw] h-[30vw] max-w-[400px] max-h-[400px] rounded-full bg-green-400/6 blur-[80px]"></div>
             <div class="smoke-b absolute bottom-[10%] right-[5%] w-[30vw] h-[30vw] max-w-[400px] max-h-[400px] rounded-full bg-purple-500/6 blur-[80px]"></div>
         </div>
 
@@ -149,8 +149,8 @@
                     {{-- Logo & Title --}}
                     <div class="text-center mb-8">
                         <a href="{{ url('/') }}" class="inline-flex items-center gap-3 mb-5">
-                            <span class="grid h-12 w-12 place-items-center rounded-2xl bg-gradient-to-r from-cyan-400 to-blue-500 text-[16px] font-extrabold tracking-tight text-black shadow-[0_0_20px_rgba(34,211,238,0.5)]">GV</span>
-                            <span class="text-2xl font-bold tracking-tight text-white drop-shadow">GameVault</span>
+                            <span class="grid h-12 w-12 place-items-center rounded-2xl bg-gradient-to-r from-green-400 to-green-600 text-[16px] font-extrabold tracking-tight text-white shadow-[0_0_20px_rgba(34,197,94,0.5)]">GV</span>
+                            <span class="text-2xl font-bold tracking-tight text-white drop-shadow">WarGame</span>
                         </a>
                         <h1 class="text-2xl font-black text-white">Selamat Datang</h1>
                         <p class="text-gray-400 text-sm mt-1.5">Masuk untuk melanjutkan top up favoritmu</p>
@@ -182,7 +182,7 @@
                     SSL Terenkripsi
                 </div>
                 <div class="flex items-center gap-1.5 text-gray-500 text-[11px]">
-                    <svg class="w-3.5 h-3.5 text-cyan-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>
+                    <svg class="w-3.5 h-3.5 text-green-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>
                     Data Aman
                 </div>
                 <div class="flex items-center gap-1.5 text-gray-500 text-[11px]">

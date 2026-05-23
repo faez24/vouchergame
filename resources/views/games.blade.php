@@ -4,8 +4,8 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>GameVault | All Games</title>
-        <meta name="description" content="Semua game dari GameVault">
+        <title>WarGame | All Games</title>
+        <meta name="description" content="Semua game dari WarGame">
 
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -69,7 +69,7 @@
             }
         </style>
     </head>
-    <body class="min-h-screen bg-[#344050] text-white font-sans selection:bg-cyan-500 selection:text-white overflow-x-hidden pt-20">
+    <body class="min-h-screen bg-[#344050] text-white font-sans selection:bg-green-500 selection:text-white overflow-x-hidden pt-20">
 
         <div class="relative min-h-screen bg-[#344050] bg-noise overflow-hidden flex flex-col">
             
@@ -94,71 +94,71 @@
                         {{-- Search Input --}}
                         <div class="max-w-md mx-auto relative group">
                             <div class="absolute inset-y-0 left-0 flex items-center pl-4 pointer-events-none">
-                                <svg class="w-5 h-5 text-gray-400 group-focus-within:text-cyan-400 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+                                <svg class="w-5 h-5 text-gray-400 group-focus-within:text-green-400 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
                             </div>
-                            <input type="text" id="searchInput" class="bg-[#161920]/80 border border-white/10 text-white text-sm rounded-lg focus:ring-cyan-500 focus:border-cyan-500 block w-full pl-12 p-3.5 backdrop-blur-md transition-all placeholder-gray-400 shadow-[0_4px_20px_rgba(0,0,0,0.3)]" placeholder="Cari game favoritmu...">
+                            <input type="text" id="searchInput" class="bg-[#161920]/80 border border-white/10 text-white text-sm rounded-lg focus:ring-green-500 focus:border-green-500 block w-full pl-12 p-3.5 backdrop-blur-md transition-all placeholder-gray-400 shadow-[0_4px_20px_rgba(0,0,0,0.3)]" placeholder="Cari game favoritmu...">
                         </div>
                     </div>
 
                     <div class="grid grid-cols-3 sm:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-2 sm:gap-4" id="gamesContainer">
                         {{-- Game Cards --}}
                         <a href="{{ route('topup.ml') }}" class="block game-card" data-name="mobile legends">
-                            <article class="relative rounded-lg overflow-hidden bg-[#161920]/80 backdrop-blur-md border border-white/5 card-3d hover:border-cyan-500/50 group transition-all duration-300 h-full">
+                            <article class="relative rounded-lg overflow-hidden bg-[#161920]/80 backdrop-blur-md border border-white/5 card-3d hover:border-green-500/50 group transition-all duration-300 h-full">
                                 <div class="card-img-wrap bg-[#1a1f2e]"><img src="https://images.unsplash.com/photo-1556438064-2d7646166914?w=600&h=800&fit=crop" alt="Mobile Legends"/></div>
-                                <div class="p-3 bg-transparent"><div class="inline-block px-2 py-0.5 rounded-full bg-pink-500 text-white text-[10px] font-bold shadow-[0_0_8px_rgba(236,72,153,0.6)]">Populer</div><h3 class="mt-2 text-sm font-extrabold name-txt line-clamp-1">Mobile Legends</h3></div>
+                                <div class="p-3 bg-transparent"><div class="inline-block px-2 py-0.5 rounded-full bg-orange-500 text-white text-[10px] font-bold shadow-[0_0_8px_rgba(249,115,22,0.6)]">Populer</div><h3 class="mt-2 text-sm font-extrabold name-txt line-clamp-1">Mobile Legends</h3></div>
                             </article>
                         </a>
-                        <article class="relative rounded-lg overflow-hidden bg-[#161920]/80 backdrop-blur-md border border-white/5 card-3d hover:border-cyan-500/50 group transition-all duration-300 game-card block cursor-pointer h-full" data-name="free fire">
+                        <article class="relative rounded-lg overflow-hidden bg-[#161920]/80 backdrop-blur-md border border-white/5 card-3d hover:border-green-500/50 group transition-all duration-300 game-card block cursor-pointer h-full" data-name="free fire">
                             <div class="card-img-wrap bg-[#1a1f2e]"><img src="https://images.unsplash.com/photo-1560253023-3ec5d502959f?w=600&h=800&fit=crop" alt="Free Fire"/></div>
-                            <div class="p-3 bg-transparent"><div class="inline-block px-2 py-0.5 rounded-full bg-pink-500 text-white text-[10px] font-bold shadow-[0_0_8px_rgba(236,72,153,0.6)]">Populer</div><h3 class="mt-2 text-sm font-extrabold name-txt line-clamp-1">Free Fire</h3></div>
+                            <div class="p-3 bg-transparent"><div class="inline-block px-2 py-0.5 rounded-full bg-orange-500 text-white text-[10px] font-bold shadow-[0_0_8px_rgba(249,115,22,0.6)]">Populer</div><h3 class="mt-2 text-sm font-extrabold name-txt line-clamp-1">Free Fire</h3></div>
                         </article>
-                        <article class="relative rounded-lg overflow-hidden bg-[#161920]/80 backdrop-blur-md border border-white/5 card-3d hover:border-cyan-500/50 group transition-all duration-300 game-card block cursor-pointer h-full" data-name="pubg mobile">
+                        <article class="relative rounded-lg overflow-hidden bg-[#161920]/80 backdrop-blur-md border border-white/5 card-3d hover:border-green-500/50 group transition-all duration-300 game-card block cursor-pointer h-full" data-name="pubg mobile">
                             <div class="card-img-wrap bg-[#1a1f2e]"><img src="https://images.unsplash.com/photo-1542751371-adc38448a05e?w=600&h=800&fit=crop" alt="PUBG Mobile"/></div>
-                            <div class="p-3 bg-transparent"><div class="inline-block px-2 py-0.5 rounded-full bg-pink-500 text-white text-[10px] font-bold shadow-[0_0_8px_rgba(236,72,153,0.6)]">Populer</div><h3 class="mt-2 text-sm font-extrabold name-txt line-clamp-1">PUBG Mobile</h3></div>
+                            <div class="p-3 bg-transparent"><div class="inline-block px-2 py-0.5 rounded-full bg-orange-500 text-white text-[10px] font-bold shadow-[0_0_8px_rgba(249,115,22,0.6)]">Populer</div><h3 class="mt-2 text-sm font-extrabold name-txt line-clamp-1">PUBG Mobile</h3></div>
                         </article>
-                        <article class="relative rounded-lg overflow-hidden bg-[#161920]/80 backdrop-blur-md border border-white/5 card-3d hover:border-cyan-500/50 group transition-all duration-300 game-card block cursor-pointer h-full" data-name="genshin impact">
+                        <article class="relative rounded-lg overflow-hidden bg-[#161920]/80 backdrop-blur-md border border-white/5 card-3d hover:border-green-500/50 group transition-all duration-300 game-card block cursor-pointer h-full" data-name="genshin impact">
                             <div class="card-img-wrap bg-[#1a1f2e]"><img src="https://images.unsplash.com/photo-1552820728-8b83bb6b773f?w=600&h=800&fit=crop" alt="Genshin Impact"/></div>
-                            <div class="p-3 bg-transparent"><div class="inline-block px-2 py-0.5 rounded-full bg-cyan-500 text-black text-[10px] font-bold shadow-[0_0_8px_rgba(34,211,238,0.6)]">Baru</div><h3 class="mt-2 text-sm font-extrabold name-txt line-clamp-1">Genshin Impact</h3></div>
+                            <div class="p-3 bg-transparent"><div class="inline-block px-2 py-0.5 rounded-full bg-green-500 text-white text-[10px] font-bold shadow-[0_0_8px_rgba(34,197,94,0.6)]">Baru</div><h3 class="mt-2 text-sm font-extrabold name-txt line-clamp-1">Genshin Impact</h3></div>
                         </article>
-                        <article class="relative rounded-lg overflow-hidden bg-[#161920]/80 backdrop-blur-md border border-white/5 card-3d hover:border-cyan-500/50 group transition-all duration-300 game-card block cursor-pointer h-full" data-name="valorant">
+                        <article class="relative rounded-lg overflow-hidden bg-[#161920]/80 backdrop-blur-md border border-white/5 card-3d hover:border-green-500/50 group transition-all duration-300 game-card block cursor-pointer h-full" data-name="valorant">
                             <div class="card-img-wrap bg-[#1a1f2e]"><img src="https://images.unsplash.com/photo-1615680022647-99c397cbcaea?w=600&h=800&fit=crop" alt="Valorant"/></div>
-                            <div class="p-3 bg-transparent"><div class="inline-block px-2 py-0.5 rounded-full bg-pink-500 text-white text-[10px] font-bold shadow-[0_0_8px_rgba(236,72,153,0.6)]">Populer</div><h3 class="mt-2 text-sm font-extrabold name-txt line-clamp-1">Valorant</h3></div>
+                            <div class="p-3 bg-transparent"><div class="inline-block px-2 py-0.5 rounded-full bg-orange-500 text-white text-[10px] font-bold shadow-[0_0_8px_rgba(249,115,22,0.6)]">Populer</div><h3 class="mt-2 text-sm font-extrabold name-txt line-clamp-1">Valorant</h3></div>
                         </article>
-                        <article class="relative rounded-lg overflow-hidden bg-[#161920]/80 backdrop-blur-md border border-white/5 card-3d hover:border-cyan-500/50 group transition-all duration-300 game-card block cursor-pointer h-full" data-name="honkai star rail">
+                        <article class="relative rounded-lg overflow-hidden bg-[#161920]/80 backdrop-blur-md border border-white/5 card-3d hover:border-green-500/50 group transition-all duration-300 game-card block cursor-pointer h-full" data-name="honkai star rail">
                             <div class="card-img-wrap bg-[#1a1f2e]"><img src="https://images.unsplash.com/photo-1593305841991-05c297ba4575?w=600&h=800&fit=crop" alt="Honkai Star Rail"/></div>
-                            <div class="p-3 bg-transparent"><div class="inline-block px-2 py-0.5 rounded-full bg-cyan-500 text-black text-[10px] font-bold shadow-[0_0_8px_rgba(34,211,238,0.6)]">Baru</div><h3 class="mt-2 text-sm font-extrabold name-txt line-clamp-1">Honkai Star Rail</h3></div>
+                            <div class="p-3 bg-transparent"><div class="inline-block px-2 py-0.5 rounded-full bg-green-500 text-white text-[10px] font-bold shadow-[0_0_8px_rgba(34,197,94,0.6)]">Baru</div><h3 class="mt-2 text-sm font-extrabold name-txt line-clamp-1">Honkai Star Rail</h3></div>
                         </article>
-                        <article class="relative rounded-lg overflow-hidden bg-[#161920]/80 backdrop-blur-md border border-white/5 card-3d hover:border-cyan-500/50 group transition-all duration-300 game-card block cursor-pointer h-full" data-name="call of duty mobile">
+                        <article class="relative rounded-lg overflow-hidden bg-[#161920]/80 backdrop-blur-md border border-white/5 card-3d hover:border-green-500/50 group transition-all duration-300 game-card block cursor-pointer h-full" data-name="call of duty mobile">
                             <div class="card-img-wrap bg-[#1a1f2e]"><img src="https://images.unsplash.com/photo-1511512578047-dfb367046420?w=600&h=800&fit=crop" alt="Call of Duty Mobile"/></div>
-                            <div class="p-3 bg-transparent"><div class="inline-block px-2 py-0.5 rounded-full bg-pink-500 text-white text-[10px] font-bold shadow-[0_0_8px_rgba(236,72,153,0.6)]">Populer</div><h3 class="mt-2 text-sm font-extrabold name-txt line-clamp-1">Call of Duty Mobile</h3></div>
+                            <div class="p-3 bg-transparent"><div class="inline-block px-2 py-0.5 rounded-full bg-orange-500 text-white text-[10px] font-bold shadow-[0_0_8px_rgba(249,115,22,0.6)]">Populer</div><h3 class="mt-2 text-sm font-extrabold name-txt line-clamp-1">Call of Duty Mobile</h3></div>
                         </article>
-                        <article class="relative rounded-lg overflow-hidden bg-[#161920]/80 backdrop-blur-md border border-white/5 card-3d hover:border-cyan-500/50 group transition-all duration-300 game-card block cursor-pointer h-full" data-name="apex legends">
+                        <article class="relative rounded-lg overflow-hidden bg-[#161920]/80 backdrop-blur-md border border-white/5 card-3d hover:border-green-500/50 group transition-all duration-300 game-card block cursor-pointer h-full" data-name="apex legends">
                             <div class="card-img-wrap bg-[#1a1f2e]"><img src="https://images.unsplash.com/photo-1536240478700-b869ad10f984?w=600&h=800&fit=crop" alt="Apex Legends"/></div>
                             <div class="p-3 bg-transparent"><h3 class="mt-2 text-sm font-extrabold name-txt line-clamp-1">Apex Legends</h3></div>
                         </article>
-                        <article class="relative rounded-lg overflow-hidden bg-[#161920]/80 backdrop-blur-md border border-white/5 card-3d hover:border-cyan-500/50 group transition-all duration-300 game-card block cursor-pointer h-full" data-name="league of legends">
+                        <article class="relative rounded-lg overflow-hidden bg-[#161920]/80 backdrop-blur-md border border-white/5 card-3d hover:border-green-500/50 group transition-all duration-300 game-card block cursor-pointer h-full" data-name="league of legends">
                             <div class="card-img-wrap bg-[#1a1f2e]"><img src="https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=600&h=800&fit=crop" alt="League of Legends"/></div>
                             <div class="p-3 bg-transparent"><h3 class="mt-2 text-sm font-extrabold name-txt line-clamp-1">League of Legends</h3></div>
                         </article>
-                        <article class="relative rounded-lg overflow-hidden bg-[#161920]/80 backdrop-blur-md border border-white/5 card-3d hover:border-cyan-500/50 group transition-all duration-300 game-card block cursor-pointer h-full" data-name="clash of clans">
+                        <article class="relative rounded-lg overflow-hidden bg-[#161920]/80 backdrop-blur-md border border-white/5 card-3d hover:border-green-500/50 group transition-all duration-300 game-card block cursor-pointer h-full" data-name="clash of clans">
                             <div class="card-img-wrap bg-[#1a1f2e]"><img src="https://images.unsplash.com/photo-1579952363873-27f3bade9f55?w=600&h=800&fit=crop" alt="Clash of Clans"/></div>
                             <div class="p-3 bg-transparent"><h3 class="mt-2 text-sm font-extrabold name-txt line-clamp-1">Clash of Clans</h3></div>
                         </article>
-                        <article class="relative rounded-lg overflow-hidden bg-[#161920]/80 backdrop-blur-md border border-white/5 card-3d hover:border-cyan-500/50 group transition-all duration-300 game-card block cursor-pointer h-full" data-name="fortnite">
+                        <article class="relative rounded-lg overflow-hidden bg-[#161920]/80 backdrop-blur-md border border-white/5 card-3d hover:border-green-500/50 group transition-all duration-300 game-card block cursor-pointer h-full" data-name="fortnite">
                             <div class="card-img-wrap bg-[#1a1f2e]"><img src="https://images.unsplash.com/photo-1606144042614-b2417e99c4e3?w=600&h=800&fit=crop" alt="Fortnite"/></div>
-                            <div class="p-3 bg-transparent"><div class="inline-block px-2 py-0.5 rounded-full bg-pink-500 text-white text-[10px] font-bold shadow-[0_0_8px_rgba(236,72,153,0.6)]">Populer</div><h3 class="mt-2 text-sm font-extrabold name-txt line-clamp-1">Fortnite</h3></div>
+                            <div class="p-3 bg-transparent"><div class="inline-block px-2 py-0.5 rounded-full bg-orange-500 text-white text-[10px] font-bold shadow-[0_0_8px_rgba(249,115,22,0.6)]">Populer</div><h3 class="mt-2 text-sm font-extrabold name-txt line-clamp-1">Fortnite</h3></div>
                         </article>
-                        <article class="relative rounded-lg overflow-hidden bg-[#161920]/80 backdrop-blur-md border border-white/5 card-3d hover:border-cyan-500/50 group transition-all duration-300 game-card block cursor-pointer h-full" data-name="wuthering waves">
+                        <article class="relative rounded-lg overflow-hidden bg-[#161920]/80 backdrop-blur-md border border-white/5 card-3d hover:border-green-500/50 group transition-all duration-300 game-card block cursor-pointer h-full" data-name="wuthering waves">
                             <div class="card-img-wrap bg-[#1a1f2e]"><img src="https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=600&h=800&fit=crop" alt="Wuthering Waves"/></div>
-                            <div class="p-3 bg-transparent"><div class="inline-block px-2 py-0.5 rounded-full bg-cyan-500 text-black text-[10px] font-bold shadow-[0_0_8px_rgba(34,211,238,0.6)]">Baru</div><h3 class="mt-2 text-sm font-extrabold name-txt line-clamp-1">Wuthering Waves</h3></div>
+                            <div class="p-3 bg-transparent"><div class="inline-block px-2 py-0.5 rounded-full bg-green-500 text-white text-[10px] font-bold shadow-[0_0_8px_rgba(34,197,94,0.6)]">Baru</div><h3 class="mt-2 text-sm font-extrabold name-txt line-clamp-1">Wuthering Waves</h3></div>
                         </article>
-                        <article class="relative rounded-lg overflow-hidden bg-[#161920]/80 backdrop-blur-md border border-white/5 card-3d hover:border-cyan-500/50 group transition-all duration-300 game-card block cursor-pointer h-full" data-name="solo leveling arise">
+                        <article class="relative rounded-lg overflow-hidden bg-[#161920]/80 backdrop-blur-md border border-white/5 card-3d hover:border-green-500/50 group transition-all duration-300 game-card block cursor-pointer h-full" data-name="solo leveling arise">
                             <div class="card-img-wrap bg-[#1a1f2e]"><img src="https://images.unsplash.com/photo-1579952363873-27f3bade9f55?w=600&h=800&fit=crop" alt="Solo Leveling Arise"/></div>
-                            <div class="p-3 bg-transparent"><div class="inline-block px-2 py-0.5 rounded-full bg-cyan-500 text-black text-[10px] font-bold shadow-[0_0_8px_rgba(34,211,238,0.6)]">Baru</div><h3 class="mt-2 text-sm font-extrabold name-txt line-clamp-1">Solo Leveling Arise</h3></div>
+                            <div class="p-3 bg-transparent"><div class="inline-block px-2 py-0.5 rounded-full bg-green-500 text-white text-[10px] font-bold shadow-[0_0_8px_rgba(34,197,94,0.6)]">Baru</div><h3 class="mt-2 text-sm font-extrabold name-txt line-clamp-1">Solo Leveling Arise</h3></div>
                         </article>
-                        <article class="relative rounded-lg overflow-hidden bg-[#161920]/80 backdrop-blur-md border border-white/5 card-3d hover:border-cyan-500/50 group transition-all duration-300 game-card block cursor-pointer h-full" data-name="zenless zone zero">
+                        <article class="relative rounded-lg overflow-hidden bg-[#161920]/80 backdrop-blur-md border border-white/5 card-3d hover:border-green-500/50 group transition-all duration-300 game-card block cursor-pointer h-full" data-name="zenless zone zero">
                             <div class="card-img-wrap bg-[#1a1f2e]"><img src="https://images.unsplash.com/photo-1542751371-adc38448a05e?w=600&h=800&fit=crop" alt="Zenless Zone Zero"/></div>
-                            <div class="p-3 bg-transparent"><div class="inline-block px-2 py-0.5 rounded-full bg-cyan-500 text-black text-[10px] font-bold shadow-[0_0_8px_rgba(34,211,238,0.6)]">Baru</div><h3 class="mt-2 text-sm font-extrabold name-txt line-clamp-1">Zenless Zone Zero</h3></div>
+                            <div class="p-3 bg-transparent"><div class="inline-block px-2 py-0.5 rounded-full bg-green-500 text-white text-[10px] font-bold shadow-[0_0_8px_rgba(34,197,94,0.6)]">Baru</div><h3 class="mt-2 text-sm font-extrabold name-txt line-clamp-1">Zenless Zone Zero</h3></div>
                         </article>
                     </div>
 

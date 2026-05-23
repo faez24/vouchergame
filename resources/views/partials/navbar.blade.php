@@ -1,14 +1,23 @@
 <header id="navbar" class="fixed top-0 z-50 w-full bg-transparent transition-all duration-300 border-b border-transparent">
     <div class="mx-auto flex w-full max-w-[1440px] items-center justify-between gap-4 px-4 py-3 sm:px-6 lg:px-8">
         <a href="/" class="flex items-center gap-3">
-            <span class="grid h-11 w-11 place-items-center rounded-2xl bg-gradient-to-r from-cyan-400 to-blue-500 text-[15px] font-extrabold tracking-tight text-black shadow-[0_0_15px_rgba(34,211,238,0.5)]">GV</span>
-            <span class="text-[1.6rem] font-bold tracking-tight text-white drop-shadow">GameVault</span>
+            <span class="hidden h-11 w-11 place-items-center rounded-2xl bg-gradient-to-r from-green-400 to-green-600 text-[15px] font-extrabold tracking-tight text-white shadow-[0_0_15px_rgba(34,197,94,0.5)]">GV</span>
+            <span class="text-[1.6rem] font-bold tracking-tight text-white drop-shadow">WarGame</span>
         </a>
 
         <nav class="hidden items-center gap-8 md:flex">
-            <a href="{{ url('/') }}" class="text-sm text-gray-300 hover:text-white transition-colors">Home</a>
-            <a href="{{ url('/#games') }}" class="text-sm text-gray-300 hover:text-white transition-colors">Games</a>
-            <a href="{{ url('voucher') }}" class="text-sm text-gray-300 hover:text-white transition-colors">Voucher</a>
+            <a href="{{ url('/') }}" class="desktop-nav-link relative text-sm font-bold transition-colors text-gray-300 hover:text-white group py-1">
+                Home
+                <span class="underline-bar absolute bottom-0 left-0 h-[2px] w-full bg-gradient-to-r from-green-400 to-orange-500 rounded-full scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></span>
+            </a>
+            <a href="{{ url('/games') }}" class="desktop-nav-link relative text-sm font-bold transition-colors text-gray-300 hover:text-white group py-1">
+                Games
+                <span class="underline-bar absolute bottom-0 left-0 h-[2px] w-full bg-gradient-to-r from-green-400 to-orange-500 rounded-full scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></span>
+            </a>
+            <a href="{{ url('/voucher') }}" class="desktop-nav-link relative text-sm font-bold transition-colors text-gray-300 hover:text-white group py-1">
+                Voucher
+                <span class="underline-bar absolute bottom-0 left-0 h-[2px] w-full bg-gradient-to-r from-green-400 to-orange-500 rounded-full scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></span>
+            </a>
         </nav>
 
         <div class="flex items-center gap-3 sm:gap-4">
@@ -21,15 +30,15 @@
 
             {{-- Cart Icon — Desktop Only --}}
             <a href="{{ url('/cart') }}" aria-label="Keranjang"
-               class="hidden md:flex relative items-center justify-center w-10 h-10 rounded-xl border border-white/10 bg-white/[0.04] hover:border-cyan-500/50 hover:bg-cyan-500/10 hover:shadow-[0_0_12px_rgba(34,211,238,0.2)] transition-all group">
+               class="hidden md:flex relative items-center justify-center w-10 h-10 rounded-xl border border-white/10 bg-white/[0.04] hover:border-green-500/50 hover:bg-green-500/10 hover:shadow-[0_0_12px_rgba(34,197,94,0.2)] transition-all group">
                 {{-- Shopping cart SVG --}}
-                <svg viewBox="0 0 24 24" class="w-[22px] h-[22px] text-gray-300 group-hover:text-cyan-400 transition-colors" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <svg viewBox="0 0 24 24" class="w-[22px] h-[22px] text-gray-300 group-hover:text-green-400 transition-colors" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
                     <circle cx="9" cy="21" r="1"></circle>
                     <circle cx="20" cy="21" r="1"></circle>
                     <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
                 </svg>
                 {{-- Badge --}}
-                <span id="cart-badge" class="hidden absolute -top-1.5 -right-1.5 min-w-[18px] h-[18px] px-1 rounded-full bg-pink-500 text-white text-[10px] font-black flex items-center justify-center shadow-[0_0_8px_rgba(236,72,153,0.8)] border border-[#344050]">0</span>
+                <span id="cart-badge" class="hidden absolute -top-1.5 -right-1.5 min-w-[18px] h-[18px] px-1 rounded-full bg-orange-500 text-white text-[10px] font-black flex items-center justify-center shadow-[0_0_8px_rgba(249,115,22,0.8)] border border-[#344050]">0</span>
             </a>
 
             {{-- User Menu (Desktop & Mobile) --}}
@@ -37,14 +46,14 @@
                 @auth
                     {{-- Auth: Desktop & Mobile --}}
                     <button class="user-menu-button flex items-center gap-2 md:gap-3 focus:outline-none transition-transform hover:scale-105">
-                        <img src="{{ auth()->user()->avatar ?? 'https://ui-avatars.com/api/?name=' . urlencode(auth()->user()->name) . '&background=ec4899&color=fff' }}" 
+                        <img src="{{ auth()->user()->avatar ?? 'https://ui-avatars.com/api/?name=' . urlencode(auth()->user()->name) . '&background=f97316&color=fff' }}" 
                              alt="{{ auth()->user()->name }}" 
-                             class="w-8 h-8 md:w-10 md:h-10 rounded-full border border-pink-500/50 object-cover shadow-[0_0_10px_rgba(236,72,153,0.3)]">
+                             class="w-8 h-8 md:w-10 md:h-10 rounded-full border border-orange-500/50 object-cover shadow-[0_0_10px_rgba(249,115,22,0.3)]">
                         <span class="hidden md:inline-block text-sm font-bold text-white max-w-[120px] truncate">{{ auth()->user()->name }}</span>
                     </button>
                 @else
                     {{-- Guest: Desktop --}}
-                    <a href="{{ url('/login') }}" class="hidden md:inline-block px-5 py-2 bg-pink-500 hover:bg-pink-400 rounded-lg text-white text-sm font-bold transition-all shadow-[0_0_15px_rgba(236,72,153,0.5)]">Masuk</a>
+                    <a href="{{ url('/login') }}" class="hidden md:inline-block px-5 py-2 bg-orange-500 hover:bg-orange-400 rounded-lg text-white text-sm font-bold transition-all shadow-[0_0_15px_rgba(249,115,22,0.5)]">Masuk</a>
                     {{-- Guest: Mobile --}}
                     <button class="user-menu-button md:hidden relative flex items-center justify-center w-8 h-8 rounded-full border border-white/10 bg-white/[0.04] text-gray-300 hover:text-white hover:bg-white/10 transition-colors focus:outline-none">
                         <svg viewBox="0 0 24 24" class="w-[18px] h-[18px]" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -86,7 +95,7 @@
                     <line x1="3" y1="18" x2="21" y2="18"></line>
                 </svg>
                 {{-- Notification Badge for Hamburger --}}
-                <span id="hamburger-badge" class="hidden absolute -top-1 -right-1 min-w-[18px] h-[18px] px-1 rounded-full bg-pink-500 text-white text-[10px] font-black flex items-center justify-center shadow-[0_0_8px_rgba(236,72,153,0.8)] border border-[#344050]">0</span>
+                <span id="hamburger-badge" class="hidden absolute -top-1 -right-1 min-w-[18px] h-[18px] px-1 rounded-full bg-orange-500 text-white text-[10px] font-black flex items-center justify-center shadow-[0_0_8px_rgba(249,115,22,0.8)] border border-[#344050]">0</span>
             </button>
         </div>
     </div>
@@ -110,7 +119,7 @@
             {{-- Home --}}
             <a href="{{ url('/') }}" onclick="setActiveMobileMenu(this)" class="mobile-nav-link opacity-60 flex flex-col w-max group transition-opacity duration-300">
                 <span class="italic font-bold text-white text-[1.3rem]">Home</span>
-                <span class="underline-bar h-[3px] w-full bg-gradient-to-r from-cyan-400 to-pink-500 rounded-full mt-1.5 opacity-0 transition-all duration-300"></span>
+                <span class="underline-bar h-[3px] w-full bg-gradient-to-r from-green-400 to-orange-500 rounded-full mt-1.5 opacity-0 transition-all duration-300"></span>
             </a>
             
             {{-- Cart --}}
@@ -118,9 +127,9 @@
                 <div class="flex items-center gap-3">
                     <span class="italic font-bold text-white text-[1.3rem]">Cart</span>
                     {{-- Notification badge --}}
-                    <span id="mobile-cart-badge" class="hidden min-w-[22px] h-[22px] px-1 rounded-full bg-pink-500 text-white text-xs font-black flex items-center justify-center shadow-[0_0_8px_rgba(236,72,153,0.8)]">0</span>
+                    <span id="mobile-cart-badge" class="hidden min-w-[22px] h-[22px] px-1 rounded-full bg-orange-500 text-white text-xs font-black flex items-center justify-center shadow-[0_0_8px_rgba(249,115,22,0.8)]">0</span>
                 </div>
-                <span class="underline-bar h-[3px] w-full bg-gradient-to-r from-cyan-400 to-pink-500 rounded-full mt-1.5 opacity-0 transition-all duration-300"></span>
+                <span class="underline-bar h-[3px] w-full bg-gradient-to-r from-green-400 to-orange-500 rounded-full mt-1.5 opacity-0 transition-all duration-300"></span>
             </a>
 
             {{-- Voucher --}}
@@ -128,15 +137,15 @@
                 <div class="flex items-center gap-3">
                     <span class="italic font-bold text-white text-[1.3rem]">Voucher</span>
                     {{-- Notification badge (Optional) --}}
-                    <span id="mobile-voucher-badge" class="hidden min-w-[22px] h-[22px] px-1 rounded-full bg-pink-500 text-white text-xs font-black flex items-center justify-center shadow-[0_0_8px_rgba(236,72,153,0.8)]">0</span>
+                    <span id="mobile-voucher-badge" class="hidden min-w-[22px] h-[22px] px-1 rounded-full bg-orange-500 text-white text-xs font-black flex items-center justify-center shadow-[0_0_8px_rgba(249,115,22,0.8)]">0</span>
                 </div>
-                <span class="underline-bar h-[3px] w-full bg-gradient-to-r from-cyan-400 to-pink-500 rounded-full mt-1.5 opacity-0 transition-all duration-300"></span>
+                <span class="underline-bar h-[3px] w-full bg-gradient-to-r from-green-400 to-orange-500 rounded-full mt-1.5 opacity-0 transition-all duration-300"></span>
             </a>
 
             {{-- Games --}}
-            <a href="{{ url('/#games') }}" onclick="setActiveMobileMenu(this)" class="mobile-nav-link opacity-60 flex flex-col w-max group transition-opacity duration-300">
+            <a href="{{ url('/games') }}" onclick="setActiveMobileMenu(this)" class="mobile-nav-link opacity-60 flex flex-col w-max group transition-opacity duration-300">
                 <span class="italic font-bold text-white text-[1.3rem]">Games</span>
-                <span class="underline-bar h-[3px] w-full bg-gradient-to-r from-cyan-400 to-pink-500 rounded-full mt-1.5 opacity-0 transition-all duration-300"></span>
+                <span class="underline-bar h-[3px] w-full bg-gradient-to-r from-green-400 to-orange-500 rounded-full mt-1.5 opacity-0 transition-all duration-300"></span>
             </a>
         </nav>
     </div>
@@ -187,7 +196,7 @@
             link.classList.add('opacity-60');
             const bar = link.querySelector('.underline-bar');
             if (bar) {
-                bar.classList.remove('opacity-100', 'shadow-[0_0_8px_rgba(34,211,238,0.5)]');
+                bar.classList.remove('opacity-100', 'shadow-[0_0_8px_rgba(34,197,94,0.5)]');
                 bar.classList.add('opacity-0');
             }
         });
@@ -198,13 +207,37 @@
         const bar = element.querySelector('.underline-bar');
         if (bar) {
             bar.classList.remove('opacity-0');
-            bar.classList.add('opacity-100', 'shadow-[0_0_8px_rgba(34,211,238,0.5)]');
+            bar.classList.add('opacity-100', 'shadow-[0_0_8px_rgba(34,197,94,0.5)]');
         }
         
         // Close menu after click
         setTimeout(() => {
             closeMobileMenu();
         }, 300);
+    }
+
+    function setActiveDesktopMenu(element) {
+        if (!element) return;
+        
+        // Remove active state from all desktop links
+        document.querySelectorAll('.desktop-nav-link').forEach(link => {
+            link.classList.remove('text-white', 'text-shadow-[0_0_10px_rgba(255,255,255,0.5)]');
+            link.classList.add('text-gray-300');
+            const bar = link.querySelector('.underline-bar');
+            if (bar) {
+                bar.classList.remove('scale-x-100', 'shadow-[0_0_8px_rgba(34,197,94,0.8)]');
+                bar.classList.add('scale-x-0');
+            }
+        });
+
+        // Add active state to the matched element
+        element.classList.remove('text-gray-300');
+        element.classList.add('text-white', 'text-shadow-[0_0_10px_rgba(255,255,255,0.5)]');
+        const bar = element.querySelector('.underline-bar');
+        if (bar) {
+            bar.classList.remove('scale-x-0');
+            bar.classList.add('scale-x-100', 'shadow-[0_0_8px_rgba(34,197,94,0.8)]');
+        }
     }
 
     // Function to handle notifications (Call this when data updates)
@@ -278,17 +311,24 @@
 
         // Setup active state on load
         const currentPath = window.location.pathname;
-        const currentHash = window.location.hash;
         
         document.querySelectorAll('.mobile-nav-link').forEach(link => {
             const urlObj = new URL(link.href, window.location.origin);
             
-            if (currentPath.includes('/cart') && urlObj.pathname.includes('/cart')) {
+            if (currentPath === urlObj.pathname) {
                 setActiveMobileMenu(link);
-            } else if (!currentPath.includes('/cart') && currentHash && urlObj.hash === currentHash) {
+            } else if (urlObj.pathname !== '/' && currentPath.startsWith(urlObj.pathname)) {
                 setActiveMobileMenu(link);
-            } else if (!currentPath.includes('/cart') && !currentHash && urlObj.pathname === '/' && !urlObj.hash) {
-                setActiveMobileMenu(link);
+            }
+        });
+
+        document.querySelectorAll('.desktop-nav-link').forEach(link => {
+            const urlObj = new URL(link.href, window.location.origin);
+            
+            if (currentPath === urlObj.pathname) {
+                setActiveDesktopMenu(link);
+            } else if (urlObj.pathname !== '/' && currentPath.startsWith(urlObj.pathname)) {
+                setActiveDesktopMenu(link);
             }
         });
 

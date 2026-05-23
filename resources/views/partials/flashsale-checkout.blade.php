@@ -9,7 +9,7 @@
 .fs-btn-grad:hover::after{opacity:1}
 .fs-btn-grad span{position:relative;z-index:1}
 .fs-pay-opt{display:flex;align-items:center;gap:1rem;background:#252d40;border:1px solid rgba(255,255,255,.08);border-radius:12px;padding:14px;cursor:pointer;transition:border-color .2s}
-.fs-pay-opt:hover{border-color:rgba(236,72,153,.4)}
+.fs-pay-opt:hover{border-color:rgba(249,115,22,.4)}
 </style>
 
 {{-- Flash Sale Checkout Modal — identical pattern to cart --}}
@@ -37,9 +37,9 @@
           <label class="block text-gray-400 text-xs font-semibold mb-1.5 uppercase tracking-wider">User ID &amp; Zone ID</label>
           <div class="flex gap-2">
             <input id="fs-uid" type="text" placeholder="User ID"
-              class="flex-1 bg-[#252d40] border border-white/10 rounded-xl px-4 py-3 text-white text-sm placeholder-gray-600 outline-none focus:border-pink-500/50 transition-all">
+              class="flex-1 bg-[#252d40] border border-white/10 rounded-xl px-4 py-3 text-white text-sm placeholder-gray-600 outline-none focus:border-orange-500/50 transition-all">
             <input id="fs-zone" type="text" placeholder="Zone"
-              class="w-24 bg-[#252d40] border border-white/10 rounded-xl px-4 py-3 text-white text-sm placeholder-gray-600 outline-none focus:border-pink-500/50 transition-all">
+              class="w-24 bg-[#252d40] border border-white/10 rounded-xl px-4 py-3 text-white text-sm placeholder-gray-600 outline-none focus:border-orange-500/50 transition-all">
           </div>
         </div>
 
@@ -47,15 +47,15 @@
         <div class="bg-[#1e2433] rounded-xl px-4 py-3 flex items-center justify-between gap-3 mb-3">
           <div>
             <p class="text-white font-bold text-sm">Mobile Legends · 86 Diamonds</p>
-            <p class="text-pink-400 text-xs font-bold mt-0.5">15% OFF Flash Sale</p>
+            <p class="text-orange-400 text-xs font-bold mt-0.5">15% OFF Flash Sale</p>
           </div>
-          <span class="text-pink-400 font-bold text-sm flex-shrink-0">Rp 21.250</span>
+          <span class="text-orange-400 font-bold text-sm flex-shrink-0">Rp 21.250</span>
         </div>
 
         {{-- Total --}}
-        <div class="bg-gradient-to-r from-pink-500/10 to-rose-500/10 border border-pink-500/20 rounded-xl px-4 py-4 flex items-center justify-between mb-4">
+        <div class="bg-gradient-to-r from-orange-500/10 to-rose-500/10 border border-orange-500/20 rounded-xl px-4 py-4 flex items-center justify-between mb-4">
           <span class="text-gray-300 text-sm font-bold">Total Pembayaran</span>
-          <span class="text-pink-400 font-black text-xl">Rp 21.250</span>
+          <span class="text-orange-400 font-black text-xl">Rp 21.250</span>
         </div>
 
         <button onclick="fsGoStep2()" class="fs-btn-grad w-full py-3.5 rounded-xl text-white font-black text-sm tracking-wider"><span>Lanjut ke Pembayaran →</span></button>
@@ -76,22 +76,22 @@
         {{-- Identitas --}}
         <div class="bg-[#252d40] rounded-xl px-4 py-3 mb-4 flex items-center justify-between">
           <span class="text-gray-400 text-xs font-semibold uppercase tracking-wider" id="fs-s2-uid">ID: —</span>
-          <span class="text-pink-400 font-bold text-sm">Rp 21.250</span>
+          <span class="text-orange-400 font-bold text-sm">Rp 21.250</span>
         </div>
 
         {{-- Payment options --}}
         <div class="space-y-3 mb-5" id="fs-pay-opts">
           <label class="fs-pay-opt">
-            <input type="radio" name="fs_pay" value="QRIS" class="accent-pink-500 w-4 h-4 flex-shrink-0" checked>
+            <input type="radio" name="fs_pay" value="QRIS" class="accent-orange-500 w-4 h-4 flex-shrink-0" checked>
             <div class="flex-1"><p class="text-white font-bold text-sm">QRIS</p><p class="text-gray-500 text-xs">Gopay, OVO, Dana, LinkAja</p></div>
-            <span class="text-[10px] font-bold text-pink-400 border border-pink-500/30 rounded-full px-2 py-0.5">Gratis Admin</span>
+            <span class="text-[10px] font-bold text-orange-400 border border-orange-500/30 rounded-full px-2 py-0.5">Gratis Admin</span>
           </label>
           <label class="fs-pay-opt">
-            <input type="radio" name="fs_pay" value="GoPay" class="accent-pink-500 w-4 h-4 flex-shrink-0">
+            <input type="radio" name="fs_pay" value="GoPay" class="accent-orange-500 w-4 h-4 flex-shrink-0">
             <div class="flex-1"><p class="text-white font-bold text-sm">GoPay</p><p class="text-gray-500 text-xs">Bayar via aplikasi Gojek</p></div>
           </label>
           <label class="fs-pay-opt">
-            <input type="radio" name="fs_pay" value="DANA" class="accent-pink-500 w-4 h-4 flex-shrink-0">
+            <input type="radio" name="fs_pay" value="DANA" class="accent-orange-500 w-4 h-4 flex-shrink-0">
             <div class="flex-1"><p class="text-white font-bold text-sm">DANA</p><p class="text-gray-500 text-xs">Bayar via DANA</p></div>
           </label>
         </div>
