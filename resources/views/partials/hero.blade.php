@@ -63,17 +63,18 @@
         </div>
 
         <div class="relative w-full group/slider overflow-visible">
+
             {{-- Prev Arrow --}}
-            <button onclick="document.getElementById('flash-sale-slider').scrollBy({ left: -250, behavior: 'smooth' })" class="hidden md:flex absolute -left-5 top-[38%] -translate-y-1/2 w-11 h-11 rounded-full bg-[#1c2030]/90 backdrop-blur-md border border-white/10 text-white items-center justify-center hover:bg-white/10 hover:border-cyan-500/50 transition-all z-30 group shadow-[0_4px_15px_rgba(0,0,0,0.5)]">
-                <svg class="w-5 h-5 group-hover:-translate-x-0.5 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"/></svg>
+            <button onclick="document.getElementById('flash-sale-slider').scrollBy({ left: -250, behavior: 'smooth' })" class="absolute -left-2 sm:-left-5 top-[38%] -translate-y-1/2 w-8 h-8 sm:w-11 sm:h-11 rounded-full bg-[#1c2030]/90 backdrop-blur-md border border-white/10 text-white flex items-center justify-center hover:bg-white/10 hover:border-cyan-500/50 transition-all z-30 group shadow-[0_4px_15px_rgba(0,0,0,0.5)]">
+                <svg class="w-4 h-4 sm:w-5 sm:h-5 group-hover:-translate-x-0.5 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"/></svg>
             </button>
 
             {{-- cards --}}
-            <div id="flash-sale-slider" class="flex gap-10 md:gap-12 overflow-x-auto lg:justify-center px-6 pt-4 pb-12 scrollbar-hide snap-x snap-mandatory"
+            <div id="flash-sale-slider" class="flex gap-3 sm:gap-6 overflow-x-auto px-1 sm:px-6 pt-4 pb-12 scrollbar-hide snap-x snap-mandatory"
                  style="-ms-overflow-style:none;scrollbar-width:none;">
 
                 {{-- Card 1: Valorant VP --}}
-            <div class="flex-shrink-0 snap-center w-[155px] sm:w-[175px] md:w-[195px] cursor-pointer">
+            <div class="shrink-0 snap-center w-[calc(33.333%-0.5rem)] sm:w-[calc(33.333%-1rem)] cursor-pointer">
                 <div class="bg-[#1c2030] border border-white/10 rounded-2xl overflow-hidden shadow-[0_8px_30px_rgba(0,0,0,0.6)] hover:shadow-[0_0_30px_rgba(34,211,238,0.25)] hover:border-cyan-500/40 transition-all duration-300 hover:-translate-y-1 h-full" >
                     <div class="h-28 sm:h-32 bg-[#1a1f2e] relative overflow-hidden">
                         <img src="https://images.unsplash.com/photo-1542751371-adc38448a05e?w=400&h=400&fit=crop" class="w-full h-full object-cover opacity-70" />
@@ -92,7 +93,7 @@
             </div>
 
             {{-- Card 2: Mobile Legends --}}
-            <div class="flex-shrink-0 snap-center w-[155px] sm:w-[175px] md:w-[195px] cursor-pointer" onclick="openFlashSaleModal()">
+            <div class="shrink-0 snap-center w-[calc(33.333%-0.5rem)] sm:w-[calc(33.333%-1rem)] cursor-pointer" onclick="openFlashSaleModal()">
                 <div class="bg-[#1c2030] border border-white/10 rounded-2xl overflow-hidden shadow-[0_8px_30px_rgba(0,0,0,0.6)] hover:shadow-[0_0_30px_rgba(236,72,153,0.25)] hover:border-pink-500/40 transition-all duration-300 hover:-translate-y-1 h-full" >
                     <div class="h-28 sm:h-32 bg-[#1a1f2e] relative overflow-hidden">
                         <img src="https://images.unsplash.com/photo-1556438064-2d7646166914?w=400&h=400&fit=crop" class="w-full h-full object-cover opacity-70" />
@@ -111,7 +112,7 @@
             </div>
 
             {{-- Card 3: Free Fire --}}
-            <div class="flex-shrink-0 snap-center w-[155px] sm:w-[175px] md:w-[195px] cursor-pointer" >
+            <div class="shrink-0 snap-center w-[calc(33.333%-0.5rem)] sm:w-[calc(33.333%-1rem)] cursor-pointer" >
                 <div class="bg-[#1c2030] border border-white/10 rounded-2xl overflow-hidden shadow-[0_8px_30px_rgba(0,0,0,0.6)] hover:shadow-[0_0_30px_rgba(34,211,238,0.25)] hover:border-cyan-500/40 transition-all duration-300 hover:-translate-y-1 h-full" >
                     <div class="h-28 sm:h-32 bg-[#1a1f2e] relative overflow-hidden">
                         <img src="https://images.unsplash.com/photo-1560253023-3ec5d502959f?w=400&h=400&fit=crop" class="w-full h-full object-cover opacity-70" />
@@ -130,7 +131,7 @@
             </div>
 
             {{-- Card 4: Genshin Impact --}}
-            <div class="flex-shrink-0 snap-center w-[155px] sm:w-[175px] md:w-[195px] cursor-pointer" >
+            <div class="shrink-0 snap-center w-[calc(33.333%-0.5rem)] sm:w-[calc(33.333%-1rem)] cursor-pointer" >
                 <div class="bg-[#1c2030] border border-white/10 rounded-2xl overflow-hidden shadow-[0_8px_30px_rgba(0,0,0,0.6)] hover:shadow-[0_0_30px_rgba(236,72,153,0.25)] hover:border-pink-500/40 transition-all duration-300 hover:-translate-y-1 h-full" >
                     <div class="h-28 sm:h-32 bg-[#1a1f2e] relative overflow-hidden">
                         <img src="https://images.unsplash.com/photo-1552820728-8b83bb6b773f?w=400&h=400&fit=crop" class="w-full h-full object-cover opacity-70" />
@@ -149,7 +150,7 @@
             </div>
 
             {{-- Card 5: PUBG Mobile --}}
-            <div class="flex-shrink-0 snap-center w-[155px] sm:w-[175px] md:w-[195px] cursor-pointer" >
+            <div class="shrink-0 snap-center w-[calc(33.333%-0.5rem)] sm:w-[calc(33.333%-1rem)] cursor-pointer" >
                 <div class="bg-[#1c2030] border border-white/10 rounded-2xl overflow-hidden shadow-[0_8px_30px_rgba(0,0,0,0.6)] hover:shadow-[0_0_30px_rgba(34,211,238,0.25)] hover:border-cyan-500/40 transition-all duration-300 hover:-translate-y-1 h-full" >
                     <div class="h-28 sm:h-32 bg-[#1a1f2e] relative overflow-hidden">
                         <img src="https://images.unsplash.com/photo-1542751371-adc38448a05e?w=400&h=400&fit=crop" class="w-full h-full object-cover opacity-70" />
@@ -170,19 +171,90 @@
             </div>
 
             {{-- Next Arrow --}}
-            <button onclick="document.getElementById('flash-sale-slider').scrollBy({ left: 250, behavior: 'smooth' })" class="hidden md:flex absolute -right-5 top-[38%] -translate-y-1/2 w-11 h-11 rounded-full bg-[#1c2030]/90 backdrop-blur-md border border-white/10 text-white items-center justify-center hover:bg-white/10 hover:border-pink-500/50 transition-all z-30 group shadow-[0_4px_15px_rgba(0,0,0,0.5)]">
-                <svg class="w-5 h-5 group-hover:translate-x-0.5 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+            <button onclick="document.getElementById('flash-sale-slider').scrollBy({ left: 250, behavior: 'smooth' })" class="absolute -right-2 sm:-right-5 top-[38%] -translate-y-1/2 w-8 h-8 sm:w-11 sm:h-11 rounded-full bg-[#1c2030]/90 backdrop-blur-md border border-white/10 text-white flex items-center justify-center hover:bg-white/10 hover:border-pink-500/50 transition-all z-30 group shadow-[0_4px_15px_rgba(0,0,0,0.5)]">
+                <svg class="w-4 h-4 sm:w-5 sm:h-5 group-hover:translate-x-0.5 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
             </button>
         </div>
 
         {{-- Pagination Dots --}}
-        <div class="flex justify-center gap-2 mt-1">
-            <span class="w-2.5 h-2.5 rounded-full bg-cyan-400 shadow-[0_0_8px_rgba(34,211,238,0.8)]"></span>
-            <span class="w-2.5 h-2.5 rounded-full bg-white/20 cursor-pointer hover:bg-white/40 transition-colors"></span>
-            <span class="w-2.5 h-2.5 rounded-full bg-white/20 cursor-pointer hover:bg-white/40 transition-colors"></span>
-            <span class="w-2.5 h-2.5 rounded-full bg-white/20 cursor-pointer hover:bg-white/40 transition-colors"></span>
+        <div class="flex justify-center items-center gap-2 mt-1 min-h-3" id="flash-sale-dots">
+            <!-- Dots will be dynamically generated by JS -->
         </div>
     </div>
 
 </div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const slider = document.getElementById('flash-sale-slider');
+        const dotsContainer = document.getElementById('flash-sale-dots');
+        
+        if (slider && dotsContainer) {
+            let numDots = 0;
+
+            const setupDots = () => {
+                const maxScrollLeft = slider.scrollWidth - slider.clientWidth;
+                // If scroll is not necessary, hide/clear dots
+                if (maxScrollLeft <= 0) {
+                    dotsContainer.innerHTML = '';
+                    numDots = 0;
+                    return;
+                }
+                
+                // Calculate how many "pages" we have based on container width
+                const newNumDots = Math.ceil(slider.scrollWidth / slider.clientWidth);
+                
+                if (numDots !== newNumDots) {
+                    numDots = newNumDots;
+                    dotsContainer.innerHTML = '';
+                    
+                    for (let i = 0; i < numDots; i++) {
+                        const dot = document.createElement('span');
+                        dot.className = 'w-2.5 h-2.5 rounded-full bg-white/20 hover:bg-white/40 transition-colors cursor-pointer';
+                        dot.addEventListener('click', () => {
+                            const maxLeft = slider.scrollWidth - slider.clientWidth;
+                            slider.scrollTo({
+                                left: Math.round((i / (numDots - 1)) * maxLeft),
+                                behavior: 'smooth'
+                            });
+                        });
+                        dotsContainer.appendChild(dot);
+                    }
+                }
+                updateActiveDot();
+            };
+            
+            const updateActiveDot = () => {
+                if (numDots <= 0) return;
+                const dots = dotsContainer.querySelectorAll('span');
+                const maxScrollLeft = slider.scrollWidth - slider.clientWidth;
+                
+                if (maxScrollLeft <= 0) return;
+                
+                const scrollPercentage = slider.scrollLeft / maxScrollLeft;
+                // Clamp activeIndex between 0 and numDots - 1
+                const activeIndex = Math.max(0, Math.min(numDots - 1, Math.round(scrollPercentage * (numDots - 1))));
+                
+                dots.forEach((dot, index) => {
+                    if (index === activeIndex) {
+                        dot.className = 'w-2.5 h-2.5 rounded-full bg-cyan-400 shadow-[0_0_8px_rgba(34,211,238,0.8)] transition-all cursor-pointer scale-110';
+                    } else {
+                        dot.className = 'w-2.5 h-2.5 rounded-full bg-white/20 hover:bg-white/40 transition-colors cursor-pointer';
+                    }
+                });
+            };
+
+            // Allow layout to render before calculating dots
+            setTimeout(() => {
+                setupDots();
+            }, 150);
+
+            // Re-calculate on resize in case viewport changes
+            window.addEventListener('resize', setupDots);
+            
+            // Listen to scroll to update active dot
+            slider.addEventListener('scroll', updateActiveDot, { passive: true });
+        }
+    });
+</script>
 
