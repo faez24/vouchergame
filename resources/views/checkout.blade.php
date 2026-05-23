@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Pembayaran QRIS | GameVault</title>
+    <title>Pembayaran QRIS | WarGame</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
@@ -21,8 +21,8 @@
     {{-- Background --}}
     <div class="pointer-events-none fixed inset-0 z-0 overflow-hidden">
         <div class="absolute inset-0 bg-gradient-to-b from-[#1e2433] to-[#344050]"></div>
-        <div class="absolute top-[-10%] left-[-10%] w-[50vw] h-[50vw] rounded-full bg-cyan-500/10 blur-[100px]"></div>
-        <div class="absolute bottom-[-10%] right-[-10%] w-[40vw] h-[40vw] rounded-full bg-blue-500/10 blur-[100px]"></div>
+        <div class="absolute top-[-10%] left-[-10%] w-[50vw] h-[50vw] rounded-full bg-green-500/10 blur-[100px]"></div>
+        <div class="absolute bottom-[-10%] right-[-10%] w-[40vw] h-[40vw] rounded-full bg-green-600/10 blur-[100px]"></div>
     </div>
 
     @include('partials.navbar')
@@ -35,12 +35,12 @@
         </div>
 
         <div class="bg-[#252d40]/90 backdrop-blur-xl border border-white/10 rounded-3xl p-6 sm:p-8 shadow-[0_30px_80px_rgba(0,0,0,0.8)] relative overflow-hidden">
-            <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-cyan-400 to-blue-500"></div>
+            <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-green-400 to-green-600"></div>
             
             <div class="flex justify-between items-center mb-6 pb-6 border-b border-white/10">
                 <div>
                     <p class="text-gray-400 text-xs font-semibold uppercase tracking-wider mb-1">Total Pembayaran</p>
-                    <p class="text-2xl sm:text-3xl font-black text-cyan-400" id="payment-total">Rp -</p>
+                    <p class="text-2xl sm:text-3xl font-black text-green-400" id="payment-total">Rp -</p>
                 </div>
                 <div class="w-16 h-10 bg-white rounded-lg p-1.5 flex items-center justify-center shadow-inner">
                     <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a2/Logo_QRIS.svg/1200px-Logo_QRIS.svg.png" class="max-w-full max-h-full object-contain" alt="QRIS">
@@ -48,11 +48,11 @@
             </div>
 
             <div class="flex flex-col items-center justify-center py-4">
-                <div id="qr-container" class="bg-white p-4 rounded-2xl shadow-[0_0_40px_rgba(34,211,238,0.2)] mb-6 relative overflow-hidden transition-all duration-500 w-[232px] h-[232px]">
-                    <img id="qr-img" src="https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=GameVault-Dummy-Payment" alt="QR Code" class="w-full h-full rounded-lg transition-opacity duration-300">
+                <div id="qr-container" class="bg-white p-4 rounded-2xl shadow-[0_0_40px_rgba(34,197,94,0.2)] mb-6 relative overflow-hidden transition-all duration-500 w-[232px] h-[232px]">
+                    <img id="qr-img" src="https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=WarGame-Dummy-Payment" alt="QR Code" class="w-full h-full rounded-lg transition-opacity duration-300">
                     
                     {{-- Scanner line animation --}}
-                    <div id="qr-scan-line" class="absolute top-4 left-4 right-4 h-1 bg-cyan-400/80 shadow-[0_0_15px_#22d3ee] z-10 rounded-full" style="animation: scan 2.5s ease-in-out infinite alternate;"></div>
+                    <div id="qr-scan-line" class="absolute top-4 left-4 right-4 h-1 bg-green-400/80 shadow-[0_0_15px_#4ade80] z-10 rounded-full" style="animation: scan 2.5s ease-in-out infinite alternate;"></div>
 
                     {{-- Success Icon (Hidden initially) --}}
                     <div id="success-icon" class="hidden absolute inset-0 bg-emerald-500 flex flex-col items-center justify-center transition-all duration-500 scale-90 opacity-0">

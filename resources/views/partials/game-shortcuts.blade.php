@@ -14,7 +14,7 @@
         </a>
         <!-- FF -->
         <a href="#" class="group flex flex-col items-center gap-2 flex-shrink-0 snap-start">
-            <div class="w-16 h-16 sm:w-[72px] sm:h-[72px] rounded-2xl bg-gradient-to-br from-blue-500 to-blue-600 grid place-items-center shadow-[0_8px_15px_rgba(0,0,0,0.5),0_0_10px_rgba(59,130,246,0.3)] transition-all duration-300 ring-2 ring-transparent group-hover:ring-blue-400/50">
+            <div class="w-16 h-16 sm:w-[72px] sm:h-[72px] rounded-2xl bg-gradient-to-br from-green-600 to-green-700 grid place-items-center shadow-[0_8px_15px_rgba(0,0,0,0.5),0_0_10px_rgba(59,130,246,0.3)] transition-all duration-300 ring-2 ring-transparent group-hover:ring-green-500/50">
                 <span class="text-white font-black text-lg">FF</span>
             </div>
             <span class="text-[11px] text-gray-400 group-hover:text-white font-semibold transition-colors">Free Fire</span>
@@ -56,7 +56,7 @@
         </a>
         <!-- PlayStation -->
         <a href="#" class="group flex flex-col items-center gap-2 flex-shrink-0 snap-start">
-            <div class="w-16 h-16 sm:w-[72px] sm:h-[72px] rounded-2xl bg-gradient-to-br from-blue-700 to-blue-900 grid place-items-center shadow-[0_8px_15px_rgba(0,0,0,0.5),0_0_10px_rgba(29,78,216,0.3)] transition-all duration-300 ring-2 ring-transparent group-hover:ring-blue-500/50">
+            <div class="w-16 h-16 sm:w-[72px] sm:h-[72px] rounded-2xl bg-gradient-to-br from-green-700 to-green-900 grid place-items-center shadow-[0_8px_15px_rgba(0,0,0,0.5),0_0_10px_rgba(21,128,61,0.3)] transition-all duration-300 ring-2 ring-transparent group-hover:ring-green-600/50">
                 <span class="text-white font-black text-sm">PS</span>
             </div>
             <span class="text-[11px] text-gray-400 group-hover:text-white font-semibold transition-colors">PlayStation</span>

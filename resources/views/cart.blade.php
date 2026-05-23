@@ -2,7 +2,7 @@
 <html lang="id">
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Keranjang | GameVault</title>
+<title>Keranjang | WarGame</title>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 <script src="https://cdn.tailwindcss.com"></script>
 <script>tailwind.config={theme:{extend:{fontFamily:{sans:['Poppins','sans-serif']}}}}</script>
@@ -129,17 +129,17 @@
         <h3 class="text-white font-black text-lg mb-1">Metode Pembayaran</h3>
         <p class="text-gray-500 text-xs mb-5">Pilih cara pembayaran yang kamu inginkan</p>
         <div class="space-y-3" id="pay-options">
-          <label class="pay-opt flex items-center gap-4 bg-[#252d40] border border-white/8 rounded-xl p-3.5 cursor-pointer hover:border-cyan-500/40 transition-all">
-            <input type="radio" name="pay" value="QRIS" class="accent-cyan-400 w-4 h-4 flex-shrink-0">
+          <label class="pay-opt flex items-center gap-4 bg-[#252d40] border border-white/8 rounded-xl p-3.5 cursor-pointer hover:border-green-500/40 transition-all">
+            <input type="radio" name="pay" value="QRIS" class="accent-green-400 w-4 h-4 flex-shrink-0">
             <div class="flex-1"><p class="text-white font-bold text-sm">QRIS</p><p class="text-gray-500 text-xs">Gopay, OVO, Dana, LinkAja</p></div>
-            <span class="text-[10px] font-bold text-cyan-400 border border-cyan-500/30 rounded-full px-2 py-0.5">REKOMENDASI</span>
+            <span class="text-[10px] font-bold text-green-400 border border-green-500/30 rounded-full px-2 py-0.5">REKOMENDASI</span>
           </label>
-          <label class="pay-opt flex items-center gap-4 bg-[#252d40] border border-white/8 rounded-xl p-3.5 cursor-pointer hover:border-cyan-500/40 transition-all">
-            <input type="radio" name="pay" value="GoPay" class="accent-cyan-400 w-4 h-4 flex-shrink-0">
+          <label class="pay-opt flex items-center gap-4 bg-[#252d40] border border-white/8 rounded-xl p-3.5 cursor-pointer hover:border-green-500/40 transition-all">
+            <input type="radio" name="pay" value="GoPay" class="accent-green-400 w-4 h-4 flex-shrink-0">
             <div class="flex-1"><p class="text-white font-bold text-sm">GoPay</p><p class="text-gray-500 text-xs">Bayar via aplikasi Gojek</p></div>
           </label>
-          <label class="pay-opt flex items-center gap-4 bg-[#252d40] border border-white/8 rounded-xl p-3.5 cursor-pointer hover:border-cyan-500/40 transition-all">
-            <input type="radio" name="pay" value="DANA" class="accent-cyan-400 w-4 h-4 flex-shrink-0">
+          <label class="pay-opt flex items-center gap-4 bg-[#252d40] border border-white/8 rounded-xl p-3.5 cursor-pointer hover:border-green-500/40 transition-all">
+            <input type="radio" name="pay" value="DANA" class="accent-green-400 w-4 h-4 flex-shrink-0">
             <div class="flex-1"><p class="text-white font-bold text-sm">DANA</p><p class="text-gray-500 text-xs">Bayar via DANA</p></div>
           </label>
         </div>
@@ -159,17 +159,17 @@
         </div>
         <div class="bg-[#252d40] rounded-xl px-4 py-3 mb-3 flex items-center justify-between">
           <span class="text-gray-400 text-xs font-semibold uppercase tracking-wider">Metode Bayar</span>
-          <span id="s2-pay" class="text-cyan-400 font-bold text-sm">—</span>
+          <span id="s2-pay" class="text-green-400 font-bold text-sm">—</span>
         </div>
         <div class="space-y-2 mb-3 max-h-[180px] overflow-y-auto pr-1" id="s2-items"></div>
-        <div class="bg-gradient-to-r from-blue-500/10 to-purple-500/10 border border-blue-500/20 rounded-xl px-4 py-4 flex items-center justify-between mb-4">
+        <div class="bg-gradient-to-r from-green-600/10 to-purple-500/10 border border-green-600/20 rounded-xl px-4 py-4 flex items-center justify-between mb-4">
           <span class="text-gray-300 text-sm font-bold">Total Pembayaran</span>
-          <span id="s2-total" class="text-blue-400 font-black text-xl">—</span>
+          <span id="s2-total" class="text-green-500 font-black text-xl">—</span>
         </div>
         <div class="mb-4">
           <label class="block text-gray-400 text-xs font-semibold mb-1.5 uppercase tracking-wider">Email (opsional)</label>
           <input id="modal-email" type="email" placeholder="Bukti transaksi dikirim ke email"
-            class="w-full bg-[#252d40] border border-white/10 rounded-xl px-4 py-3 text-white text-sm placeholder-gray-600 outline-none focus:border-blue-500/50 transition-all">
+            class="w-full bg-[#252d40] border border-white/10 rounded-xl px-4 py-3 text-white text-sm placeholder-gray-600 outline-none focus:border-green-600/50 transition-all">
         </div>
         <button onclick="confirmPayment()" class="btn-grad w-full py-3.5 rounded-xl text-white font-black text-sm tracking-wider"><span>✓ KONFIRMASI & BAYAR</span></button>
       </div>
@@ -185,15 +185,15 @@
     <input type="hidden" id="edit-item-id">
     <div class="mb-4">
       <label class="block text-gray-400 text-xs font-semibold mb-1.5 uppercase tracking-wider">User ID</label>
-      <input id="edit-uid" type="text" class="w-full bg-[#252d40] border border-white/10 rounded-xl px-4 py-3 text-white text-sm outline-none focus:border-cyan-500/50 transition-all">
+      <input id="edit-uid" type="text" class="w-full bg-[#252d40] border border-white/10 rounded-xl px-4 py-3 text-white text-sm outline-none focus:border-green-500/50 transition-all">
     </div>
     <div class="mb-6">
       <label class="block text-gray-400 text-xs font-semibold mb-1.5 uppercase tracking-wider">Zone ID</label>
-      <input id="edit-zone" type="text" class="w-full bg-[#252d40] border border-white/10 rounded-xl px-4 py-3 text-white text-sm outline-none focus:border-cyan-500/50 transition-all">
+      <input id="edit-zone" type="text" class="w-full bg-[#252d40] border border-white/10 rounded-xl px-4 py-3 text-white text-sm outline-none focus:border-green-500/50 transition-all">
     </div>
     <div class="flex gap-3">
       <button onclick="closeEditModal()" class="flex-1 py-3 rounded-xl border border-white/10 text-gray-300 font-bold text-sm hover:bg-white/5 transition-all">Batal</button>
-      <button onclick="saveEdit()" class="flex-1 py-3 rounded-xl bg-cyan-500 hover:bg-cyan-600 text-white font-bold text-sm transition-all shadow-lg shadow-cyan-500/30">Simpan</button>
+      <button onclick="saveEdit()" class="flex-1 py-3 rounded-xl bg-green-500 hover:bg-green-600 text-white font-bold text-sm transition-all shadow-lg shadow-green-500/30">Simpan</button>
     </div>
   </div>
 </div>
@@ -307,7 +307,7 @@ function renderCart(){
       <div class="bounce mb-6"><svg class="w-20 h-20 text-gray-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2h12l2 5v13a2 2 0 01-2 2H6a2 2 0 01-2-2V7l2-5z"/><path d="M9 7a3 3 0 006 0"/></svg></div>
       <h2 class="text-white font-bold text-xl mb-2">Keranjang Kosong</h2>
       <p class="text-gray-500 text-sm mb-8">Belum ada item yang ditambahkan ke keranjang</p>
-      <a href="{{ url('/topup/mobile-legends') }}" class="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-bold text-sm transition-all shadow-lg shadow-blue-600/30">
+      <a href="{{ url('/topup/mobile-legends') }}" class="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-green-700 hover:bg-green-700 text-white font-bold text-sm transition-all shadow-lg shadow-green-700/30">
         <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>
         Mulai Top Up
       </a></div>`;
@@ -321,10 +321,10 @@ function renderCart(){
   const games = [...new Set(cart.map(i => i.game))];
   if (games.length > 1) {
       filtersContainer.classList.remove('hidden');
-      let fHTML = `<button onclick="setFilter('All')" class="px-4 py-1.5 rounded-full text-xs font-bold transition-all border whitespace-nowrap ${window.activeFilter==='All'?'bg-cyan-500/20 border-cyan-400 text-cyan-400 shadow-[0_0_10px_rgba(34,211,238,0.2)]':'bg-[#252d40] border-white/10 text-gray-400 hover:border-white/30'}">Semua</button>`;
+      let fHTML = `<button onclick="setFilter('All')" class="px-4 py-1.5 rounded-full text-xs font-bold transition-all border whitespace-nowrap ${window.activeFilter==='All'?'bg-green-500/20 border-green-400 text-green-400 shadow-[0_0_10px_rgba(34,197,94,0.2)]':'bg-[#252d40] border-white/10 text-gray-400 hover:border-white/30'}">Semua</button>`;
       games.forEach(g => {
           const isActive = window.activeFilter === g;
-          fHTML += `<button onclick="setFilter('${g}')" class="px-4 py-1.5 rounded-full text-xs font-bold transition-all border whitespace-nowrap ${isActive?'bg-cyan-500/20 border-cyan-400 text-cyan-400 shadow-[0_0_10px_rgba(34,211,238,0.2)]':'bg-[#252d40] border-white/10 text-gray-400 hover:border-white/30'}">${g}</button>`;
+          fHTML += `<button onclick="setFilter('${g}')" class="px-4 py-1.5 rounded-full text-xs font-bold transition-all border whitespace-nowrap ${isActive?'bg-green-500/20 border-green-400 text-green-400 shadow-[0_0_10px_rgba(34,197,94,0.2)]':'bg-[#252d40] border-white/10 text-gray-400 hover:border-white/30'}">${g}</button>`;
       });
       filtersContainer.innerHTML = fHTML;
   } else {
@@ -356,11 +356,11 @@ function renderCart(){
       <div class="flex-1 min-w-0 pointer-events-none">
         <div class="flex items-center gap-2 flex-wrap mb-0.5">
           <span class="text-white font-bold text-sm">${item.label}</span>
-          <span class="px-2 py-0.5 rounded-full bg-blue-500/15 text-blue-400 text-[10px] font-bold border border-blue-500/20">${item.game}</span>
+          <span class="px-2 py-0.5 rounded-full bg-green-600/15 text-green-500 text-[10px] font-bold border border-green-600/20">${item.game}</span>
         </div>
         <div class="flex items-center gap-2 mt-0.5">
           <p class="text-gray-500 text-[11px]">User ID: <span class="text-gray-300">${item.userId}</span> · Zone: <span class="text-gray-300">${item.zoneId}</span></p>
-          <button onclick="openEditModal('${item.id}'); event.stopPropagation();" class="text-cyan-400 hover:text-cyan-300 text-[10px] font-semibold underline pointer-events-auto">Edit</button>
+          <button onclick="openEditModal('${item.id}'); event.stopPropagation();" class="text-green-400 hover:text-green-300 text-[10px] font-semibold underline pointer-events-auto">Edit</button>
         </div>
         <p class="text-amber-400 font-bold text-sm mt-1">${item.price}</p>
       </div>
