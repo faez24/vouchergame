@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>GameVault | Marketplace Game</title>
+        <title>WarGame | Marketplace Game</title>
         <meta name="description" content="Marketplace game top up dan voucher digital dengan tampilan premium dark.">
 
         <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -125,7 +125,7 @@
         </style>
 
     </head>
-    <body class="min-h-screen bg-[#344050] text-white font-sans selection:bg-cyan-500 selection:text-white overflow-x-hidden">
+    <body class="min-h-screen bg-[#344050] text-white font-sans selection:bg-green-500 selection:text-white overflow-x-hidden">
 
         <div class="relative min-h-screen bg-[#344050] bg-noise overflow-hidden flex flex-col">
             
@@ -149,9 +149,9 @@
                 <div class="smoke-b absolute top-[10%] left-[40%] w-[40vw] h-[35vw] max-w-[550px] max-h-[450px] rounded-full bg-slate-300/8 blur-[80px]"></div>
                 <div class="smoke-a absolute bottom-[30%] right-[10%] w-[45vw] h-[38vw] max-w-[600px] max-h-[500px] rounded-full bg-slate-400/8 blur-[90px]"></div>
                 {{-- Faint accent glows --}}
-                <div class="smoke-e absolute top-[20%] left-[8%] w-[25vw] h-[25vw] max-w-[350px] max-h-[350px] rounded-full bg-cyan-400/5 blur-[70px]"></div>
-                <div class="smoke-c absolute bottom-[15%] right-[8%] w-[30vw] h-[30vw] max-w-[400px] max-h-[400px] rounded-full bg-pink-400/4 blur-[80px]"></div>
-                <div class="smoke-d absolute top-[45%] right-[30%] w-[20vw] h-[20vw] max-w-[280px] max-h-[280px] rounded-full bg-blue-400/5 blur-[60px]"></div>
+                <div class="smoke-e absolute top-[20%] left-[8%] w-[25vw] h-[25vw] max-w-[350px] max-h-[350px] rounded-full bg-green-400/5 blur-[70px]"></div>
+                <div class="smoke-c absolute bottom-[15%] right-[8%] w-[30vw] h-[30vw] max-w-[400px] max-h-[400px] rounded-full bg-orange-400/4 blur-[80px]"></div>
+                <div class="smoke-d absolute top-[45%] right-[30%] w-[20vw] h-[20vw] max-w-[280px] max-h-[280px] rounded-full bg-green-500/5 blur-[60px]"></div>
             </div>
 
 
@@ -167,11 +167,11 @@
                     <div class="mb-5 flex items-end justify-between border-b border-white/5 pb-3">
                         <div class="flex items-center gap-3">
                             <div class="flex flex-col justify-center items-center gap-1">
-                                <div class="w-1.5 h-1.5 bg-pink-500 rotate-45 animate-pulse shadow-[0_0_8px_rgba(236,72,153,0.8)]"></div>
-                                <div class="w-0.5 h-6 bg-gradient-to-b from-pink-500 to-transparent"></div>
+                                <div class="w-1.5 h-1.5 bg-orange-500 rotate-45 animate-pulse shadow-[0_0_8px_rgba(249,115,22,0.8)]"></div>
+                                <div class="w-0.5 h-6 bg-gradient-to-b from-orange-500 to-transparent"></div>
                             </div>
                             <div>
-                                <p class="text-[10px] font-bold text-pink-500 uppercase tracking-[0.2em] mb-0.5">Top Picks</p>
+                                <p class="text-[10px] font-bold text-orange-500 uppercase tracking-[0.2em] mb-0.5">Top Picks</p>
                                 <h2 class="text-xl sm:text-2xl font-black uppercase italic tracking-wider text-white drop-shadow-md">Game Populer</h2>
                             </div>
                         </div>
@@ -181,55 +181,55 @@
                     {{-- Baris pertama: selalu tampil --}}
                     <div class="grid grid-cols-3 sm:grid-cols-4 lg:grid-cols-5 gap-2 sm:gap-4" id="games-populer-first">
                         <a href="{{ route('topup.ml') }}" class="block">
-                            <article class="relative rounded-lg overflow-hidden bg-[#161920]/80 backdrop-blur-md border border-white/5 card-3d hover:border-cyan-500/50 group transition-all duration-300">
+                            <article class="relative rounded-lg overflow-hidden bg-[#161920]/80 backdrop-blur-md border border-white/5 card-3d hover:border-green-500/50 group transition-all duration-300">
                                 <div class="card-img-wrap bg-[#1a1f2e]"><img src="https://images.unsplash.com/photo-1556438064-2d7646166914?w=600&h=800&fit=crop" alt="Mobile Legends"/></div>
-                                <div class="p-3 bg-transparent"><div class="inline-block px-2 py-0.5 rounded-full bg-pink-500 text-white text-[10px] font-bold shadow-[0_0_8px_rgba(236,72,153,0.6)]">Populer</div><h3 class="mt-2 text-sm font-extrabold">Mobile Legends</h3></div>
+                                <div class="p-3 bg-transparent"><div class="inline-block px-2 py-0.5 rounded-full bg-orange-500 text-white text-[10px] font-bold shadow-[0_0_8px_rgba(249,115,22,0.6)]">Populer</div><h3 class="mt-2 text-sm font-extrabold">Mobile Legends</h3></div>
                             </article>
                         </a>
-                        <article class="relative rounded-lg overflow-hidden bg-[#161920]/80 backdrop-blur-md border border-white/5 card-3d hover:border-cyan-500/50 group transition-all duration-300">
+                        <article class="relative rounded-lg overflow-hidden bg-[#161920]/80 backdrop-blur-md border border-white/5 card-3d hover:border-green-500/50 group transition-all duration-300">
                             <div class="card-img-wrap bg-[#1a1f2e]"><img src="https://images.unsplash.com/photo-1560253023-3ec5d502959f?w=600&h=800&fit=crop" alt="Free Fire"/></div>
-                            <div class="p-3 bg-transparent"><div class="inline-block px-2 py-0.5 rounded-full bg-pink-500 text-white text-[10px] font-bold shadow-[0_0_8px_rgba(236,72,153,0.6)]">Populer</div><h3 class="mt-2 text-sm font-extrabold">Free Fire</h3></div>
+                            <div class="p-3 bg-transparent"><div class="inline-block px-2 py-0.5 rounded-full bg-orange-500 text-white text-[10px] font-bold shadow-[0_0_8px_rgba(249,115,22,0.6)]">Populer</div><h3 class="mt-2 text-sm font-extrabold">Free Fire</h3></div>
                         </article>
-                        <article class="relative rounded-lg overflow-hidden bg-[#161920]/80 backdrop-blur-md border border-white/5 card-3d hover:border-cyan-500/50 group transition-all duration-300">
+                        <article class="relative rounded-lg overflow-hidden bg-[#161920]/80 backdrop-blur-md border border-white/5 card-3d hover:border-green-500/50 group transition-all duration-300">
                             <div class="card-img-wrap bg-[#1a1f2e]"><img src="https://images.unsplash.com/photo-1542751371-adc38448a05e?w=600&h=800&fit=crop" alt="PUBG Mobile"/></div>
-                            <div class="p-3 bg-transparent"><div class="inline-block px-2 py-0.5 rounded-full bg-pink-500 text-white text-[10px] font-bold shadow-[0_0_8px_rgba(236,72,153,0.6)]">Populer</div><h3 class="mt-2 text-sm font-extrabold">PUBG Mobile</h3></div>
+                            <div class="p-3 bg-transparent"><div class="inline-block px-2 py-0.5 rounded-full bg-orange-500 text-white text-[10px] font-bold shadow-[0_0_8px_rgba(249,115,22,0.6)]">Populer</div><h3 class="mt-2 text-sm font-extrabold">PUBG Mobile</h3></div>
                         </article>
-                        <article class="relative rounded-lg overflow-hidden bg-[#161920]/80 backdrop-blur-md border border-white/5 card-3d hover:border-cyan-500/50 group transition-all duration-300">
+                        <article class="relative rounded-lg overflow-hidden bg-[#161920]/80 backdrop-blur-md border border-white/5 card-3d hover:border-green-500/50 group transition-all duration-300">
                             <div class="card-img-wrap bg-[#1a1f2e]"><img src="https://images.unsplash.com/photo-1552820728-8b83bb6b773f?w=600&h=800&fit=crop" alt="Genshin Impact"/></div>
-                            <div class="p-3 bg-transparent"><div class="inline-block px-2 py-0.5 rounded-full bg-cyan-500 text-black text-[10px] font-bold shadow-[0_0_8px_rgba(34,211,238,0.6)]">Baru</div><h3 class="mt-2 text-sm font-extrabold">Genshin Impact</h3></div>
+                            <div class="p-3 bg-transparent"><div class="inline-block px-2 py-0.5 rounded-full bg-green-500 text-white text-[10px] font-bold shadow-[0_0_8px_rgba(34,197,94,0.6)]">Baru</div><h3 class="mt-2 text-sm font-extrabold">Genshin Impact</h3></div>
                         </article>
-                        <article class="relative rounded-lg overflow-hidden bg-[#161920]/80 backdrop-blur-md border border-white/5 card-3d hover:border-cyan-500/50 group transition-all duration-300">
+                        <article class="relative rounded-lg overflow-hidden bg-[#161920]/80 backdrop-blur-md border border-white/5 card-3d hover:border-green-500/50 group transition-all duration-300">
                             <div class="card-img-wrap bg-[#1a1f2e]"><img src="https://images.unsplash.com/photo-1615680022647-99c397cbcaea?w=600&h=800&fit=crop" alt="Valorant"/></div>
-                            <div class="p-3 bg-transparent"><div class="inline-block px-2 py-0.5 rounded-full bg-pink-500 text-white text-[10px] font-bold shadow-[0_0_8px_rgba(236,72,153,0.6)]">Populer</div><h3 class="mt-2 text-sm font-extrabold">Valorant</h3></div>
+                            <div class="p-3 bg-transparent"><div class="inline-block px-2 py-0.5 rounded-full bg-orange-500 text-white text-[10px] font-bold shadow-[0_0_8px_rgba(249,115,22,0.6)]">Populer</div><h3 class="mt-2 text-sm font-extrabold">Valorant</h3></div>
                         </article>
-                        <article class="relative lg:hidden rounded-lg overflow-hidden bg-[#161920]/80 backdrop-blur-md border border-white/5 card-3d hover:border-cyan-500/50 group transition-all duration-300">
+                        <article class="relative lg:hidden rounded-lg overflow-hidden bg-[#161920]/80 backdrop-blur-md border border-white/5 card-3d hover:border-green-500/50 group transition-all duration-300">
                             <div class="card-img-wrap bg-[#1a1f2e]"><img src="https://images.unsplash.com/photo-1593305841991-05c297ba4575?w=600&h=800&fit=crop" alt="Honkai Star Rail"/></div>
-                            <div class="p-3 bg-transparent"><div class="inline-block px-2 py-0.5 rounded-full bg-cyan-500 text-black text-[10px] font-bold shadow-[0_0_8px_rgba(34,211,238,0.6)]">Baru</div><h3 class="mt-2 text-sm font-extrabold">Honkai Star Rail</h3></div>
+                            <div class="p-3 bg-transparent"><div class="inline-block px-2 py-0.5 rounded-full bg-green-500 text-white text-[10px] font-bold shadow-[0_0_8px_rgba(34,197,94,0.6)]">Baru</div><h3 class="mt-2 text-sm font-extrabold">Honkai Star Rail</h3></div>
                         </article>
                     </div>
 
                     {{-- Baris extra: tersembunyi, expand saat klik Lihat Semua --}}
                     <div class="games-extra-grid" id="games-populer-extra">
                         <div class="grid grid-cols-3 sm:grid-cols-4 lg:grid-cols-5 gap-2 sm:gap-4">
-                            <article class="relative rounded-lg overflow-hidden bg-[#161920]/80 backdrop-blur-md border border-white/5 card-3d hover:border-cyan-500/50 group transition-all duration-300">
+                            <article class="relative rounded-lg overflow-hidden bg-[#161920]/80 backdrop-blur-md border border-white/5 card-3d hover:border-green-500/50 group transition-all duration-300">
                                 <div class="card-img-wrap bg-[#1a1f2e]"><img src="https://images.unsplash.com/photo-1511512578047-dfb367046420?w=600&h=800&fit=crop" alt="Call of Duty Mobile"/></div>
-                                <div class="p-3 bg-transparent"><div class="inline-block px-2 py-0.5 rounded-full bg-pink-500 text-white text-[10px] font-bold shadow-[0_0_8px_rgba(236,72,153,0.6)]">Populer</div><h3 class="mt-2 text-sm font-extrabold">Call of Duty Mobile</h3></div>
+                                <div class="p-3 bg-transparent"><div class="inline-block px-2 py-0.5 rounded-full bg-orange-500 text-white text-[10px] font-bold shadow-[0_0_8px_rgba(249,115,22,0.6)]">Populer</div><h3 class="mt-2 text-sm font-extrabold">Call of Duty Mobile</h3></div>
                             </article>
-                            <article class="relative rounded-lg overflow-hidden bg-[#161920]/80 backdrop-blur-md border border-white/5 card-3d hover:border-cyan-500/50 group transition-all duration-300">
+                            <article class="relative rounded-lg overflow-hidden bg-[#161920]/80 backdrop-blur-md border border-white/5 card-3d hover:border-green-500/50 group transition-all duration-300">
                                 <div class="card-img-wrap bg-[#1a1f2e]"><img src="https://images.unsplash.com/photo-1536240478700-b869ad10f984?w=600&h=800&fit=crop" alt="Apex Legends"/></div>
                                 <div class="p-3 bg-transparent"><h3 class="mt-2 text-sm font-extrabold">Apex Legends</h3></div>
                             </article>
-                            <article class="relative rounded-lg overflow-hidden bg-[#161920]/80 backdrop-blur-md border border-white/5 card-3d hover:border-cyan-500/50 group transition-all duration-300">
+                            <article class="relative rounded-lg overflow-hidden bg-[#161920]/80 backdrop-blur-md border border-white/5 card-3d hover:border-green-500/50 group transition-all duration-300">
                                 <div class="card-img-wrap bg-[#1a1f2e]"><img src="https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=600&h=800&fit=crop" alt="League of Legends"/></div>
                                 <div class="p-3 bg-transparent"><h3 class="mt-2 text-sm font-extrabold">League of Legends</h3></div>
                             </article>
-                            <article class="relative rounded-lg overflow-hidden bg-[#161920]/80 backdrop-blur-md border border-white/5 card-3d hover:border-cyan-500/50 group transition-all duration-300">
+                            <article class="relative rounded-lg overflow-hidden bg-[#161920]/80 backdrop-blur-md border border-white/5 card-3d hover:border-green-500/50 group transition-all duration-300">
                                 <div class="card-img-wrap bg-[#1a1f2e]"><img src="https://images.unsplash.com/photo-1579952363873-27f3bade9f55?w=600&h=800&fit=crop" alt="Clash of Clans"/></div>
                                 <div class="p-3 bg-transparent"><h3 class="mt-2 text-sm font-extrabold">Clash of Clans</h3></div>
                             </article>
-                            <article class="relative rounded-lg overflow-hidden bg-[#161920]/80 backdrop-blur-md border border-white/5 card-3d hover:border-cyan-500/50 group transition-all duration-300">
+                            <article class="relative rounded-lg overflow-hidden bg-[#161920]/80 backdrop-blur-md border border-white/5 card-3d hover:border-green-500/50 group transition-all duration-300">
                                 <div class="card-img-wrap bg-[#1a1f2e]"><img src="https://images.unsplash.com/photo-1606144042614-b2417e99c4e3?w=600&h=800&fit=crop" alt="Fortnite"/></div>
-                                <div class="p-3 bg-transparent"><div class="inline-block px-2 py-0.5 rounded-full bg-pink-500 text-white text-[10px] font-bold shadow-[0_0_8px_rgba(236,72,153,0.6)]">Populer</div><h3 class="mt-2 text-sm font-extrabold">Fortnite</h3></div>
+                                <div class="p-3 bg-transparent"><div class="inline-block px-2 py-0.5 rounded-full bg-orange-500 text-white text-[10px] font-bold shadow-[0_0_8px_rgba(249,115,22,0.6)]">Populer</div><h3 class="mt-2 text-sm font-extrabold">Fortnite</h3></div>
                             </article>
                         </div>
                     </div>
@@ -238,10 +238,10 @@
                         <button
                             id="btn-lihat-semua-populer"
                             onclick="toggleGamesSection('games-populer-extra', 'btn-lihat-semua-populer', 'label-lihat-populer')"
-                            class="btn-lihat-semua group flex items-center gap-2 text-sm font-bold text-pink-400 uppercase tracking-widest transition-all hover:text-white hover:drop-shadow-[0_0_8px_rgba(236,72,153,0.8)] cursor-pointer bg-transparent border-none outline-none"
+                            class="btn-lihat-semua group flex items-center gap-2 text-sm font-bold text-orange-400 uppercase tracking-widest transition-all hover:text-white hover:drop-shadow-[0_0_8px_rgba(249,115,22,0.8)] cursor-pointer bg-transparent border-none outline-none"
                         >
                             <span id="label-lihat-populer">Lihat Semua</span>
-                            <svg class="arrow-icon w-4 h-4 text-pink-500 group-hover:text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M9 5l7 7-7 7"/></svg>
+                            <svg class="arrow-icon w-4 h-4 text-orange-500 group-hover:text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M9 5l7 7-7 7"/></svg>
                         </button>
                     </div>
 
@@ -252,11 +252,11 @@
                     <div class="mb-5 flex items-end justify-between border-b border-white/5 pb-3">
                         <div class="flex items-center gap-3">
                             <div class="flex flex-col justify-center items-center gap-1">
-                                <div class="w-1.5 h-1.5 bg-cyan-400 rotate-45 animate-pulse shadow-[0_0_8px_rgba(34,211,238,0.8)]"></div>
-                                <div class="w-0.5 h-6 bg-gradient-to-b from-cyan-400 to-transparent"></div>
+                                <div class="w-1.5 h-1.5 bg-green-400 rotate-45 animate-pulse shadow-[0_0_8px_rgba(34,197,94,0.8)]"></div>
+                                <div class="w-0.5 h-6 bg-gradient-to-b from-green-400 to-transparent"></div>
                             </div>
                             <div>
-                                <p class="text-[10px] font-bold text-cyan-400 uppercase tracking-[0.2em] mb-0.5">Kategori Lain</p>
+                                <p class="text-[10px] font-bold text-green-400 uppercase tracking-[0.2em] mb-0.5">Kategori Lain</p>
                                 <h2 class="text-xl sm:text-2xl font-black uppercase italic tracking-wider text-white drop-shadow-md">Web Store</h2>
                             </div>
                         </div>
@@ -264,32 +264,32 @@
                     </div>
 
                     <div class="grid grid-cols-3 sm:grid-cols-4 lg:grid-cols-5 gap-2 sm:gap-4">
-                        <article class="relative rounded-lg overflow-hidden bg-[#161920]/80 backdrop-blur-md border border-white/5 card-3d hover:border-cyan-500/50 group transition-all duration-300">
+                        <article class="relative rounded-lg overflow-hidden bg-[#161920]/80 backdrop-blur-md border border-white/5 card-3d hover:border-green-500/50 group transition-all duration-300">
                             <div class="card-img-wrap"><img src="https://images.unsplash.com/photo-1579952363873-27f3bade9f55?w=600&h=800&fit=crop" alt="Steam Wallet"/></div>
-                            <div class="p-3 bg-transparent"><div class="inline-block px-2 py-0.5 rounded-full bg-pink-500 text-white text-[10px] font-bold shadow-[0_0_8px_rgba(236,72,153,0.6)]">Promo</div><h3 class="mt-2 text-sm font-extrabold">Steam Wallet</h3></div>
+                            <div class="p-3 bg-transparent"><div class="inline-block px-2 py-0.5 rounded-full bg-orange-500 text-white text-[10px] font-bold shadow-[0_0_8px_rgba(249,115,22,0.6)]">Promo</div><h3 class="mt-2 text-sm font-extrabold">Steam Wallet</h3></div>
                         </article>
-                        <article class="relative rounded-lg overflow-hidden bg-[#161920]/80 backdrop-blur-md border border-white/5 card-3d hover:border-cyan-500/50 group transition-all duration-300">
+                        <article class="relative rounded-lg overflow-hidden bg-[#161920]/80 backdrop-blur-md border border-white/5 card-3d hover:border-green-500/50 group transition-all duration-300">
                             <div class="card-img-wrap"><img src="https://images.unsplash.com/photo-1542751110-97427bbecf20?w=600&h=800&fit=crop" alt="PlayStation Network"/></div>
                             <div class="p-3 bg-transparent"><h3 class="mt-2 text-sm font-extrabold">PlayStation Network</h3></div>
                         </article>
-                        <article class="relative rounded-lg overflow-hidden bg-[#161920]/80 backdrop-blur-md border border-white/5 card-3d hover:border-cyan-500/50 group transition-all duration-300">
+                        <article class="relative rounded-lg overflow-hidden bg-[#161920]/80 backdrop-blur-md border border-white/5 card-3d hover:border-green-500/50 group transition-all duration-300">
                             <div class="card-img-wrap"><img src="https://images.unsplash.com/photo-1606144042614-b2417e99c4e3?w=600&h=800&fit=crop" alt="Xbox Game Pass"/></div>
                             <div class="p-3 bg-transparent"><h3 class="mt-2 text-sm font-extrabold">Xbox Game Pass</h3></div>
                         </article>
-                        <article class="relative rounded-lg overflow-hidden bg-[#161920]/80 backdrop-blur-md border border-white/5 card-3d hover:border-cyan-500/50 group transition-all duration-300">
+                        <article class="relative rounded-lg overflow-hidden bg-[#161920]/80 backdrop-blur-md border border-white/5 card-3d hover:border-green-500/50 group transition-all duration-300">
                             <div class="card-img-wrap"><img src="https://images.unsplash.com/photo-1511512578047-dfb367046420?w=600&h=800&fit=crop" alt="Razer Gold"/></div>
                             <div class="p-3 bg-transparent"><h3 class="mt-2 text-sm font-extrabold">Razer Gold</h3></div>
                         </article>
-                        <article class="relative rounded-lg overflow-hidden bg-[#161920]/80 backdrop-blur-md border border-white/5 card-3d hover:border-cyan-500/50 group transition-all duration-300">
+                        <article class="relative rounded-lg overflow-hidden bg-[#161920]/80 backdrop-blur-md border border-white/5 card-3d hover:border-green-500/50 group transition-all duration-300">
                             <div class="card-img-wrap"><img src="https://images.unsplash.com/photo-1589241062272-c0a000072dfa?w=600&h=800&fit=crop" alt="Google Play"/></div>
                             <div class="p-3 bg-transparent"><h3 class="mt-2 text-sm font-extrabold">Google Play</h3></div>
                         </article>
                     </div>
 
                     <div class="mt-6 flex justify-center">
-                        <a href="#footer" class="group flex items-center gap-2 text-sm font-bold text-cyan-400 uppercase tracking-widest transition-all hover:text-white hover:drop-shadow-[0_0_8px_rgba(34,211,238,0.8)]">
+                        <a href="#footer" class="group flex items-center gap-2 text-sm font-bold text-green-400 uppercase tracking-widest transition-all hover:text-white hover:drop-shadow-[0_0_8px_rgba(34,197,94,0.8)]">
                             <span>Lihat Semua</span>
-                            <svg class="w-4 h-4 transition-transform group-hover:translate-x-1 text-cyan-400 group-hover:text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M9 5l7 7-7 7"/></svg>
+                            <svg class="w-4 h-4 transition-transform group-hover:translate-x-1 text-green-400 group-hover:text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M9 5l7 7-7 7"/></svg>
                         </a>
                     </div>
 
@@ -300,11 +300,11 @@
                     <div class="mb-5 flex items-end justify-between border-b border-white/5 pb-3">
                         <div class="flex items-center gap-3">
                             <div class="flex flex-col justify-center items-center gap-1">
-                                <div class="w-1.5 h-1.5 bg-pink-500 rotate-45 animate-pulse shadow-[0_0_8px_rgba(236,72,153,0.8)]"></div>
-                                <div class="w-0.5 h-6 bg-gradient-to-b from-pink-500 to-transparent"></div>
+                                <div class="w-1.5 h-1.5 bg-orange-500 rotate-45 animate-pulse shadow-[0_0_8px_rgba(249,115,22,0.8)]"></div>
+                                <div class="w-0.5 h-6 bg-gradient-to-b from-orange-500 to-transparent"></div>
                             </div>
                             <div>
-                                <p class="text-[10px] font-bold text-pink-500 uppercase tracking-[0.2em] mb-0.5">Fresh Drops</p>
+                                <p class="text-[10px] font-bold text-orange-500 uppercase tracking-[0.2em] mb-0.5">Fresh Drops</p>
                                 <h2 class="text-xl sm:text-2xl font-black uppercase italic tracking-wider text-white drop-shadow-md">Baru Ditambahkan</h2>
                             </div>
                         </div>
@@ -312,24 +312,24 @@
                     </div>
 
                     <div class="grid grid-cols-3 sm:grid-cols-4 lg:grid-cols-5 gap-2 sm:gap-4">
-                        <article class="relative rounded-lg overflow-hidden bg-[#161920]/80 backdrop-blur-md border border-white/5 card-3d hover:border-cyan-500/50 group transition-all duration-300">
+                        <article class="relative rounded-lg overflow-hidden bg-[#161920]/80 backdrop-blur-md border border-white/5 card-3d hover:border-green-500/50 group transition-all duration-300">
                             <div class="card-img-wrap bg-[#1a1f2e]"><img src="https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=600&h=800&fit=crop" alt="Wuthering Waves"/></div>
-                            <div class="p-3 bg-transparent"><div class="inline-block px-2 py-0.5 rounded-full bg-cyan-500 text-black text-[10px] font-bold shadow-[0_0_8px_rgba(34,211,238,0.6)]">Baru</div><h3 class="mt-2 text-sm font-extrabold">Wuthering Waves</h3></div>
+                            <div class="p-3 bg-transparent"><div class="inline-block px-2 py-0.5 rounded-full bg-green-500 text-white text-[10px] font-bold shadow-[0_0_8px_rgba(34,197,94,0.6)]">Baru</div><h3 class="mt-2 text-sm font-extrabold">Wuthering Waves</h3></div>
                         </article>
-                        <article class="relative rounded-lg overflow-hidden bg-[#161920]/80 backdrop-blur-md border border-white/5 card-3d hover:border-cyan-500/50 group transition-all duration-300">
+                        <article class="relative rounded-lg overflow-hidden bg-[#161920]/80 backdrop-blur-md border border-white/5 card-3d hover:border-green-500/50 group transition-all duration-300">
                             <div class="card-img-wrap bg-[#1a1f2e]"><img src="https://images.unsplash.com/photo-1579952363873-27f3bade9f55?w=600&h=800&fit=crop" alt="Solo Leveling Arise"/></div>
-                            <div class="p-3 bg-transparent"><div class="inline-block px-2 py-0.5 rounded-full bg-cyan-500 text-black text-[10px] font-bold shadow-[0_0_8px_rgba(34,211,238,0.6)]">Baru</div><h3 class="mt-2 text-sm font-extrabold">Solo Leveling Arise</h3></div>
+                            <div class="p-3 bg-transparent"><div class="inline-block px-2 py-0.5 rounded-full bg-green-500 text-white text-[10px] font-bold shadow-[0_0_8px_rgba(34,197,94,0.6)]">Baru</div><h3 class="mt-2 text-sm font-extrabold">Solo Leveling Arise</h3></div>
                         </article>
-                        <article class="relative rounded-lg overflow-hidden bg-[#161920]/80 backdrop-blur-md border border-white/5 card-3d hover:border-cyan-500/50 group transition-all duration-300">
+                        <article class="relative rounded-lg overflow-hidden bg-[#161920]/80 backdrop-blur-md border border-white/5 card-3d hover:border-green-500/50 group transition-all duration-300">
                             <div class="card-img-wrap bg-[#1a1f2e]"><img src="https://images.unsplash.com/photo-1542751371-adc38448a05e?w=600&h=800&fit=crop" alt="Zenless Zone Zero"/></div>
-                            <div class="p-3 bg-transparent"><div class="inline-block px-2 py-0.5 rounded-full bg-cyan-500 text-black text-[10px] font-bold shadow-[0_0_8px_rgba(34,211,238,0.6)]">Baru</div><h3 class="mt-2 text-sm font-extrabold">Zenless Zone Zero</h3></div>
+                            <div class="p-3 bg-transparent"><div class="inline-block px-2 py-0.5 rounded-full bg-green-500 text-white text-[10px] font-bold shadow-[0_0_8px_rgba(34,197,94,0.6)]">Baru</div><h3 class="mt-2 text-sm font-extrabold">Zenless Zone Zero</h3></div>
                         </article>
                     </div>
 
                     <div class="mt-6 flex justify-center">
-                        <a href="#footer" class="group flex items-center gap-2 text-sm font-bold text-pink-400 uppercase tracking-widest transition-all hover:text-white hover:drop-shadow-[0_0_8px_rgba(236,72,153,0.8)]">
+                        <a href="#footer" class="group flex items-center gap-2 text-sm font-bold text-orange-400 uppercase tracking-widest transition-all hover:text-white hover:drop-shadow-[0_0_8px_rgba(249,115,22,0.8)]">
                             <span>Lihat Semua</span>
-                            <svg class="w-4 h-4 transition-transform group-hover:translate-x-1 text-pink-500 group-hover:text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M9 5l7 7-7 7"/></svg>
+                            <svg class="w-4 h-4 transition-transform group-hover:translate-x-1 text-orange-500 group-hover:text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M9 5l7 7-7 7"/></svg>
                         </a>
                     </div>
 
@@ -340,11 +340,11 @@
                     <div class="mb-5 flex items-end justify-between border-b border-white/5 pb-3" id="voucher">
                         <div class="flex items-center gap-3">
                             <div class="flex flex-col justify-center items-center gap-1">
-                                <div class="w-1.5 h-1.5 bg-cyan-400 rotate-45 animate-pulse shadow-[0_0_8px_rgba(34,211,238,0.8)]"></div>
-                                <div class="w-0.5 h-6 bg-gradient-to-b from-cyan-400 to-transparent"></div>
+                                <div class="w-1.5 h-1.5 bg-green-400 rotate-45 animate-pulse shadow-[0_0_8px_rgba(34,197,94,0.8)]"></div>
+                                <div class="w-0.5 h-6 bg-gradient-to-b from-green-400 to-transparent"></div>
                             </div>
                             <div>
-                                <p class="text-[10px] font-bold text-cyan-400 uppercase tracking-[0.2em] mb-0.5">Best Deals</p>
+                                <p class="text-[10px] font-bold text-green-400 uppercase tracking-[0.2em] mb-0.5">Best Deals</p>
                                 <h2 class="text-xl sm:text-2xl font-black uppercase italic tracking-wider text-white drop-shadow-md">Voucher Populer</h2>
                             </div>
                         </div>
@@ -352,32 +352,32 @@
                     </div>
 
                     <div class="grid grid-cols-3 sm:grid-cols-4 lg:grid-cols-5 gap-2 sm:gap-4">
-                        <article class="relative rounded-lg overflow-hidden bg-[#161920]/80 backdrop-blur-md border border-white/5 card-3d hover:border-cyan-500/50 group transition-all duration-300">
+                        <article class="relative rounded-lg overflow-hidden bg-[#161920]/80 backdrop-blur-md border border-white/5 card-3d hover:border-green-500/50 group transition-all duration-300">
                             <div class="card-img-wrap"><img src="https://images.unsplash.com/photo-1589241062272-c0a000072dfa?w=600&h=800&fit=crop" alt="Steam Wallet"/></div>
-                            <div class="p-3 bg-transparent"><div class="inline-block px-2 py-0.5 rounded-full bg-pink-500 text-white text-[10px] font-bold shadow-[0_0_8px_rgba(236,72,153,0.6)]">Promo</div><h3 class="mt-2 text-sm font-extrabold">Steam Wallet</h3></div>
+                            <div class="p-3 bg-transparent"><div class="inline-block px-2 py-0.5 rounded-full bg-orange-500 text-white text-[10px] font-bold shadow-[0_0_8px_rgba(249,115,22,0.6)]">Promo</div><h3 class="mt-2 text-sm font-extrabold">Steam Wallet</h3></div>
                         </article>
-                        <article class="relative rounded-lg overflow-hidden bg-[#161920]/80 backdrop-blur-md border border-white/5 card-3d hover:border-cyan-500/50 group transition-all duration-300">
+                        <article class="relative rounded-lg overflow-hidden bg-[#161920]/80 backdrop-blur-md border border-white/5 card-3d hover:border-green-500/50 group transition-all duration-300">
                             <div class="card-img-wrap"><img src="https://images.unsplash.com/photo-1542751110-97427bbecf20?w=600&h=800&fit=crop" alt="Google Play"/></div>
                             <div class="p-3 bg-transparent"><h3 class="mt-2 text-sm font-extrabold">Google Play</h3></div>
                         </article>
-                        <article class="relative rounded-lg overflow-hidden bg-[#161920]/80 backdrop-blur-md border border-white/5 card-3d hover:border-cyan-500/50 group transition-all duration-300">
+                        <article class="relative rounded-lg overflow-hidden bg-[#161920]/80 backdrop-blur-md border border-white/5 card-3d hover:border-green-500/50 group transition-all duration-300">
                             <div class="card-img-wrap"><img src="https://images.unsplash.com/photo-1606144042614-b2417e99c4e3?w=600&h=800&fit=crop" alt="PlayStation Network"/></div>
                             <div class="p-3 bg-transparent"><h3 class="mt-2 text-sm font-extrabold">PlayStation Network</h3></div>
                         </article>
-                        <article class="relative rounded-lg overflow-hidden bg-[#161920]/80 backdrop-blur-md border border-white/5 card-3d hover:border-cyan-500/50 group transition-all duration-300">
+                        <article class="relative rounded-lg overflow-hidden bg-[#161920]/80 backdrop-blur-md border border-white/5 card-3d hover:border-green-500/50 group transition-all duration-300">
                             <div class="card-img-wrap"><img src="https://images.unsplash.com/photo-1511512578047-dfb367046420?w=600&h=800&fit=crop" alt="Xbox Game Pass"/></div>
                             <div class="p-3 bg-transparent"><h3 class="mt-2 text-sm font-extrabold">Xbox Game Pass</h3></div>
                         </article>
-                        <article class="relative rounded-lg overflow-hidden bg-[#161920]/80 backdrop-blur-md border border-white/5 shadow-[0_10px_20px_rgba(0,0,0,0.6)] hover:border-cyan-500/50 group transition-all duration-300">
+                        <article class="relative rounded-lg overflow-hidden bg-[#161920]/80 backdrop-blur-md border border-white/5 shadow-[0_10px_20px_rgba(0,0,0,0.6)] hover:border-green-500/50 group transition-all duration-300">
                             <div class="card-img-wrap"><img src="https://images.unsplash.com/photo-1560253023-3ec5d502959f?w=600&h=800&fit=crop" alt="Garena Shells"/></div>
-                            <div class="p-3 bg-transparent"><div class="inline-block px-2 py-0.5 rounded-full bg-pink-500 text-white text-[10px] font-bold shadow-[0_0_8px_rgba(236,72,153,0.6)]">Populer</div><h3 class="mt-2 text-sm font-extrabold">Garena Shells</h3></div>
+                            <div class="p-3 bg-transparent"><div class="inline-block px-2 py-0.5 rounded-full bg-orange-500 text-white text-[10px] font-bold shadow-[0_0_8px_rgba(249,115,22,0.6)]">Populer</div><h3 class="mt-2 text-sm font-extrabold">Garena Shells</h3></div>
                         </article>
                     </div>
 
                     <div class="mt-6 flex justify-center">
-                        <a href="#footer" class="group flex items-center gap-2 text-sm font-bold text-cyan-400 uppercase tracking-widest transition-all hover:text-white hover:drop-shadow-[0_0_8px_rgba(34,211,238,0.8)]">
+                        <a href="#footer" class="group flex items-center gap-2 text-sm font-bold text-green-400 uppercase tracking-widest transition-all hover:text-white hover:drop-shadow-[0_0_8px_rgba(34,197,94,0.8)]">
                             <span>Lihat Semua</span>
-                            <svg class="w-4 h-4 transition-transform group-hover:translate-x-1 text-cyan-400 group-hover:text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M9 5l7 7-7 7"/></svg>
+                            <svg class="w-4 h-4 transition-transform group-hover:translate-x-1 text-green-400 group-hover:text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M9 5l7 7-7 7"/></svg>
                         </a>
                     </div>
 

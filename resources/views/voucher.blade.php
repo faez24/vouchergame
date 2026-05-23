@@ -4,8 +4,8 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>GameVault | Voucher</title>
-        <meta name="description" content="Klaim dan gunakan voucher diskon untuk top up game di GameVault.">
+        <title>WarGame | Voucher</title>
+        <meta name="description" content="Klaim dan gunakan voucher diskon untuk top up game di WarGame.">
 
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -127,7 +127,7 @@
                 width: 24px;
                 height: 24px;
                 background: rgba(34, 211, 238, 0.2);
-                color: #22d3ee;
+                color: #4ade80;
                 border-radius: 50%;
             }
 
@@ -162,7 +162,7 @@
                 left: 0;
                 width: 100%;
                 height: 2px;
-                background: linear-gradient(90deg, #22d3ee, #ec4899, #22d3ee);
+                background: linear-gradient(90deg, #4ade80, #ec4899, #4ade80);
                 background-size: 200% auto;
                 transform: scaleX(0);
                 transition: transform 0.5s ease;
@@ -187,7 +187,7 @@
             .slide-animate-right { animation: animateSlideRight 0.4s cubic-bezier(0.2, 0.8, 0.2, 1) forwards; }
         </style>
     </head>
-    <body class="min-h-screen bg-[#344050] text-white font-sans selection:bg-cyan-500 selection:text-white overflow-x-hidden">
+    <body class="min-h-screen bg-[#344050] text-white font-sans selection:bg-green-500 selection:text-white overflow-x-hidden">
 
         <div class="relative min-h-screen bg-[#344050] bg-noise overflow-hidden flex flex-col">
             
@@ -206,8 +206,8 @@
                 <div class="smoke-c absolute bottom-[5%] left-[5%] w-[70vw] h-[60vw] max-w-[900px] max-h-[700px] rounded-full bg-slate-600/12 blur-[110px]"></div>
                 <div class="smoke-d absolute top-[55%] left-[25%] w-[55vw] h-[45vw] max-w-[750px] max-h-[600px] rounded-full bg-slate-500/10 blur-[100px]"></div>
                 
-                <div class="smoke-e absolute top-[20%] left-[8%] w-[25vw] h-[25vw] max-w-[350px] max-h-[350px] rounded-full bg-cyan-400/5 blur-[70px]"></div>
-                <div class="smoke-c absolute bottom-[15%] right-[8%] w-[30vw] h-[30vw] max-w-[400px] max-h-[400px] rounded-full bg-pink-400/4 blur-[80px]"></div>
+                <div class="smoke-e absolute top-[20%] left-[8%] w-[25vw] h-[25vw] max-w-[350px] max-h-[350px] rounded-full bg-green-400/5 blur-[70px]"></div>
+                <div class="smoke-c absolute bottom-[15%] right-[8%] w-[30vw] h-[30vw] max-w-[400px] max-h-[400px] rounded-full bg-orange-400/4 blur-[80px]"></div>
             </div>
 
             <div class="relative z-10 flex flex-col flex-grow pt-24 sm:pt-32 pb-12">
@@ -215,7 +215,7 @@
                     
                     {{-- Page Header --}}
                     <div class="mb-8 pb-4 border-b border-white/5 relative">
-                        <div class="absolute -bottom-[1px] left-0 w-32 h-[1px] bg-gradient-to-r from-cyan-400 to-transparent"></div>
+                        <div class="absolute -bottom-[1px] left-0 w-32 h-[1px] bg-gradient-to-r from-green-400 to-transparent"></div>
                         <h1 class="text-3xl sm:text-4xl font-black uppercase italic tracking-wider text-white drop-shadow-md">Voucher</h1>
                     </div>
 
@@ -235,20 +235,20 @@
                     <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-start relative">
                         
                         {{-- Desktop Divider --}}
-                        <div class="hidden lg:block absolute left-1/2 top-0 bottom-0 w-[1px] -translate-x-1/2 pointer-events-none opacity-60" style="background: linear-gradient(to bottom, transparent, #22d3ee, #ec4899, transparent); box-shadow: 0 0 12px rgba(236, 72, 153, 0.5);"></div>
+                        <div class="hidden lg:block absolute left-1/2 top-0 bottom-0 w-[1px] -translate-x-1/2 pointer-events-none opacity-60" style="background: linear-gradient(to bottom, transparent, #4ade80, #ec4899, transparent); box-shadow: 0 0 12px rgba(236, 72, 153, 0.5);"></div>
 
                         {{-- Kiri: Voucher Saya (Setengah Halaman - lg:col-span-6) --}}
                         <section id="voucher-saya-panel" class="lg:col-span-6">
                             <div class="mb-5 hidden lg:flex items-center gap-3">
-                                <div class="w-1.5 h-1.5 bg-pink-500 rotate-45 animate-pulse shadow-[0_0_8px_rgba(236,72,153,0.8)]"></div>
+                                <div class="w-1.5 h-1.5 bg-orange-500 rotate-45 animate-pulse shadow-[0_0_8px_rgba(249,115,22,0.8)]"></div>
                                 <h2 class="text-xl font-black text-white uppercase tracking-widest drop-shadow">Voucher Saya</h2>
                             </div>
                             
                             <div class="space-y-4">
                                 {{-- Card Voucher Saya 1 --}}
-                                <div class="relative rounded-xl overflow-hidden bg-[#161920]/80 backdrop-blur-md border border-white/5 card-3d flex items-stretch group hover:border-pink-500/30 transition-all duration-300">
+                                <div class="relative rounded-xl overflow-hidden bg-[#161920]/80 backdrop-blur-md border border-white/5 card-3d flex items-stretch group hover:border-orange-500/30 transition-all duration-300">
                                     {{-- Accent Left Border --}}
-                                    <div class="w-2 bg-gradient-to-b from-pink-500 to-purple-600"></div>
+                                    <div class="w-2 bg-gradient-to-b from-orange-500 to-purple-600"></div>
                                     
                                     {{-- Icon/Value Area --}}
                                     <div class="w-24 sm:w-32 bg-[#1a1f2e] border-r border-dashed border-white/10 flex flex-col items-center justify-center p-3 relative">
@@ -256,7 +256,7 @@
                                         <div class="absolute -top-3 -right-3 w-6 h-6 rounded-full bg-[#161920]/80 border-b border-l border-white/5 z-10"></div>
                                         <div class="absolute -bottom-3 -right-3 w-6 h-6 rounded-full bg-[#161920]/80 border-t border-l border-white/5 z-10"></div>
                                         
-                                        <span class="text-2xl sm:text-3xl font-black text-pink-500 drop-shadow-[0_0_8px_rgba(236,72,153,0.5)]">20%</span>
+                                        <span class="text-2xl sm:text-3xl font-black text-orange-500 drop-shadow-[0_0_8px_rgba(249,115,22,0.5)]">20%</span>
                                         <span class="text-[10px] text-gray-400 font-bold uppercase tracking-wider mt-1">Diskon</span>
                                     </div>
                                     
@@ -269,7 +269,7 @@
                                         <p class="text-[11px] sm:text-xs text-gray-400 mb-3">Maksimal diskon Rp 25.000. Berlaku hingga 30 Mei 2026.</p>
                                         
                                         <div>
-                                            <a href="{{ route('topup.ml') }}" class="inline-flex items-center gap-2 px-4 py-1.5 sm:py-2 bg-pink-500 hover:bg-pink-400 rounded-lg text-white text-[11px] sm:text-xs font-bold transition-all shadow-[0_0_10px_rgba(236,72,153,0.4)] hover:shadow-[0_0_15px_rgba(236,72,153,0.6)]">
+                                            <a href="{{ route('topup.ml') }}" class="inline-flex items-center gap-2 px-4 py-1.5 sm:py-2 bg-orange-500 hover:bg-orange-400 rounded-lg text-white text-[11px] sm:text-xs font-bold transition-all shadow-[0_0_10px_rgba(249,115,22,0.4)] hover:shadow-[0_0_15px_rgba(249,115,22,0.6)]">
                                                 Gunakan Sekarang
                                                 <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
                                             </a>
@@ -278,14 +278,14 @@
                                 </div>
 
                                 {{-- Card Voucher Saya 2 --}}
-                                <div class="relative rounded-xl overflow-hidden bg-[#161920]/80 backdrop-blur-md border border-white/5 card-3d flex items-stretch group hover:border-cyan-500/30 transition-all duration-300">
-                                    <div class="w-2 bg-gradient-to-b from-cyan-400 to-blue-600"></div>
+                                <div class="relative rounded-xl overflow-hidden bg-[#161920]/80 backdrop-blur-md border border-white/5 card-3d flex items-stretch group hover:border-green-500/30 transition-all duration-300">
+                                    <div class="w-2 bg-gradient-to-b from-green-400 to-green-700"></div>
                                     
                                     <div class="w-24 sm:w-32 bg-[#1a1f2e] border-r border-dashed border-white/10 flex flex-col items-center justify-center p-3 relative">
                                         <div class="absolute -top-3 -right-3 w-6 h-6 rounded-full bg-[#161920]/80 border-b border-l border-white/5 z-10"></div>
                                         <div class="absolute -bottom-3 -right-3 w-6 h-6 rounded-full bg-[#161920]/80 border-t border-l border-white/5 z-10"></div>
                                         
-                                        <span class="text-xl sm:text-2xl font-black text-cyan-400 drop-shadow-[0_0_8px_rgba(34,211,238,0.5)]">10k</span>
+                                        <span class="text-xl sm:text-2xl font-black text-green-400 drop-shadow-[0_0_8px_rgba(34,197,94,0.5)]">10k</span>
                                         <span class="text-[10px] text-gray-400 font-bold uppercase tracking-wider mt-1">Potongan</span>
                                     </div>
                                     
@@ -297,7 +297,7 @@
                                         <p class="text-[11px] sm:text-xs text-gray-400 mb-3">Minimal transaksi Rp 50.000. Berlaku hingga 15 Jun 2026.</p>
                                         
                                         <div>
-                                            <a href="{{ route('cart') }}" class="inline-flex items-center gap-2 px-4 py-1.5 sm:py-2 bg-cyan-500 hover:bg-cyan-400 rounded-lg text-black text-[11px] sm:text-xs font-bold transition-all shadow-[0_0_10px_rgba(34,211,238,0.4)] hover:shadow-[0_0_15px_rgba(34,211,238,0.6)]">
+                                            <a href="{{ route('cart') }}" class="inline-flex items-center gap-2 px-4 py-1.5 sm:py-2 bg-green-500 hover:bg-green-400 rounded-lg text-white text-[11px] sm:text-xs font-bold transition-all shadow-[0_0_10px_rgba(34,197,94,0.4)] hover:shadow-[0_0_15px_rgba(34,197,94,0.6)]">
                                                 Gunakan Sekarang
                                                 <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
                                             </a>
@@ -310,18 +310,18 @@
                         {{-- Kanan: Voucher Tersedia (Setengah Halaman - lg:col-span-6) --}}
                         <section id="klaim-voucher-panel" class="lg:col-span-6">
                             <div class="mb-5 hidden lg:flex items-center gap-3">
-                                <div class="w-1.5 h-1.5 bg-cyan-400 rotate-45 animate-pulse shadow-[0_0_8px_rgba(34,211,238,0.8)]"></div>
+                                <div class="w-1.5 h-1.5 bg-green-400 rotate-45 animate-pulse shadow-[0_0_8px_rgba(34,197,94,0.8)]"></div>
                                 <h2 class="text-xl font-black text-white uppercase tracking-widest drop-shadow">Klaim Voucher</h2>
                             </div>
                             
                             <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                                 {{-- Card Tersedia 1 --}}
-                                <div class="relative rounded-xl overflow-hidden bg-[#161920]/80 backdrop-blur-md border border-white/5 card-3d p-5 flex flex-col justify-between group hover:border-cyan-500/30 transition-all duration-300">
-                                    <div class="absolute top-0 right-0 w-24 h-24 bg-cyan-500/5 rounded-full blur-2xl pointer-events-none group-hover:bg-cyan-500/10 transition-all"></div>
+                                <div class="relative rounded-xl overflow-hidden bg-[#161920]/80 backdrop-blur-md border border-white/5 card-3d p-5 flex flex-col justify-between group hover:border-green-500/30 transition-all duration-300">
+                                    <div class="absolute top-0 right-0 w-24 h-24 bg-green-500/5 rounded-full blur-2xl pointer-events-none group-hover:bg-green-500/10 transition-all"></div>
                                     
                                     <div class="relative z-10">
                                         <div class="flex items-start justify-between mb-3">
-                                            <div class="inline-block px-2.5 py-1 rounded-md bg-cyan-500/10 border border-cyan-500/30 text-cyan-400 text-[10px] font-bold shadow-[0_0_8px_rgba(34,211,238,0.2)]">Terbatas</div>
+                                            <div class="inline-block px-2.5 py-1 rounded-md bg-green-500/10 border border-green-500/30 text-green-400 text-[10px] font-bold shadow-[0_0_8px_rgba(34,197,94,0.2)]">Terbatas</div>
                                             <span class="text-xs font-bold text-gray-500"><svg class="inline w-3 h-3 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>12 Jam Lagi</span>
                                         </div>
                                         <h3 class="text-base font-extrabold text-white mb-2">Cashback 50% OVO</h3>
@@ -338,19 +338,19 @@
                                     </div>
                                     
                                     <div class="relative z-10 pt-2 border-t border-white/5">
-                                        <button onclick="claimVoucher(this, 'Cashback 50% OVO', 'cyan')" class="w-full py-2.5 border border-cyan-500/50 bg-cyan-500/10 text-cyan-400 hover:bg-cyan-500 hover:text-black rounded-lg text-xs font-black uppercase tracking-widest transition-all">
+                                        <button onclick="claimVoucher(this, 'Cashback 50% OVO', 'cyan')" class="w-full py-2.5 border border-green-500/50 bg-green-500/10 text-green-400 hover:bg-green-500 hover:text-white rounded-lg text-xs font-black uppercase tracking-widest transition-all">
                                             Klaim Voucher
                                         </button>
                                     </div>
                                 </div>
                                 
                                 {{-- Card Tersedia 2 --}}
-                                <div class="relative rounded-xl overflow-hidden bg-[#161920]/80 backdrop-blur-md border border-white/5 card-3d p-5 flex flex-col justify-between group hover:border-pink-500/30 transition-all duration-300">
-                                    <div class="absolute top-0 right-0 w-24 h-24 bg-pink-500/5 rounded-full blur-2xl pointer-events-none group-hover:bg-pink-500/10 transition-all"></div>
+                                <div class="relative rounded-xl overflow-hidden bg-[#161920]/80 backdrop-blur-md border border-white/5 card-3d p-5 flex flex-col justify-between group hover:border-orange-500/30 transition-all duration-300">
+                                    <div class="absolute top-0 right-0 w-24 h-24 bg-orange-500/5 rounded-full blur-2xl pointer-events-none group-hover:bg-orange-500/10 transition-all"></div>
                                     
                                     <div class="relative z-10">
                                         <div class="flex items-start justify-between mb-3">
-                                            <div class="inline-block px-2.5 py-1 rounded-md bg-pink-500/10 border border-pink-500/30 text-pink-400 text-[10px] font-bold shadow-[0_0_8px_rgba(236,72,153,0.2)]">Event Spesial</div>
+                                            <div class="inline-block px-2.5 py-1 rounded-md bg-orange-500/10 border border-orange-500/30 text-orange-400 text-[10px] font-bold shadow-[0_0_8px_rgba(249,115,22,0.2)]">Event Spesial</div>
                                             <span class="text-xs font-bold text-gray-500"><svg class="inline w-3 h-3 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>3 Hari Lagi</span>
                                         </div>
                                         <h3 class="text-base font-extrabold text-white mb-2">Diskon 10% All Games</h3>
@@ -367,7 +367,7 @@
                                     </div>
                                     
                                     <div class="relative z-10 pt-2 border-t border-white/5">
-                                        <button onclick="claimVoucher(this, 'Diskon 10% All Games', 'pink')" class="w-full py-2.5 border border-pink-500/50 bg-pink-500/10 text-pink-400 hover:bg-pink-500 hover:text-white rounded-lg text-xs font-black uppercase tracking-widest transition-all">
+                                        <button onclick="claimVoucher(this, 'Diskon 10% All Games', 'pink')" class="w-full py-2.5 border border-orange-500/50 bg-orange-500/10 text-orange-400 hover:bg-orange-500 hover:text-white rounded-lg text-xs font-black uppercase tracking-widest transition-all">
                                             Klaim Voucher
                                         </button>
                                     </div>
@@ -382,7 +382,7 @@
                                             <div class="inline-block px-2.5 py-1 rounded-md bg-purple-500/10 border border-purple-500/30 text-purple-400 text-[10px] font-bold shadow-[0_0_8px_rgba(168,85,247,0.2)]">Pengguna Baru</div>
                                         </div>
                                         <h3 class="text-base font-extrabold text-white mb-2">Welcome Bonus Rp 5k</h3>
-                                        <p class="text-xs text-gray-400 line-clamp-2 mb-3">Khusus untuk kamu yang baru mendaftar di GameVault. Langsung dapat potongan.</p>
+                                        <p class="text-xs text-gray-400 line-clamp-2 mb-3">Khusus untuk kamu yang baru mendaftar di WarGame. Langsung dapat potongan.</p>
                                         
                                         <div class="bg-black/30 rounded p-3 mb-4 border border-white/5">
                                             <h4 class="text-[10px] font-bold text-gray-300 uppercase tracking-wider mb-1">Syarat & Ketentuan:</h4>
@@ -420,14 +420,14 @@
                 btn.disabled = true;
                 
                 // Determine icon color based on theme
-                let iconColorClass = 'text-cyan-400';
-                let iconBgClass = 'bg-cyan-500/20';
-                let borderGlowClass = 'border-cyan-500/50 shadow-[0_0_15px_rgba(34,211,238,0.3)]';
+                let iconColorClass = 'text-green-400';
+                let iconBgClass = 'bg-green-500/20';
+                let borderGlowClass = 'border-green-500/50 shadow-[0_0_15px_rgba(34,197,94,0.3)]';
                 
                 if (colorTheme === 'pink') {
-                    iconColorClass = 'text-pink-400';
-                    iconBgClass = 'bg-pink-500/20';
-                    borderGlowClass = 'border-pink-500/50 shadow-[0_0_15px_rgba(236,72,153,0.3)]';
+                    iconColorClass = 'text-orange-400';
+                    iconBgClass = 'bg-orange-500/20';
+                    borderGlowClass = 'border-orange-500/50 shadow-[0_0_15px_rgba(249,115,22,0.3)]';
                 } else if (colorTheme === 'purple') {
                     iconColorClass = 'text-purple-400';
                     iconBgClass = 'bg-purple-500/20';

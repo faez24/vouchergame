@@ -3,8 +3,8 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Top Up Mobile Legends | GameVault</title>
-    <meta name="description" content="Top up Mobile Legends Diamonds murah, cepat, dan aman di GameVault. Berbagai pilihan nominal Diamond tersedia.">
+    <title>Top Up Mobile Legends | WarGame</title>
+    <meta name="description" content="Top up Mobile Legends Diamonds murah, cepat, dan aman di WarGame. Berbagai pilihan nominal Diamond tersedia.">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -65,15 +65,15 @@
         .pkg-card:hover { transform: translateY(-4px); box-shadow: 0 0 28px rgba(245,158,11,.35), 0 12px 30px rgba(0,0,0,.6); }
         .pkg-card.selected { border-color: #f59e0b !important; box-shadow: 0 0 0 2px #f59e0b66, 0 12px 30px rgba(0,0,0,.6); background: rgba(245, 158, 11, 0.1); }
         
-        .pay-card input:checked ~ div.border-2 { border-color: #22d3ee; box-shadow: 0 0 15px rgba(34,211,238,0.2); }
-        .pay-card input:checked ~ .bg-white { border: 2px solid #22d3ee; }
+        .pay-card input:checked ~ div.border-2 { border-color: #4ade80; box-shadow: 0 0 15px rgba(34,197,94,0.2); }
+        .pay-card input:checked ~ .bg-white { border: 2px solid #4ade80; }
 
         /* Modal */
         @keyframes modal-in { from{opacity:0;transform:scale(.95) translateY(12px)} to{opacity:1;transform:scale(1) translateY(0)} }
         .modal-box { animation: modal-in .25s cubic-bezier(.4,0,.2,1) forwards; }
 
         /* Pulse badge */
-        @keyframes pulse-badge { 0%,100%{box-shadow:0 0 0 0 rgba(236,72,153,.7)} 70%{box-shadow:0 0 0 6px rgba(236,72,153,0)} }
+        @keyframes pulse-badge { 0%,100%{box-shadow:0 0 0 0 rgba(249,115,22,.7)} 70%{box-shadow:0 0 0 6px rgba(249,115,22,0)} }
         .pulse-badge { animation: pulse-badge 2s infinite; }
 
         /* Step number */
@@ -84,7 +84,7 @@
         .scrollbar-hide::-webkit-scrollbar { display:none; }
     </style>
 </head>
-<body class="min-h-screen bg-[#344050] text-white font-sans selection:bg-cyan-500 selection:text-white overflow-x-hidden">
+<body class="min-h-screen bg-[#344050] text-white font-sans selection:bg-green-500 selection:text-white overflow-x-hidden">
 
     <div class="relative min-h-screen bg-[#344050] bg-noise overflow-hidden flex flex-col">
 
@@ -105,9 +105,9 @@
             <div class="smoke-b absolute top-[10%] left-[40%] w-[40vw] h-[35vw] max-w-[550px] max-h-[450px] rounded-full bg-slate-300/8 blur-[80px]"></div>
             <div class="smoke-a absolute bottom-[30%] right-[10%] w-[45vw] h-[38vw] max-w-[600px] max-h-[500px] rounded-full bg-slate-400/8 blur-[90px]"></div>
             {{-- Faint accent glows --}}
-            <div class="smoke-e absolute top-[20%] left-[8%] w-[25vw] h-[25vw] max-w-[350px] max-h-[350px] rounded-full bg-cyan-400/5 blur-[70px]"></div>
-            <div class="smoke-c absolute bottom-[15%] right-[8%] w-[30vw] h-[30vw] max-w-[400px] max-h-[400px] rounded-full bg-pink-400/4 blur-[80px]"></div>
-            <div class="smoke-d absolute top-[45%] right-[30%] w-[20vw] h-[20vw] max-w-[280px] max-h-[280px] rounded-full bg-blue-400/5 blur-[60px]"></div>
+            <div class="smoke-e absolute top-[20%] left-[8%] w-[25vw] h-[25vw] max-w-[350px] max-h-[350px] rounded-full bg-green-400/5 blur-[70px]"></div>
+            <div class="smoke-c absolute bottom-[15%] right-[8%] w-[30vw] h-[30vw] max-w-[400px] max-h-[400px] rounded-full bg-orange-400/4 blur-[80px]"></div>
+            <div class="smoke-d absolute top-[45%] right-[30%] w-[20vw] h-[20vw] max-w-[280px] max-h-[280px] rounded-full bg-green-500/5 blur-[60px]"></div>
         </div>
 
         {{-- Navbar --}}
@@ -130,7 +130,7 @@
                     </div>
                     <div>
                         <div class="flex items-center gap-2 mb-1">
-                            <span class="inline-block px-2.5 py-0.5 rounded-full bg-pink-500 text-white text-[10px] font-black pulse-badge shadow-[0_0_8px_rgba(236,72,153,0.6)]">POPULER</span>
+                            <span class="inline-block px-2.5 py-0.5 rounded-full bg-orange-500 text-white text-[10px] font-black pulse-badge shadow-[0_0_8px_rgba(249,115,22,0.6)]">POPULER</span>
                             <span class="inline-block px-2.5 py-0.5 rounded-full bg-amber-500/20 text-amber-400 text-[10px] font-bold border border-amber-500/30">Moonton</span>
                         </div>
                         <h1 class="text-2xl sm:text-3xl font-black text-white tracking-tight">Mobile Legends</h1>
@@ -154,12 +154,12 @@
 
                         <div class="grid grid-cols-2 gap-3">
                             <div>
-                                <label class="block text-gray-400 text-xs font-semibold mb-1.5 uppercase tracking-wider">User ID <span class="text-pink-500">*</span></label>
+                                <label class="block text-gray-400 text-xs font-semibold mb-1.5 uppercase tracking-wider">User ID <span class="text-orange-500">*</span></label>
                                 <input id="user-id" type="text" placeholder="Contoh: 123456789"
                                     class="w-full bg-[#1e2433] border border-white/10 rounded-xl px-4 py-3 text-white text-sm placeholder-gray-600 outline-none focus:border-amber-500/60 focus:ring-1 focus:ring-amber-500/30 transition-all" oninput="updateSummaryBar()"/>
                             </div>
                             <div>
-                                <label class="block text-gray-400 text-xs font-semibold mb-1.5 uppercase tracking-wider">Zone ID <span class="text-pink-500">*</span></label>
+                                <label class="block text-gray-400 text-xs font-semibold mb-1.5 uppercase tracking-wider">Zone ID <span class="text-orange-500">*</span></label>
                                 <input id="zone-id" type="text" placeholder="Contoh: 1234"
                                     class="w-full bg-[#1e2433] border border-white/10 rounded-xl px-4 py-3 text-white text-sm placeholder-gray-600 outline-none focus:border-amber-500/60 focus:ring-1 focus:ring-amber-500/30 transition-all"/>
                             </div>
@@ -169,7 +169,7 @@
                     {{-- 3. Pilih Pembayaran --}}
                     <div class="order-3 lg:order-none w-full bg-[#252d40]/80 border border-white/8 rounded-2xl p-5 backdrop-blur-md">
                         <h2 class="text-white font-bold text-base mb-4 flex items-center gap-2">
-                            <span class="w-1 h-5 rounded-full bg-gradient-to-b from-cyan-400 to-blue-500 inline-block"></span>
+                            <span class="w-1 h-5 rounded-full bg-gradient-to-b from-green-400 to-green-600 inline-block"></span>
                             3. Pilih Pembayaran
                         </h2>
                         
@@ -183,7 +183,7 @@
                             @endphp
 
                             @foreach($payments as $pay)
-                            <label class="pay-card cursor-pointer relative block bg-[#1e2433] border-2 border-white/10 rounded-xl p-3 hover:border-cyan-500/50 transition-all [&:has(input:checked)]:border-cyan-400 [&:has(input:checked)]:bg-cyan-900/20">
+                            <label class="pay-card cursor-pointer relative block bg-[#1e2433] border-2 border-white/10 rounded-xl p-3 hover:border-green-500/50 transition-all [&:has(input:checked)]:border-green-400 [&:has(input:checked)]:bg-green-900/20">
                                 <input type="radio" name="payment" value="{{ $pay['id'] }}" class="hidden" onchange="selectPayment('{{ $pay['name'] }}')">
                                 <div class="flex items-center gap-4">
                                     <div class="w-16 h-10 bg-white rounded-lg p-1.5 flex items-center justify-center relative z-10 transition-colors">
@@ -194,7 +194,7 @@
                                         <p class="text-gray-500 text-xs">{{ $pay['desc'] }}</p>
                                     </div>
                                     <div class="outer-circle w-5 h-5 rounded-full border-2 border-gray-600 flex items-center justify-center relative z-10 transition-colors">
-                                        <div class="inner-circle w-2.5 h-2.5 rounded-full bg-cyan-400 scale-0 transition-transform"></div>
+                                        <div class="inner-circle w-2.5 h-2.5 rounded-full bg-green-400 scale-0 transition-transform"></div>
                                     </div>
                                 </div>
                             </label>
@@ -203,7 +203,7 @@
                         
                         <style>
                             .pay-card:has(input:checked) .outer-circle {
-                                border-color: #22d3ee;
+                                border-color: #4ade80;
                             }
                             .pay-card:has(input:checked) .inner-circle {
                                 transform: scale(1);
@@ -216,7 +216,7 @@
                 {{-- KANAN: Nominal (Desktop) | Urutan 2 (Mobile) --}}
                 <div class="order-2 lg:order-none lg:col-span-3 w-full bg-[#252d40]/80 border border-white/8 rounded-2xl p-5 backdrop-blur-md">
                     <h2 class="text-white font-bold text-base mb-4 flex items-center gap-2">
-                        <span class="w-1 h-5 rounded-full bg-gradient-to-b from-pink-500 to-purple-500 inline-block"></span>
+                        <span class="w-1 h-5 rounded-full bg-gradient-to-b from-orange-500 to-purple-500 inline-block"></span>
                         2. Pilih Nominal Diamond
                     </h2>
 
@@ -245,14 +245,14 @@
 
                             @if($pkg['badge'])
                             <div class="absolute -top-2 left-1/2 -translate-x-1/2 px-2 py-0.5 rounded-full text-[9px] font-black
-                                {{ $pkg['badge'] === 'BEST VALUE' ? 'bg-gradient-to-r from-amber-400 to-orange-500 text-black' : 'bg-pink-500 text-white' }}
-                                shadow-[0_0_10px_rgba(236,72,153,0.5)] whitespace-nowrap">
+                                {{ $pkg['badge'] === 'BEST VALUE' ? 'bg-gradient-to-r from-amber-400 to-orange-500 text-black' : 'bg-orange-500 text-white' }}
+                                shadow-[0_0_10px_rgba(249,115,22,0.5)] whitespace-nowrap">
                                 {{ $pkg['badge'] }}
                             </div>
                             @endif
 
                             <div class="flex items-center justify-center gap-1.5 mb-1.5">
-                                <svg class="w-5 h-5 text-cyan-400 flex-shrink-0" fill="currentColor" viewBox="0 0 24 24">
+                                <svg class="w-5 h-5 text-green-400 flex-shrink-0" fill="currentColor" viewBox="0 0 24 24">
                                     <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
                                 </svg>
                             </div>
@@ -292,7 +292,7 @@
                     </div>
                     
                     <div class="mt-2 flex items-baseline gap-2">
-                        <span class="text-2xl font-black text-blue-400" id="float-price">Rp -</span>
+                        <span class="text-2xl font-black text-green-500" id="float-price">Rp -</span>
                         <span class="text-[10px] font-semibold text-gray-400 uppercase tracking-wider">Pajak sudah termasuk</span>
                     </div>
                 </div>
@@ -301,7 +301,7 @@
                 <div class="flex items-center gap-3 w-full sm:w-auto">
                     {{-- Tambah ke Keranjang: hanya muncul saat > 1 item --}}
                     <button onclick="addToCart()" id="btn-cart"
-                        class="hidden flex-1 sm:flex-none sm:w-[180px] py-3.5 rounded-xl border border-cyan-500/50 text-cyan-400 font-bold text-sm transition-all hover:bg-cyan-500/10 items-center justify-center gap-2">
+                        class="hidden flex-1 sm:flex-none sm:w-[180px] py-3.5 rounded-xl border border-green-500/50 text-green-400 font-bold text-sm transition-all hover:bg-green-500/10 items-center justify-center gap-2">
                         <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/>
                             <line x1="3" y1="6" x2="21" y2="6"/>
@@ -368,16 +368,16 @@
                     {{-- Email Input above Confirmation --}}
                     <div>
                         <label class="block text-gray-400 text-[11px] font-semibold mb-1.5 uppercase tracking-wider">Alamat Email <span class="text-gray-500 capitalize normal-case">(opsional)</span></label>
-                        <input id="modal-email" type="email" placeholder="Email untuk bukti transaksi" class="w-full bg-[#252d40] border border-white/10 rounded-xl px-4 py-3 text-white text-sm placeholder-gray-500 outline-none focus:border-blue-500/50 transition-all"/>
+                        <input id="modal-email" type="email" placeholder="Email untuk bukti transaksi" class="w-full bg-[#252d40] border border-white/10 rounded-xl px-4 py-3 text-white text-sm placeholder-gray-500 outline-none focus:border-green-600/50 transition-all"/>
                     </div>
 
-                    <div class="bg-gradient-to-r from-blue-500/10 to-purple-500/10 border border-blue-500/20 rounded-xl px-4 py-4 flex items-center justify-between mt-2">
+                    <div class="bg-gradient-to-r from-green-600/10 to-purple-500/10 border border-green-600/20 rounded-xl px-4 py-4 flex items-center justify-between mt-2">
                         <span class="text-gray-300 text-sm font-bold">Total Pembayaran</span>
-                        <span class="text-blue-400 font-black text-xl" id="modal-price">—</span>
+                        <span class="text-green-500 font-black text-xl" id="modal-price">—</span>
                     </div>
                 </div>
 
-                <button onclick="confirmOrder()" class="w-full py-3.5 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-black text-sm tracking-wider transition-all shadow-[0_0_20px_rgba(37,99,235,0.4)]">
+                <button onclick="confirmOrder()" class="w-full py-3.5 rounded-xl bg-green-700 hover:bg-green-700 text-white font-black text-sm tracking-wider transition-all shadow-[0_0_20px_rgba(22,163,74,0.4)]">
                     KONFIRMASI
                 </button>
             </div>
@@ -472,11 +472,11 @@
             if (count > 0 && selectedPayName) {
                 btnBuy.disabled = false;
                 btnBuy.classList.remove('bg-gray-300', 'text-gray-500', 'cursor-not-allowed');
-                btnBuy.classList.add('bg-blue-600', 'hover:bg-blue-700', 'text-white', 'shadow-lg', 'shadow-blue-600/30');
+                btnBuy.classList.add('bg-green-700', 'hover:bg-green-700', 'text-white', 'shadow-lg', 'shadow-green-700/30');
             } else {
                 btnBuy.disabled = true;
                 btnBuy.classList.add('bg-gray-300', 'text-gray-500');
-                btnBuy.classList.remove('bg-blue-600', 'hover:bg-blue-700', 'text-white', 'shadow-lg', 'shadow-blue-600/30');
+                btnBuy.classList.remove('bg-green-700', 'hover:bg-green-700', 'text-white', 'shadow-lg', 'shadow-green-700/30');
             }
         }
 
