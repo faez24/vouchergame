@@ -398,6 +398,7 @@
                 const isOpen = extra.classList.contains('expanded');
 
                 if (isOpen) {
+                    extra.firstElementChild.style.overflow = 'hidden';
                     extra.classList.remove('expanded');
                     btn.classList.remove('expanded');
                     label.textContent = 'Lihat Semua';
@@ -410,6 +411,13 @@
                     setTimeout(() => {
                         extra.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
                     }, 100);
+
+                    // Tampilkan overflow (drop shadow) setelah animasi selesai (450ms)
+                    setTimeout(() => {
+                        if (extra.classList.contains('expanded')) {
+                            extra.firstElementChild.style.overflow = 'visible';
+                        }
+                    }, 450);
                 }
             }
         </script>
