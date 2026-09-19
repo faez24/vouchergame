@@ -4,6 +4,9 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\GoogleAuthController;
 use Inertia\Inertia;
+use App\Http\Controllers\TopupController;
+use App\Http\Controllers\TransactionController;
+use App\Http\Controllers\VocaBisnisCallbackController;
 
 Route::get('/', function () {
     return Inertia::render('Welcome', [
@@ -12,9 +15,9 @@ Route::get('/', function () {
     ]);
 });
 
-Route::get('/topup/mobile-legends', function () {
-    return view('topupgame.topupml');
-})->name('topup.ml');
+Route::get('/topup/mobile-legends', [TopupController::class, 'show'])
+    ->defaults('productId', 15)
+    ->name('topup.ml');
 
 Route::get('/login', function () {
     return view('auth.login');
@@ -45,3 +48,8 @@ Route::get('/voucher', function () {
 Route::get('/games', function () {
     return view('games');
 })->name('games');
+
+Route::get('/topup/{productId}', [TopupController::class, 'show'])->name('topup.show');
+Route::post('/topup/{productId}/checkout', [TopupController::class, 'store'])->name('topup.checkout');
+Route::get('/transaction/{invoiceId}', [TransactionController::class, 'show'])->name('transaction.show');
+Route::post('/callback/vocabisnis', VocaBisnisCallbackController::class)->name('vocabisnis.callback');
