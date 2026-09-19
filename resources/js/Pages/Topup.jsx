@@ -135,8 +135,10 @@ export default function Topup({ product, items }) {
                                     2. Pilih Nominal
                                 </h2>
                                 <div className="grid grid-cols-2 sm:grid-cols-3 xl:grid-cols-4 gap-3">
-                                    {items?.length ? items.map((item) => {
-                                        const disabled = item.isActive === false || item.isMaintenance;
+                                    {(() => {
+                                        const visibleItems = items?.filter((item) => item.isActive !== false && item.voucherStock !== 0);
+                                        return visibleItems?.length ? visibleItems.map((item) => {
+                                        const disabled = item.isMaintenance;
                                         const active = selectedItem?.id === item.id;
                                         return (
                                             <div
@@ -158,7 +160,9 @@ export default function Topup({ product, items }) {
                                         );
                                     }) : (
                                         <p className="text-gray-400 text-sm col-span-full text-center py-8">Belum ada nominal tersedia untuk produk ini.</p>
-                                    )}
+                                    );
+                                    })()}
+
                                 </div>
                             </div>
                         </div>
