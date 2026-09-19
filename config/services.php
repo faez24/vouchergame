@@ -41,4 +41,12 @@ return [
         'redirect' => env('GOOGLE_REDIRECT_URL', '/auth/google/callback'),
     ],
 
+    'vocabisnis' => [
+        'base_url' => env('VOCABISNIS_BASE_URL', 'https://api-staging-bisnis.vocagame.com'),
+        'merchant_id' => env('VOCABISNIS_MERCHANT_ID'),
+        'secret_key' => env('VOCABISNIS_SECRET_KEY'),
+        'callback_key' => env('VOCABISNIS_CALLBACK_KEY'),
+        'proxy' => env('VOCABISNIS_PROXY_URL'),
+    ],
+
 ];
