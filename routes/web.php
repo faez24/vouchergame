@@ -3,12 +3,16 @@
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\GoogleAuthController;
+use Inertia\Inertia;
 use App\Http\Controllers\TopupController;
 use App\Http\Controllers\TransactionController;
 use App\Http\Controllers\VocaBisnisCallbackController;
 
 Route::get('/', function () {
-    return view('welcome');
+    return Inertia::render('Welcome', [
+        'appName' => 'WarGame',
+        'message' => 'Marketplace game top up dan voucher digital dengan tampilan premium dark.',
+    ]);
 });
 
 Route::get('/topup/mobile-legends', [TopupController::class, 'show'])
