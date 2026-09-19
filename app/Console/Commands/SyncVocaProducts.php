@@ -15,13 +15,6 @@ class SyncVocaProducts extends Command
 
     protected $description = 'Sync products, categories and product items from the VocaBisnis API into the local database';
 
-    /**
-     * Number of top (by sortOrder) products flagged as "featured" (e.g. for
-     * the homepage highlight rail). All products still get their detail
-     * fetched for the logo image, regardless of this flag.
-     */
-    private const FEATURED_LIMIT = 20;
-
     public function handle(VocaBisnisService $voca): int
     {
         $now = now();
@@ -30,7 +23,7 @@ class SyncVocaProducts extends Command
             ->sortBy(fn (array $productData) => $productData['sortOrder'] ?? 0)
             ->values();
 
-        foreach ($products as $index => $productData) {
+        foreach ($products as $productData) {
             $categoryId = null;
 
             if (! empty($productData['category']['name'])) {
@@ -41,7 +34,6 @@ class SyncVocaProducts extends Command
                 $categoryId = $category->id;
             }
 
-            $isFeatured = $index < self::FEATURED_LIMIT;
             $detail = $voca->getProductDetail($productData['id']);
             $logoUrl = $detail['logoUrl'] ?? null;
 
@@ -54,7 +46,6 @@ class SyncVocaProducts extends Command
                     'type' => $productData['type'] ?? null,
                     'logo_url' => $logoUrl,
                     'is_maintenance' => $productData['isMaintenance'] ?? false,
-                    'is_featured' => $isFeatured,
                     'sort_order' => $productData['sortOrder'] ?? 0,
                     'synced_at' => $now,
                 ]

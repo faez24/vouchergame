@@ -4,7 +4,7 @@ import SmokeBackground from '../Components/SmokeBackground';
 import Navbar from '../Components/Navbar';
 import Footer from '../Components/Footer';
 
-export default function Games({ games = [] }) {
+export default function Games({ games = [], categories = [], activeCategory = null }) {
     const [search, setSearch] = useState('');
 
     const filtered = useMemo(
@@ -35,6 +35,26 @@ export default function Games({ games = [] }) {
                                     placeholder="Cari game favoritmu..."
                                 />
                             </div>
+
+                            {categories.length > 0 && (
+                                <div className="mt-4 flex flex-wrap items-center justify-center gap-2">
+                                    <Link
+                                        href="/games"
+                                        className={`px-4 py-1.5 rounded-full text-xs font-bold border transition-colors ${!activeCategory ? 'bg-green-500 border-green-400 text-white' : 'bg-white/5 border-white/10 text-gray-300 hover:bg-white/10'}`}
+                                    >
+                                        Semua
+                                    </Link>
+                                    {categories.map((cat) => (
+                                        <Link
+                                            key={cat.slug}
+                                            href={`/games?category=${cat.slug}`}
+                                            className={`px-4 py-1.5 rounded-full text-xs font-bold border transition-colors ${activeCategory === cat.slug ? 'bg-green-500 border-green-400 text-white' : 'bg-white/5 border-white/10 text-gray-300 hover:bg-white/10'}`}
+                                        >
+                                            {cat.name}
+                                        </Link>
+                                    ))}
+                                </div>
+                            )}
                         </div>
 
                         {filtered.length > 0 ? (
