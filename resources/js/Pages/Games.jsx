@@ -4,29 +4,12 @@ import SmokeBackground from '../Components/SmokeBackground';
 import Navbar from '../Components/Navbar';
 import Footer from '../Components/Footer';
 
-const games = [
-    { name: 'Mobile Legends', href: '/topup/mobile-legends', image: 'https://images.unsplash.com/photo-1556438064-2d7646166914?w=600&h=800&fit=crop', badge: 'Populer', badgeStyle: 'bg-orange-500' },
-    { name: 'Free Fire', image: 'https://images.unsplash.com/photo-1560253023-3ec5d502959f?w=600&h=800&fit=crop', badge: 'Populer', badgeStyle: 'bg-orange-500' },
-    { name: 'PUBG Mobile', image: 'https://images.unsplash.com/photo-1542751371-adc38448a05e?w=600&h=800&fit=crop', badge: 'Populer', badgeStyle: 'bg-orange-500' },
-    { name: 'Genshin Impact', image: 'https://images.unsplash.com/photo-1552820728-8b83bb6b773f?w=600&h=800&fit=crop', badge: 'Baru', badgeStyle: 'bg-green-500' },
-    { name: 'Valorant', image: 'https://images.unsplash.com/photo-1615680022647-99c397cbcaea?w=600&h=800&fit=crop', badge: 'Populer', badgeStyle: 'bg-orange-500' },
-    { name: 'Honkai Star Rail', image: 'https://images.unsplash.com/photo-1593305841991-05c297ba4575?w=600&h=800&fit=crop', badge: 'Baru', badgeStyle: 'bg-green-500' },
-    { name: 'Call of Duty Mobile', image: 'https://images.unsplash.com/photo-1511512578047-dfb367046420?w=600&h=800&fit=crop', badge: 'Populer', badgeStyle: 'bg-orange-500' },
-    { name: 'Apex Legends', image: 'https://images.unsplash.com/photo-1536240478700-b869ad10f984?w=600&h=800&fit=crop', badge: '' },
-    { name: 'League of Legends', image: 'https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=600&h=800&fit=crop', badge: '' },
-    { name: 'Clash of Clans', image: 'https://images.unsplash.com/photo-1579952363873-27f3bade9f55?w=600&h=800&fit=crop', badge: '' },
-    { name: 'Fortnite', image: 'https://images.unsplash.com/photo-1606144042614-b2417e99c4e3?w=600&h=800&fit=crop', badge: 'Populer', badgeStyle: 'bg-orange-500' },
-    { name: 'Wuthering Waves', image: 'https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=600&h=800&fit=crop', badge: 'Baru', badgeStyle: 'bg-green-500' },
-    { name: 'Solo Leveling Arise', image: 'https://images.unsplash.com/photo-1579952363873-27f3bade9f55?w=600&h=800&fit=crop', badge: 'Baru', badgeStyle: 'bg-green-500' },
-    { name: 'Zenless Zone Zero', image: 'https://images.unsplash.com/photo-1542751371-adc38448a05e?w=600&h=800&fit=crop', badge: 'Baru', badgeStyle: 'bg-green-500' },
-];
-
-export default function Games() {
+export default function Games({ games = [] }) {
     const [search, setSearch] = useState('');
 
     const filtered = useMemo(
         () => games.filter((g) => g.name.toLowerCase().includes(search.toLowerCase().trim())),
-        [search]
+        [search, games]
     );
 
     return (
@@ -56,8 +39,8 @@ export default function Games() {
 
                         {filtered.length > 0 ? (
                             <div className="grid grid-cols-3 sm:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-2 sm:gap-4">
-                                {filtered.map((game) => {
-                                    const Card = (
+                                {filtered.map((game) => (
+                                    <Link key={game.id} href={`/topup/${game.id}`} className="block">
                                         <article className="relative rounded-lg overflow-hidden bg-[#161920]/80 backdrop-blur-md border border-white/5 hover:border-green-500/50 group transition-all duration-300 h-full">
                                             <div className="relative w-full pb-[133.33%] overflow-hidden bg-[#1a1f2e]">
                                                 <img src={game.image} alt={game.name} className="absolute inset-0 w-full h-full object-cover" />
@@ -67,13 +50,8 @@ export default function Games() {
                                                 <h3 className="mt-2 text-sm font-extrabold line-clamp-1">{game.name}</h3>
                                             </div>
                                         </article>
-                                    );
-                                    return game.href ? (
-                                        <Link key={game.name} href={game.href} className="block">{Card}</Link>
-                                    ) : (
-                                        <div key={game.name} className="block cursor-pointer">{Card}</div>
-                                    );
-                                })}
+                                    </Link>
+                                ))}
                             </div>
                         ) : (
                             <div className="text-center py-20">

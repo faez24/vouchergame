@@ -7,13 +7,9 @@ use Inertia\Inertia;
 use App\Http\Controllers\TopupController;
 use App\Http\Controllers\TransactionController;
 use App\Http\Controllers\VocaBisnisCallbackController;
+use App\Http\Controllers\WelcomeController;
 
-Route::get('/', function () {
-    return Inertia::render('Welcome', [
-        'appName' => 'WarGame',
-        'message' => 'Marketplace game top up dan voucher digital dengan tampilan premium dark.',
-    ]);
-});
+Route::get('/', WelcomeController::class);
 
 Route::get('/topup/mobile-legends', [TopupController::class, 'show'])
     ->defaults('productId', 15)
@@ -45,9 +41,7 @@ Route::get('/voucher', function () {
     return Inertia::render('Voucher');
 })->name('voucher');
 
-Route::get('/games', function () {
-    return Inertia::render('Games');
-})->name('games');
+Route::get('/games', \App\Http\Controllers\GamesController::class)->name('games');
 
 Route::get('/topup/{productId}', [TopupController::class, 'show'])->name('topup.show');
 Route::post('/topup/{productId}/checkout', [TopupController::class, 'store'])->name('topup.checkout');

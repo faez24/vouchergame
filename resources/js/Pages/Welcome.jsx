@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Head } from '@inertiajs/react';
+import { Head, Link } from '@inertiajs/react';
 import SmokeBackground from '../Components/SmokeBackground';
 import Navbar from '../Components/Navbar';
 import Footer from '../Components/Footer';
@@ -23,20 +23,6 @@ const flashDeals = [
     { title: 'PUBG Mobile', subtitle: '325 UC', oldPrice: 'Rp 75.000', newPrice: 'Rp 52.500', badge: '30% OFF', image: 'https://images.unsplash.com/photo-1542751371-adc38448a05e?w=400&h=400&fit=crop', accent: '#22d3ee' },
 ];
 
-const popularGames = [
-    { name: 'Mobile Legends', image: 'https://images.unsplash.com/photo-1556438064-2d7646166914?w=600&h=800&fit=crop', badge: 'Populer', badgeStyle: 'bg-orange-500' },
-    { name: 'Free Fire', image: 'https://images.unsplash.com/photo-1560253023-3ec5d502959f?w=600&h=800&fit=crop', badge: 'Populer', badgeStyle: 'bg-orange-500' },
-    { name: 'PUBG Mobile', image: 'https://images.unsplash.com/photo-1542751371-adc38448a05e?w=600&h=800&fit=crop', badge: 'Populer', badgeStyle: 'bg-orange-500' },
-    { name: 'Genshin Impact', image: 'https://images.unsplash.com/photo-1552820728-8b83bb6b773f?w=600&h=800&fit=crop', badge: 'Baru', badgeStyle: 'bg-green-500' },
-    { name: 'Valorant', image: 'https://images.unsplash.com/photo-1615680022647-99c397cbcaea?w=600&h=800&fit=crop', badge: 'Populer', badgeStyle: 'bg-orange-500' },
-    { name: 'Honkai Star Rail', image: 'https://images.unsplash.com/photo-1593305841991-05c297ba4575?w=600&h=800&fit=crop', badge: 'Baru', badgeStyle: 'bg-green-500' },
-    { name: 'Call of Duty Mobile', image: 'https://images.unsplash.com/photo-1511512578047-dfb367046420?w=600&h=800&fit=crop', badge: 'Populer', badgeStyle: 'bg-orange-500' },
-    { name: 'Apex Legends', image: 'https://images.unsplash.com/photo-1536240478700-b869ad10f984?w=600&h=800&fit=crop', badge: '', badgeStyle: '' },
-    { name: 'League of Legends', image: 'https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=600&h=800&fit=crop', badge: '', badgeStyle: '' },
-    { name: 'Clash of Clans', image: 'https://images.unsplash.com/photo-1579952363873-27f3bade9f55?w=600&h=800&fit=crop', badge: '', badgeStyle: '' },
-    { name: 'Fortnite', image: 'https://images.unsplash.com/photo-1606144042614-b2417e99c4e3?w=600&h=800&fit=crop', badge: 'Populer', badgeStyle: 'bg-orange-500' },
-];
-
 const voucherItems = [
     { name: 'Steam Wallet', image: 'https://images.unsplash.com/photo-1579952363873-27f3bade9f55?w=600&h=800&fit=crop', badge: 'Promo', badgeStyle: 'bg-orange-500' },
     { name: 'Google Play', image: 'https://images.unsplash.com/photo-1542751110-97427bbecf20?w=600&h=800&fit=crop', badge: '', badgeStyle: '' },
@@ -45,7 +31,7 @@ const voucherItems = [
     { name: 'Garena Shells', image: 'https://images.unsplash.com/photo-1560253023-3ec5d502959f?w=600&h=800&fit=crop', badge: 'Populer', badgeStyle: 'bg-orange-500' },
 ];
 
-export default function Welcome({ appName, message }) {
+export default function Welcome({ appName, message, popularGames = [] }) {
     const [expanded, setExpanded] = useState(false);
 
     return (
@@ -174,36 +160,36 @@ export default function Welcome({ appName, message }) {
                             </div>
 
                             <div className="grid grid-cols-3 sm:grid-cols-4 lg:grid-cols-5 gap-2 sm:gap-4">
-                                {popularGames.slice(0, 5).map((game, idx) => (
-                                    <article key={game.name + idx} className="relative rounded-lg overflow-hidden bg-[#161920]/80 backdrop-blur-md border border-white/5 card-3d hover:border-green-500/50 group transition-all duration-300">
+                                {popularGames.slice(0, 5).map((game) => (
+                                    <Link href={`/topup/${game.id}`} key={game.id} className="relative rounded-lg overflow-hidden bg-[#161920]/80 backdrop-blur-md border border-white/5 card-3d hover:border-green-500/50 group transition-all duration-300 block">
                                         <div className="card-img-wrap bg-[#1a1f2e]"><img src={game.image} alt={game.name} /></div>
                                         <div className="p-3 bg-transparent">
                                             {game.badge ? <div className={`inline-block px-2 py-0.5 rounded-full text-white text-[10px] font-bold shadow-[0_0_8px_rgba(249,115,22,0.6)] ${game.badgeStyle}`}>{game.badge}</div> : null}
                                             <h3 className="mt-2 text-sm font-extrabold">{game.name}</h3>
                                         </div>
-                                    </article>
+                                    </Link>
                                 ))}
                                 {popularGames[5] ? (
-                                    <article className="relative lg:hidden rounded-lg overflow-hidden bg-[#161920]/80 backdrop-blur-md border border-white/5 card-3d hover:border-green-500/50 group transition-all duration-300">
+                                    <Link href={`/topup/${popularGames[5].id}`} className="relative lg:hidden rounded-lg overflow-hidden bg-[#161920]/80 backdrop-blur-md border border-white/5 card-3d hover:border-green-500/50 group transition-all duration-300 block">
                                         <div className="card-img-wrap bg-[#1a1f2e]"><img src={popularGames[5].image} alt={popularGames[5].name} /></div>
                                         <div className="p-3 bg-transparent">
                                             {popularGames[5].badge ? <div className={`inline-block px-2 py-0.5 rounded-full text-white text-[10px] font-bold shadow-[0_0_8px_rgba(249,115,22,0.6)] ${popularGames[5].badgeStyle}`}>{popularGames[5].badge}</div> : null}
                                             <h3 className="mt-2 text-sm font-extrabold">{popularGames[5].name}</h3>
                                         </div>
-                                    </article>
+                                    </Link>
                                 ) : null}
                             </div>
 
                             <div className={`games-extra-grid ${expanded ? 'expanded' : ''}`}>
                                 <div className="grid grid-cols-3 sm:grid-cols-4 lg:grid-cols-5 gap-2 sm:gap-4">
-                                    {popularGames.slice(6).map((game, idx) => (
-                                        <article key={game.name + idx} className="relative rounded-lg overflow-hidden bg-[#161920]/80 backdrop-blur-md border border-white/5 card-3d hover:border-green-500/50 group transition-all duration-300">
+                                    {popularGames.slice(6).map((game) => (
+                                        <Link href={`/topup/${game.id}`} key={game.id} className="relative rounded-lg overflow-hidden bg-[#161920]/80 backdrop-blur-md border border-white/5 card-3d hover:border-green-500/50 group transition-all duration-300 block">
                                             <div className="card-img-wrap bg-[#1a1f2e]"><img src={game.image} alt={game.name} /></div>
                                             <div className="p-3 bg-transparent">
                                                 {game.badge ? <div className={`inline-block px-2 py-0.5 rounded-full text-white text-[10px] font-bold shadow-[0_0_8px_rgba(249,115,22,0.6)] ${game.badgeStyle}`}>{game.badge}</div> : null}
                                                 <h3 className="mt-2 text-sm font-extrabold">{game.name}</h3>
                                             </div>
-                                        </article>
+                                        </Link>
                                     ))}
                                 </div>
                             </div>
