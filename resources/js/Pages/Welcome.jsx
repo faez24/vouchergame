@@ -116,9 +116,9 @@ export default function Welcome({ appName, message }) {
                             </div>
 
                             <div className="relative w-full group/slider overflow-visible">
-                                <div id="flash-sale-slider" className="flex gap-3 sm:gap-6 overflow-x-auto px-1 sm:px-6 pt-4 pb-12 scrollbar-hide snap-x snap-mandatory" style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
+                                <div id="flash-sale-slider" className="flex gap-3 sm:gap-6 overflow-x-auto px-1 sm:px-6 pt-4 pb-8 scrollbar-hide" style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
                                     {flashDeals.map((deal) => (
-                                        <div key={deal.title} className="shrink-0 snap-center w-[calc(33.333%-0.5rem)] sm:w-[calc(33.333%-1rem)] cursor-pointer">
+                                        <div key={deal.title} className="shrink-0 w-[calc(33.333%-0.5rem)] sm:w-[calc(33.333%-1rem)] cursor-pointer">
                                             <div className="bg-[#1c2030] border border-white/10 rounded-2xl overflow-hidden shadow-[0_8px_30px_rgba(0,0,0,0.6)] hover:shadow-[0_0_30px_rgba(34,211,238,0.25)] hover:border-cyan-500/40 transition-all duration-300 hover:-translate-y-1 h-full">
                                                 <div className="h-28 sm:h-32 bg-[#1a1f2e] relative overflow-hidden">
                                                     <img src={deal.image} className="w-full h-full object-cover opacity-70" alt={deal.title} />
@@ -147,9 +147,9 @@ export default function Welcome({ appName, message }) {
                                 <h2 className="text-sm font-bold text-gray-400 uppercase tracking-wider">Populer Games</h2>
                                 <div className="flex-1 lg:hidden h-px bg-gradient-to-r from-white/10 to-transparent" />
                             </div>
-                            <div className="flex gap-4 overflow-x-auto lg:justify-center pb-3 scrollbar-hide snap-x snap-mandatory" style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
+                            <div className="flex gap-4 overflow-x-auto lg:justify-center pb-3 scrollbar-hide" style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
                                 {shortcutItems.map((item) => (
-                                    <a key={item.name} href={item.name === 'Mobile Legends' ? '/topup/mobile-legends' : '#'} className="group flex flex-col items-center gap-2 flex-shrink-0 snap-start">
+                                    <a key={item.name} href={item.name === 'Mobile Legends' ? '/topup/mobile-legends' : '#'} className="group flex flex-col items-center gap-2 flex-shrink-0">
                                         <div className="w-16 h-16 sm:w-[72px] sm:h-[72px] rounded-2xl grid place-items-center shadow-[0_8px_15px_rgba(0,0,0,0.5),0_0_10px_rgba(249,115,22,0.3)] transition-all duration-300 ring-2 ring-transparent group-hover:ring-orange-400/50" style={{ background: item.gradient }}>
                                             <span className="text-white font-black text-lg">{item.short}</span>
                                         </div>

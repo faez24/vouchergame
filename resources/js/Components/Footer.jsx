@@ -7,12 +7,12 @@ const socials = [
 
 export default function Footer() {
     return (
-        <footer id="footer" className="mt-16 border-t border-white/5 relative w-full bg-cover bg-center bg-no-repeat" style={{ backgroundImage: "url('/images/footer.png')" }}>
+        <footer id="footer" className="mt-12 border-t border-white/5 relative w-full overflow-hidden bg-cover bg-bottom bg-no-repeat" style={{ backgroundImage: "url('/images/footer.png')", backgroundPosition: 'center bottom' }}>
             <div className="absolute inset-0 bg-[#050810]/70 backdrop-blur-sm z-0" />
             <div className="absolute top-0 right-0 w-64 h-64 bg-orange-500/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 pointer-events-none" />
             <div className="absolute bottom-0 left-0 w-80 h-80 bg-green-500/10 rounded-full blur-3xl translate-y-1/2 -translate-x-1/4 pointer-events-none" />
 
-            <div className="max-w-[1440px] mx-auto w-full px-4 sm:px-6 lg:px-8 pt-12 sm:pt-16 pb-6 relative z-10">
+            <div className="max-w-[1440px] mx-auto w-full px-4 sm:px-6 lg:px-8 pt-12 sm:pt-14 pb-4 relative z-10">
                 <div className="grid grid-cols-2 md:grid-cols-3 gap-8 lg:grid-cols-5 xl:gap-16">
                     <div className="col-span-2 md:col-span-3 lg:col-span-2">
                         <Link href="/" className="flex items-center gap-3 w-fit mb-6">
@@ -57,7 +57,7 @@ export default function Footer() {
                     </div>
                 </div>
 
-                <div className="mt-12 pt-8 border-t border-white/5 flex flex-col md:flex-row items-center justify-between gap-4">
+                <div className="mt-10 pt-6 border-t border-white/5 flex flex-col md:flex-row items-center justify-between gap-4">
                     <p className="text-gray-500 text-sm font-medium">© 2026 WarGame. All rights reserved.</p>
                     <div className="flex items-center gap-6">
                         <a href="#" className="text-sm font-medium text-gray-500 hover:text-gray-300 transition-colors">Privacy Policy</a>
