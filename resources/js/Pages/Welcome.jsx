@@ -1,4 +1,8 @@
 import { useState } from 'react';
+import { Head } from '@inertiajs/react';
+import SmokeBackground from '../Components/SmokeBackground';
+import Navbar from '../Components/Navbar';
+import Footer from '../Components/Footer';
 
 const shortcutItems = [
     { name: 'Mobile Legends', short: 'ML', gradient: 'linear-gradient(135deg, #f97316, #ea580c)' },
@@ -45,7 +49,8 @@ export default function Welcome({ appName, message }) {
     const [expanded, setExpanded] = useState(false);
 
     return (
-        <div className="min-h-screen bg-[#344050] text-white font-sans selection:bg-green-500 selection:text-white overflow-x-hidden" style={{ fontFamily: 'Poppins, sans-serif' }}>
+        <div className="min-h-screen bg-[#344050] text-white font-sans selection:bg-green-500 selection:text-white overflow-x-hidden relative bg-noise flex flex-col" style={{ fontFamily: 'Poppins, sans-serif' }}>
+            <Head title={`${appName} | Top Up Game & Voucher Digital`} />
             <style>{`
                 .bg-noise { background-image: radial-gradient(rgba(255,255,255,0.025) 0.8px, transparent 0.8px); background-size: 18px 18px; }
                 .card-img-wrap { position: relative; width: 100%; padding-bottom: 100%; overflow: hidden; }
@@ -82,126 +87,12 @@ export default function Welcome({ appName, message }) {
                 .games-extra-grid.expanded article:nth-child(6) { animation-delay: 0.30s; }
             `}</style>
 
-            <div className="relative min-h-screen bg-[#344050] bg-noise overflow-hidden flex flex-col">
-                <header id="navbar" className="fixed top-0 z-50 w-full bg-transparent transition-all duration-300 border-b border-transparent">
-                    <div className="mx-auto flex w-full max-w-[1440px] items-center justify-between gap-4 px-4 py-3 sm:px-6 lg:px-8">
-                        <a href="/" className="flex items-center gap-3">
-                            <span className="hidden h-11 w-11 place-items-center rounded-2xl bg-gradient-to-r from-green-400 to-green-600 text-[15px] font-extrabold tracking-tight text-white shadow-[0_0_15px_rgba(34,197,94,0.5)] md:grid">GV</span>
-                            <span className="text-[1.6rem] font-bold tracking-tight text-white drop-shadow">{appName}</span>
-                        </a>
-
-                        <nav className="hidden items-center gap-8 md:flex">
-                            <a href="/" className="desktop-nav-link relative text-sm font-bold transition-colors text-gray-300 hover:text-white group py-1">
-                                Home
-                                <span className="absolute bottom-0 left-0 h-[2px] w-full bg-gradient-to-r from-green-400 to-orange-500 rounded-full scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
-                            </a>
-                            <a href="/games" className="desktop-nav-link relative text-sm font-bold transition-colors text-gray-300 hover:text-white group py-1">
-                                Games
-                                <span className="absolute bottom-0 left-0 h-[2px] w-full bg-gradient-to-r from-green-400 to-orange-500 rounded-full scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
-                            </a>
-                            <a href="/voucher" className="desktop-nav-link relative text-sm font-bold transition-colors text-gray-300 hover:text-white group py-1">
-                                Voucher
-                                <span className="absolute bottom-0 left-0 h-[2px] w-full bg-gradient-to-r from-green-400 to-orange-500 rounded-full scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
-                            </a>
-                        </nav>
-
-                        <div className="flex items-center gap-3 sm:gap-4">
-                            <button aria-label="Search" className="p-2 hover:bg-white/5 rounded-lg transition-colors">
-                                <svg viewBox="0 0 24 24" className="h-5 w-5 text-gray-400" fill="none" stroke="currentColor" strokeWidth="2">
-                                    <circle cx="11" cy="11" r="7" />
-                                    <path d="m20 20-3.5-3.5" />
-                                </svg>
-                            </button>
-
-                            <a href="/cart" aria-label="Keranjang" className="hidden md:flex relative items-center justify-center w-10 h-10 rounded-xl border border-white/10 bg-white/[0.04] hover:border-green-500/50 hover:bg-green-500/10 hover:shadow-[0_0_12px_rgba(34,197,94,0.2)] transition-all group">
-                                <svg viewBox="0 0 24 24" className="w-[22px] h-[22px] text-gray-300 group-hover:text-green-400 transition-colors" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-                                    <circle cx="9" cy="21" r="1" />
-                                    <circle cx="20" cy="21" r="1" />
-                                    <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6" />
-                                </svg>
-                                <span className="absolute -top-1.5 -right-1.5 min-w-[18px] h-[18px] px-1 rounded-full bg-orange-500 text-white text-[10px] font-black flex items-center justify-center shadow-[0_0_8px_rgba(249,115,22,0.8)] border border-[#344050]">0</span>
-                            </a>
-
-                            <div className="relative" id="user-menu-container">
-                                <a href="/login" className="hidden md:inline-block px-5 py-2 bg-orange-500 hover:bg-orange-400 rounded-lg text-white text-sm font-bold transition-all shadow-[0_0_15px_rgba(249,115,22,0.5)]">Masuk</a>
-                                <button className="user-menu-button md:hidden relative flex items-center justify-center w-8 h-8 rounded-full border border-white/10 bg-white/[0.04] text-gray-300 hover:text-white hover:bg-white/10 transition-colors focus:outline-none" aria-label="User menu">
-                                    <svg viewBox="0 0 24 24" className="w-[18px] h-[18px]" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                                        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
-                                        <circle cx="12" cy="7" r="4" />
-                                    </svg>
-                                </button>
-                            </div>
-
-                            <button id="mobile-menu-btn" aria-label="Menu" className="md:hidden relative p-2 text-gray-300 hover:text-white transition-colors">
-                                <svg viewBox="0 0 24 24" className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                                    <line x1="3" y1="12" x2="21" y2="12" />
-                                    <line x1="3" y1="6" x2="21" y2="6" />
-                                    <line x1="3" y1="18" x2="21" y2="18" />
-                                </svg>
-                                <span className="absolute -top-1 -right-1 min-w-[18px] h-[18px] px-1 rounded-full bg-orange-500 text-white text-[10px] font-black flex items-center justify-center shadow-[0_0_8px_rgba(249,115,22,0.8)] border border-[#344050]">0</span>
-                            </button>
-                        </div>
-                    </div>
-                </header>
-
-                <div id="mobile-menu-overlay" className="fixed inset-0 bg-black/60 backdrop-blur-sm z-[55] hidden transition-opacity duration-300 opacity-0 md:hidden" />
-
-                <div id="mobile-menu" className="fixed top-0 right-0 h-screen w-[280px] bg-[#050810] border-l border-white/5 shadow-[-10px_0_30px_rgba(0,0,0,0.8)] z-[60] transform translate-x-full transition-transform duration-300 md:hidden flex flex-col">
-                    <div className="flex items-center justify-between p-5 border-b border-white/10">
-                        <span className="text-white font-bold text-lg">Menu</span>
-                        <button id="close-menu-btn" aria-label="Tutup Menu" className="p-2 text-gray-400 hover:text-white transition-colors rounded-lg hover:bg-white/5">
-                            <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24" strokeLinecap="round" strokeLinejoin="round">
-                                <line x1="18" y1="6" x2="6" y2="18" />
-                                <line x1="6" y1="6" x2="18" y2="18" />
-                            </svg>
-                        </button>
-                    </div>
-
-                    <nav className="flex flex-col p-6 gap-8 overflow-y-auto">
-                        <a href="/" className="mobile-nav-link opacity-60 flex flex-col w-max group transition-opacity duration-300">
-                            <span className="italic font-bold text-white text-[1.3rem]">Home</span>
-                            <span className="underline-bar h-[3px] w-full bg-gradient-to-r from-green-400 to-orange-500 rounded-full mt-1.5 opacity-0 transition-all duration-300" />
-                        </a>
-                        <a href="/cart" className="mobile-nav-link opacity-60 flex flex-col w-max group transition-opacity duration-300">
-                            <div className="flex items-center gap-3">
-                                <span className="italic font-bold text-white text-[1.3rem]">Cart</span>
-                                <span id="mobile-cart-badge" className="hidden min-w-[22px] h-[22px] px-1 rounded-full bg-orange-500 text-white text-xs font-black flex items-center justify-center shadow-[0_0_8px_rgba(249,115,22,0.8)]">0</span>
-                            </div>
-                            <span className="underline-bar h-[3px] w-full bg-gradient-to-r from-green-400 to-orange-500 rounded-full mt-1.5 opacity-0 transition-all duration-300" />
-                        </a>
-                        <a href="/voucher" className="mobile-nav-link opacity-60 flex flex-col w-max group transition-opacity duration-300">
-                            <div className="flex items-center gap-3">
-                                <span className="italic font-bold text-white text-[1.3rem]">Voucher</span>
-                                <span id="mobile-voucher-badge" className="hidden min-w-[22px] h-[22px] px-1 rounded-full bg-orange-500 text-white text-xs font-black flex items-center justify-center shadow-[0_0_8px_rgba(249,115,22,0.8)]">0</span>
-                            </div>
-                            <span className="underline-bar h-[3px] w-full bg-gradient-to-r from-green-400 to-orange-500 rounded-full mt-1.5 opacity-0 transition-all duration-300" />
-                        </a>
-                        <a href="/games" className="mobile-nav-link opacity-60 flex flex-col w-max group transition-opacity duration-300">
-                            <span className="italic font-bold text-white text-[1.3rem]">Games</span>
-                            <span className="underline-bar h-[3px] w-full bg-gradient-to-r from-green-400 to-orange-500 rounded-full mt-1.5 opacity-0 transition-all duration-300" />
-                        </a>
-                    </nav>
-                </div>
-
-                <div className="pointer-events-none fixed inset-0 overflow-hidden z-0">
-                    <div className="moving-smoke-1" />
-                    <div className="moving-smoke-2" />
-                    <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-black/60" />
-                    <div className="absolute inset-0 bg-gradient-to-r from-black/50 via-transparent to-black/50" />
-                    <div className="smoke-a absolute top-[-5%] left-[-20%] w-[80vw] h-[70vw] max-w-[1000px] max-h-[800px] rounded-full bg-slate-500/15 blur-[120px]" />
-                    <div className="smoke-b absolute top-[25%] right-[-25%] w-[90vw] h-[80vw] max-w-[1100px] max-h-[900px] rounded-full bg-slate-400/12 blur-[140px]" />
-                    <div className="smoke-c absolute bottom-[5%] left-[5%] w-[70vw] h-[60vw] max-w-[900px] max-h-[700px] rounded-full bg-slate-600/12 blur-[110px]" />
-                    <div className="smoke-d absolute top-[55%] left-[25%] w-[55vw] h-[45vw] max-w-[750px] max-h-[600px] rounded-full bg-slate-500/10 blur-[100px]" />
-                    <div className="smoke-b absolute top-[10%] left-[40%] w-[40vw] h-[35vw] max-w-[550px] max-h-[450px] rounded-full bg-slate-300/8 blur-[80px]" />
-                    <div className="smoke-a absolute bottom-[30%] right-[10%] w-[45vw] h-[38vw] max-w-[600px] max-h-[500px] rounded-full bg-slate-400/8 blur-[90px]" />
-                    <div className="smoke-e absolute top-[20%] left-[8%] w-[25vw] h-[25vw] max-w-[350px] max-h-[350px] rounded-full bg-green-400/5 blur-[70px]" />
-                    <div className="smoke-c absolute bottom-[15%] right-[8%] w-[30vw] h-[30vw] max-w-[400px] max-h-[400px] rounded-full bg-orange-400/4 blur-[80px]" />
-                    <div className="smoke-d absolute top-[45%] right-[30%] w-[20vw] h-[20vw] max-w-[280px] max-h-[280px] rounded-full bg-green-500/5 blur-[60px]" />
-                </div>
+            <Navbar />
+            <SmokeBackground />
 
                 <div className="relative z-10">
-                    <div className="mb-6 w-full pt-20">
-                        <section className="relative w-full bg-transparent overflow-hidden aspect-[4/3] sm:aspect-[16/9] lg:aspect-[21/9] min-h-[250px] md:min-h-[400px] lg:min-h-[500px]">
+                    <div className="mb-6 w-full">
+                        <section className="relative w-full bg-transparent overflow-hidden aspect-[4/3] sm:aspect-[16/9] lg:aspect-[21/9] min-h-[350px] md:min-h-[480px] lg:min-h-[580px]">
                             <div className="absolute inset-0" style={{ WebkitMaskImage: 'linear-gradient(to bottom, black 40%, transparent 100%)', maskImage: 'linear-gradient(to bottom, black 40%, transparent 100%)' }}>
                                 <img src="https://images.unsplash.com/photo-1550745165-9bc0b252726f?q=80&w=2070&auto=format&fit=crop" alt="Hero Background" className="w-full h-full object-cover object-center opacity-60" />
                                 <div className="absolute inset-0 bg-gradient-to-r from-black/60 to-transparent" />
@@ -437,69 +328,8 @@ export default function Welcome({ appName, message }) {
                         </section>
                     </main>
 
-                    <footer id="footer" className="mt-16 border-t border-white/5 relative w-full bg-cover bg-center bg-no-repeat" style={{ backgroundImage: "url('/images/footer.png')" }}>
-                        <div className="absolute inset-0 bg-[#050810]/70 backdrop-blur-sm z-0" />
-                        <div className="absolute top-0 right-0 w-64 h-64 bg-orange-500/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 pointer-events-none" />
-                        <div className="absolute bottom-0 left-0 w-80 h-80 bg-green-500/10 rounded-full blur-3xl translate-y-1/2 -translate-x-1/4 pointer-events-none" />
-
-                        <div className="max-w-[1440px] mx-auto w-full px-4 sm:px-6 lg:px-8 pt-12 sm:pt-16 pb-6">
-                            <div className="grid grid-cols-2 md:grid-cols-3 gap-8 lg:grid-cols-5 xl:gap-16 relative z-10">
-                                <div className="col-span-2 md:col-span-3 lg:col-span-2">
-                                    <a href="/" className="flex items-center gap-3 w-fit mb-6">
-                                        <span className="grid h-10 w-10 place-items-center rounded-xl bg-gradient-to-br from-green-400 to-green-700 text-sm font-extrabold tracking-tight text-white shadow-[0_0_15px_rgba(34,197,94,0.5)]">GV</span>
-                                        <span className="text-2xl font-bold tracking-tight text-white drop-shadow">{appName}</span>
-                                    </a>
-                                    <p className="text-gray-400 text-sm leading-relaxed max-w-md mb-8">Platform top up game dan voucher digital terpercaya di Indonesia. Memberikan layanan instan, aman, dan harga terbaik untuk setiap transaksi Anda.</p>
-                                    <div className="flex gap-3">
-                                        {[['Facebook', 'M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z'], ['Instagram', 'M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z'], ['Twitter', 'M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z'], ['YouTube', 'M2.5 17a24.12 24.12 0 0 1 0-10 2 2 0 0 1 1.4-1.4 49.56 49.56 0 0 1 16.2 0A2 2 0 0 1 21.5 7a24.12 24.12 0 0 1 0 10 2 2 0 0 1-1.4 1.4 49.55 49.55 0 0 1-16.2 0A2 2 0 0 1 2.5 17M10 15l5-3-5-3z']].map(([label, path], index) => (
-                                            <a key={label} href="#" aria-label={label} className="w-10 h-10 rounded-xl bg-white/[0.03] hover:bg-green-500/10 hover:text-green-400 border border-white/5 hover:border-green-500/30 flex items-center justify-center transition-all duration-300 text-gray-400 hover:shadow-[0_0_10px_rgba(34,197,94,0.2)]">
-                                                <svg viewBox="0 0 24 24" className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="2">
-                                                    {path.includes('M18') ? <path d={path} /> : path.includes('M2.5') ? <><path d="M2.5 17a24.12 24.12 0 0 1 0-10 2 2 0 0 1 1.4-1.4 49.56 49.56 0 0 1 16.2 0A2 2 0 0 1 21.5 7a24.12 24.12 0 0 1 0 10 2 2 0 0 1-1.4 1.4 49.55 49.55 0 0 1-16.2 0A2 2 0 0 1 2.5 17" /><path d="m10 15 5-3-5-3z" /></> : <path d={path} /> }
-                                                </svg>
-                                            </a>
-                                        ))}
-                                    </div>
-                                </div>
-
-                                <div className="col-span-1">
-                                    <h3 className="text-white font-extrabold tracking-wider mb-6 uppercase text-xs">Bantuan</h3>
-                                    <ul className="space-y-4">
-                                        {['Cara Top Up', 'FAQ', 'Hubungi Kami', 'Syarat & Ketentuan'].map((item) => (
-                                            <li key={item}><a href="#" className="text-gray-400 hover:text-green-400 transition-colors text-sm font-medium flex justify-between items-center group">{item}<svg viewBox="0 0 24 24" className="w-4 h-4 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all" fill="none" stroke="currentColor" strokeWidth="2"><path d="M5 12h14" /><path d="m12 5 7 7-7 7" /></svg></a></li>
-                                        ))}
-                                    </ul>
-                                </div>
-
-                                <div className="col-span-1">
-                                    <h3 className="text-white font-extrabold tracking-wider mb-6 uppercase text-xs">Game Populer</h3>
-                                    <ul className="space-y-4">
-                                        {['Mobile Legends', 'Free Fire', 'PUBG Mobile', 'Genshin Impact'].map((game, idx) => (
-                                            <li key={game}><a href="#" className="text-gray-400 hover:text-white transition-colors text-sm font-medium flex items-center gap-2"><span className={`w-1.5 h-1.5 rounded-full ${idx % 2 === 0 ? 'bg-green-500/50' : 'bg-orange-500/50'} shadow-[0_0_5px_rgba(34,197,94,0.8)]`} />{game}</a></li>
-                                        ))}
-                                    </ul>
-                                </div>
-
-                                <div className="col-span-2 sm:col-span-1">
-                                    <h3 className="text-white font-extrabold tracking-wider mb-6 uppercase text-xs">Metode Pembayaran</h3>
-                                    <div className="grid grid-cols-2 gap-2">
-                                        {['DANA', 'OVO', 'GOPAY', 'QRIS', 'Virtual Account'].map((item, idx) => (
-                                            <div key={item} className={`h-10 bg-white/[0.03] rounded-xl flex items-center justify-center border border-white/5 text-gray-300 text-xs font-bold hover:bg-white/[0.06] transition-colors cursor-default ${idx === 4 ? 'col-span-2' : ''}`}>{item}</div>
-                                        ))}
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div className="mt-12 pt-8 border-t border-white/5 flex flex-col md:flex-row items-center justify-between gap-4 relative z-10">
-                                <p className="text-gray-500 text-sm font-medium">© 2026 {appName}. All rights reserved.</p>
-                                <div className="flex items-center gap-6">
-                                    <a href="#" className="text-sm font-medium text-gray-500 hover:text-gray-300 transition-colors">Privacy Policy</a>
-                                    <a href="#" className="text-sm font-medium text-gray-500 hover:text-gray-300 transition-colors">Terms of Service</a>
-                                </div>
-                            </div>
-                        </div>
-                    </footer>
+                    <Footer />
                 </div>
-            </div>
         </div>
     );
 }

@@ -20,7 +20,7 @@ Route::get('/topup/mobile-legends', [TopupController::class, 'show'])
     ->name('topup.ml');
 
 Route::get('/login', function () {
-    return view('auth.login');
+    return Inertia::render('Login');
 })->name('login');
 
 Route::get('/auth/google', [GoogleAuthController::class, 'redirect']);
@@ -34,19 +34,19 @@ Route::post('/logout', function (\Illuminate\Http\Request $request) {
 })->name('logout');
 
 Route::get('/cart', function () {
-    return view('cart');
+    return Inertia::render('Cart');
 })->name('cart');
 
 Route::get('/checkout', function () {
-    return view('checkout');
+    return Inertia::render('Checkout');
 })->name('checkout');
 
 Route::get('/voucher', function () {
-    return view('voucher');
+    return Inertia::render('Voucher');
 })->name('voucher');
 
 Route::get('/games', function () {
-    return view('games');
+    return Inertia::render('Games');
 })->name('games');
 
 Route::get('/topup/{productId}', [TopupController::class, 'show'])->name('topup.show');
