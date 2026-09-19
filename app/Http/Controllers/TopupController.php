@@ -6,6 +6,7 @@ use App\Models\Transaction;
 use App\Services\VocaBisnisService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
+use Inertia\Inertia;
 
 class TopupController extends Controller
 {
@@ -16,7 +17,7 @@ class TopupController extends Controller
         $product = $this->vocaBisnis->getProductDetail($productId);
         $items = $this->vocaBisnis->getProductItems($productId);
 
-        return view('topupgame.topupml', compact('product', 'items'));
+        return Inertia::render('Topup', compact('product', 'items'));
     }
 
     public function store(Request $request, int $productId)
