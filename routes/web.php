@@ -8,8 +8,25 @@ use App\Http\Controllers\TopupController;
 use App\Http\Controllers\TransactionController;
 use App\Http\Controllers\VocaBisnisCallbackController;
 use App\Http\Controllers\WelcomeController;
+use App\Http\Controllers\SitemapController;
 
 Route::get('/', WelcomeController::class);
+
+Route::get('/sitemap.xml', SitemapController::class)->name('sitemap');
+
+Route::get('/robots.txt', function () {
+    $lines = [
+        'User-agent: *',
+        'Disallow: /cart',
+        'Disallow: /checkout',
+        'Disallow: /login',
+        'Disallow: /transaction/',
+        '',
+        'Sitemap: '.url('/sitemap.xml'),
+    ];
+
+    return response(implode("\n", $lines), 200)->header('Content-Type', 'text/plain');
+});
 
 Route::get('/topup/mobile-legends', [TopupController::class, 'show'])
     ->defaults('productId', 15)

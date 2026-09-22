@@ -3,6 +3,7 @@ import { Head, Link } from '@inertiajs/react';
 import SmokeBackground from '../Components/SmokeBackground';
 import Navbar from '../Components/Navbar';
 import Footer from '../Components/Footer';
+import { CartItemSkeleton } from '../Components/Skeleton';
 
 function fmt(n) {
     return 'Rp ' + Number(n).toLocaleString('id-ID');
@@ -22,6 +23,7 @@ function saveCart(cart) {
 
 export default function Cart() {
     const [cart, setCart] = useState([]);
+    const [loaded, setLoaded] = useState(false);
     const [checked, setChecked] = useState([]);
     const [activeFilter, setActiveFilter] = useState('All');
     const [modalStep, setModalStep] = useState(0); // 0 closed, 1 payment, 2 summary
@@ -32,6 +34,7 @@ export default function Cart() {
 
     useEffect(() => {
         setCart(getCart());
+        setLoaded(true);
     }, []);
 
     const games = useMemo(() => [...new Set(cart.map((i) => i.game))], [cart]);
@@ -85,7 +88,9 @@ export default function Cart() {
 
     return (
         <div className="min-h-screen bg-[#344050] text-white font-sans overflow-x-hidden" style={{ fontFamily: 'Poppins, sans-serif' }}>
-            <Head title="Keranjang | WarGame" />
+            <Head title="Keranjang | WarGame">
+                <meta name="robots" content="noindex, nofollow" />
+            </Head>
             <div className="relative min-h-screen bg-[#344050] bg-noise overflow-hidden flex flex-col">
                 <SmokeBackground variant="compact" />
                 <Navbar />
@@ -101,7 +106,13 @@ export default function Cart() {
                         </div>
                     </div>
 
-                    {cart.length === 0 ? (
+                    {!loaded ? (
+                        <div className="space-y-3">
+                            <CartItemSkeleton />
+                            <CartItemSkeleton />
+                            <CartItemSkeleton />
+                        </div>
+                    ) : cart.length === 0 ? (
                         <div className="flex flex-col items-center justify-center py-24 text-center">
                             <svg className="w-20 h-20 text-gray-600 mb-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"><path d="M6 2h12l2 5v13a2 2 0 01-2 2H6a2 2 0 01-2-2V7l2-5z" /><path d="M9 7a3 3 0 006 0" /></svg>
                             <h2 className="text-white font-bold text-xl mb-2">Keranjang Kosong</h2>

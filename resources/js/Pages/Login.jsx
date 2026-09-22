@@ -4,7 +4,9 @@ import SmokeBackground from '../Components/SmokeBackground';
 export default function Login() {
     return (
         <div className="min-h-screen bg-[#344050] text-white font-sans overflow-x-hidden" style={{ fontFamily: 'Poppins, sans-serif' }}>
-            <Head title="Masuk | WarGame" />
+            <Head title="Masuk | WarGame">
+                <meta name="robots" content="noindex, follow" />
+            </Head>
             <div className="relative min-h-screen bg-[#344050] bg-noise overflow-hidden flex flex-col items-center justify-center">
                 <SmokeBackground variant="compact" />
 

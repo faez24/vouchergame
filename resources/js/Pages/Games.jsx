@@ -1,20 +1,35 @@
 import { useMemo, useState } from 'react';
-import { Head, Link } from '@inertiajs/react';
+import { Head, Link, router } from '@inertiajs/react';
 import SmokeBackground from '../Components/SmokeBackground';
 import Navbar from '../Components/Navbar';
 import Footer from '../Components/Footer';
+import ImageWithSkeleton from '../Components/ImageWithSkeleton';
+import { GameGridSkeleton } from '../Components/Skeleton';
 
 export default function Games({ games = [], categories = [], activeCategory = null }) {
     const [search, setSearch] = useState('');
+    const [loading, setLoading] = useState(false);
 
     const filtered = useMemo(
         () => games.filter((g) => g.name.toLowerCase().includes(search.toLowerCase().trim())),
         [search, games]
     );
 
+    const goToCategory = (category) => {
+        setLoading(true);
+        router.get(category ? `/games?category=${category}` : '/games', {}, {
+            preserveScroll: true,
+            onFinish: () => setLoading(false),
+        });
+    };
+
     return (
         <div className="min-h-screen bg-[#344050] text-white font-sans selection:bg-green-500 selection:text-white overflow-x-hidden pt-20" style={{ fontFamily: 'Poppins, sans-serif' }}>
-            <Head title="WarGame | All Games" />
+            <Head title="WarGame | All Games">
+                <meta name="description" content="Jelajahi semua game yang tersedia untuk top up di WarGame — Mobile Legends, Free Fire, PUBG Mobile, dan ratusan game lainnya." />
+                <meta property="og:title" content="WarGame | All Games" />
+                <meta property="og:description" content="Jelajahi semua game yang tersedia untuk top up di WarGame." />
+            </Head>
             <div className="relative min-h-screen bg-[#344050] bg-noise overflow-hidden flex flex-col">
                 <Navbar />
                 <SmokeBackground variant="compact" />
@@ -38,33 +53,38 @@ export default function Games({ games = [], categories = [], activeCategory = nu
 
                             {categories.length > 0 && (
                                 <div className="mt-4 flex flex-wrap items-center justify-center gap-2">
-                                    <Link
-                                        href="/games"
+                                    <button
+                                        onClick={() => goToCategory(null)}
                                         className={`px-4 py-1.5 rounded-full text-xs font-bold border transition-colors ${!activeCategory ? 'bg-green-500 border-green-400 text-white' : 'bg-white/5 border-white/10 text-gray-300 hover:bg-white/10'}`}
                                     >
                                         Semua
-                                    </Link>
+                                    </button>
                                     {categories.map((cat) => (
-                                        <Link
+                                        <button
                                             key={cat.slug}
-                                            href={`/games?category=${cat.slug}`}
+                                            onClick={() => goToCategory(cat.slug)}
                                             className={`px-4 py-1.5 rounded-full text-xs font-bold border transition-colors ${activeCategory === cat.slug ? 'bg-green-500 border-green-400 text-white' : 'bg-white/5 border-white/10 text-gray-300 hover:bg-white/10'}`}
                                         >
                                             {cat.name}
-                                        </Link>
+                                        </button>
                                     ))}
                                 </div>
                             )}
                         </div>
 
-                        {filtered.length > 0 ? (
+                        {loading ? (
+                            <GameGridSkeleton />
+                        ) : filtered.length > 0 ? (
                             <div className="grid grid-cols-3 sm:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-2 sm:gap-4">
                                 {filtered.map((game) => (
                                     <Link key={game.id} href={`/topup/${game.id}`} className="block">
                                         <article className="relative rounded-lg overflow-hidden bg-[#161920]/80 backdrop-blur-md border border-white/5 hover:border-green-500/50 group transition-all duration-300 h-full">
-                                            <div className="relative w-full pb-[133.33%] overflow-hidden bg-[#1a1f2e]">
-                                                <img src={game.image} alt={game.name} className="absolute inset-0 w-full h-full object-cover" />
-                                            </div>
+                                            <ImageWithSkeleton
+                                                src={game.image}
+                                                alt={game.name}
+                                                className="w-full pb-[133.33%] bg-[#1a1f2e]"
+                                                imgClassName="absolute inset-0 w-full h-full object-cover"
+                                            />
                                             <div className="p-3">
                                                 {game.badge && <div className={`inline-block px-2 py-0.5 rounded-full text-white text-[10px] font-bold ${game.badgeStyle}`}>{game.badge}</div>}
                                                 <h3 className="mt-2 text-sm font-extrabold line-clamp-1">{game.name}</h3>
