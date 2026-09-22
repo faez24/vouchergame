@@ -34,7 +34,11 @@ export default function Voucher() {
 
     return (
         <div className="min-h-screen bg-[#344050] text-white font-sans selection:bg-green-500 selection:text-white overflow-x-hidden" style={{ fontFamily: 'Poppins, sans-serif' }}>
-            <Head title="WarGame | Voucher" />
+            <Head title="WarGame | Voucher">
+                <meta name="description" content="Klaim voucher diskon top up game dan gunakan untuk hemat setiap transaksi di WarGame." />
+                <meta property="og:title" content="WarGame | Voucher" />
+                <meta property="og:description" content="Klaim voucher diskon top up game dan gunakan untuk hemat setiap transaksi." />
+            </Head>
             <div className="relative min-h-screen bg-[#344050] bg-noise overflow-hidden flex flex-col">
                 <Navbar />
                 <SmokeBackground />
