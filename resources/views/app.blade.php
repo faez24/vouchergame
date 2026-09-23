@@ -21,7 +21,8 @@
         <meta name="twitter:description" content="Top up game dan voucher digital instan, aman, dan harga terbaik di Indonesia.">
         <meta name="twitter:image" content="{{ asset('logo.png') }}">
 
-        <link rel="icon" href="{{ asset('logo.png') }}">
+        <link rel="icon" href="{{ asset('icon.png') }}" type="image/png">
+        <link rel="apple-touch-icon" href="{{ asset('icon.png') }}">
 
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
