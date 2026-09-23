@@ -15,9 +15,8 @@ export default function Footer() {
             <div className="max-w-[1440px] mx-auto w-full px-4 sm:px-6 lg:px-8 pt-12 sm:pt-14 pb-4 relative z-10">
                 <div className="grid grid-cols-2 md:grid-cols-3 gap-8 lg:grid-cols-5 xl:gap-16">
                     <div className="col-span-2 md:col-span-3 lg:col-span-2">
-                        <Link href="/" className="flex items-center gap-3 w-fit mb-6">
-                            <span className="grid h-10 w-10 place-items-center rounded-xl bg-gradient-to-br from-green-400 to-green-700 text-sm font-extrabold tracking-tight text-white shadow-[0_0_15px_rgba(34,197,94,0.5)]">GV</span>
-                            <span className="text-2xl font-bold tracking-tight text-white drop-shadow">WarGame</span>
+                        <Link href="/" className="relative flex items-center h-10 w-48 mb-6">
+                            <img src="/logo.png" alt="WarGame" className="absolute left-0 top-1/2 -translate-y-1/2 h-42 w-auto max-w-none" />
                         </Link>
                         <p className="text-gray-400 text-sm leading-relaxed max-w-md mb-8">Platform top up game dan voucher digital terpercaya di Indonesia. Memberikan layanan instan, aman, dan harga terbaik untuk setiap transaksi Anda.</p>
                         <div className="flex gap-3">
