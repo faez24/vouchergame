@@ -2,17 +2,15 @@
 
 namespace App\Http\Controllers;
 
-use App\Services\CheckoutService;
+use App\Models\Transaction;
 use App\Services\VocaBisnisService;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 use Inertia\Inertia;
 
 class TopupController extends Controller
 {
-    public function __construct(
-        private readonly VocaBisnisService $vocaBisnis,
-        private readonly CheckoutService $checkout,
-    ) {}
+    public function __construct(private readonly VocaBisnisService $vocaBisnis) {}
 
     public function show(int $productId)
     {
@@ -30,16 +28,40 @@ class TopupController extends Controller
             'zone_id' => ['nullable', 'string'],
         ]);
 
-        $transaction = $this->checkout->createIndividualBatch(
-            $productId,
-            $validated['product_item_id'],
-            [
+        $items = $this->vocaBisnis->getProductItems($productId);
+        $item = collect($items)->firstWhere('id', $validated['product_item_id']);
+
+        abort_if(! $item, 422, 'Item tidak ditemukan.');
+
+        $reference = (string) Str::uuid();
+
+        $result = $this->vocaBisnis->createTransaction([
+            'productId' => $productId,
+            'productItemId' => $validated['product_item_id'],
+            'data' => array_filter([
                 'userId' => $validated['user_id_ingame'] ?? null,
                 'zoneId' => $validated['zone_id'] ?? null,
-            ],
-            $request->user()?->id,
-        );
+            ]),
+            'price' => $item['price'],
+            'clientIp' => $request->ip(),
+            'reference' => $reference,
+            'callbackUrl' => route('vocabisnis.callback'),
+        ]);
 
-        return redirect()->route('checkout', ['batch' => $transaction->batch_id]);
+        $transaction = Transaction::create([
+            'user_id' => $request->user()?->id,
+            'reference' => $result['reference'],
+            'invoice_id' => $result['invoiceId'],
+            'product_id' => $productId,
+            'product_item_id' => $validated['product_item_id'],
+            'product_name' => $result['productName'] ?? null,
+            'product_item_name' => $result['productItemName'] ?? null,
+            'total_amount' => $result['totalAmount'],
+            'status' => 'Processing',
+            'data' => $result['data'] ?? null,
+            'sn' => $result['sn'] ?? null,
+        ]);
+
+        return redirect()->route('transaction.show', $transaction->invoice_id);
     }
 }

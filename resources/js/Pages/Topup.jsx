@@ -21,49 +21,8 @@ export default function Topup({ product, items }) {
     const [modalOpen, setModalOpen] = useState(false);
     const [error, setError] = useState(null);
     const [submitting, setSubmitting] = useState(false);
-    const [addedToCart, setAddedToCart] = useState(false);
 
     const inputFields = product?.userInput?.fields ?? [];
-
-    const validateAccountFields = () => {
-        const missing = inputFields.filter((f) => !fields[f.attrs?.name]?.trim());
-        if (missing.length > 0) {
-            setError('Mohon lengkapi semua data akun terlebih dahulu.');
-            return false;
-        }
-        if (!selectedItem) {
-            setError('Pilih nominal terlebih dahulu.');
-            return false;
-        }
-        return true;
-    };
-
-    const addToCart = () => {
-        if (!validateAccountFields()) return;
-
-        // Cart items must carry productId/productItemId (the VocaBisnis
-        // catalog identifiers) — the backend re-validates and re-prices
-        // everything from these at /cart/checkout, never from localStorage.
-        const cart = JSON.parse(localStorage.getItem('gv_cart') || '[]');
-        cart.push({
-            id: Date.now() + '_' + selectedItem.id,
-            game: product?.title ?? '',
-            gameId: product?.code ?? String(product?.id ?? ''),
-            gameColor: '#22c55e',
-            label: selectedItem.name,
-            price: formatRupiah(selectedItem.price),
-            priceNum: selectedItem.price,
-            productId: product.id,
-            productItemId: selectedItem.id,
-            userId: fields.userId ?? '',
-            zoneId: fields.zoneId ?? '',
-        });
-        localStorage.setItem('gv_cart', JSON.stringify(cart));
-
-        setError(null);
-        setAddedToCart(true);
-        setTimeout(() => setAddedToCart(false), 2000);
-    };
 
     const submit = () => {
         const missing = inputFields.filter((f) => !fields[f.attrs?.name]?.trim());
@@ -215,7 +174,6 @@ export default function Topup({ product, items }) {
 
             <div className={`fixed bottom-0 left-0 w-full z-[90] transition-transform duration-300 ${selectedItem || selectedPay ? 'translate-y-0' : 'translate-y-[120%] pointer-events-none'}`}>
                 <div className="max-w-[1200px] mx-auto p-4 sm:p-6 pointer-events-auto">
-                    {error && !modalOpen && <p className="text-red-400 text-xs mb-2">{error}</p>}
                     <div className="bg-[#252d40]/95 backdrop-blur-xl rounded-2xl shadow-[0_-5px_40px_rgba(0,0,0,0.8)] p-4 sm:p-5 flex flex-col sm:flex-row sm:items-center justify-between gap-4 border border-white/10">
                         <div className="flex-1">
                             <div className="flex items-center gap-2">
@@ -227,22 +185,13 @@ export default function Topup({ product, items }) {
                                 <span className="text-2xl font-black text-green-500">{selectedItem ? formatRupiah(selectedItem.price) : 'Rp -'}</span>
                             </div>
                         </div>
-                        <div className="flex gap-2 flex-1 sm:flex-none">
-                            <button
-                                disabled={!selectedItem}
-                                onClick={addToCart}
-                                className="flex-1 sm:w-[150px] py-3.5 rounded-xl font-bold text-sm transition-all flex items-center justify-center gap-2 disabled:cursor-not-allowed disabled:opacity-40 border border-white/15 text-white hover:bg-white/5"
-                            >
-                                {addedToCart ? '✓ Ditambahkan' : '+ Keranjang'}
-                            </button>
-                            <button
-                                disabled={!selectedItem || !selectedPay}
-                                onClick={() => setModalOpen(true)}
-                                className="flex-1 sm:w-[180px] py-3.5 rounded-xl font-bold text-sm transition-all flex items-center justify-center gap-2 disabled:cursor-not-allowed disabled:bg-gray-300 disabled:text-gray-500 bg-green-700 hover:bg-green-600 text-white shadow-lg shadow-green-700/30"
-                            >
-                                Beli Sekarang
-                            </button>
-                        </div>
+                        <button
+                            disabled={!selectedItem || !selectedPay}
+                            onClick={() => setModalOpen(true)}
+                            className="flex-1 sm:flex-none sm:w-[180px] py-3.5 rounded-xl font-bold text-sm transition-all flex items-center justify-center gap-2 disabled:cursor-not-allowed disabled:bg-gray-300 disabled:text-gray-500 bg-green-700 hover:bg-green-600 text-white shadow-lg shadow-green-700/30"
+                        >
+                            Beli Sekarang
+                        </button>
                     </div>
                 </div>
             </div>
