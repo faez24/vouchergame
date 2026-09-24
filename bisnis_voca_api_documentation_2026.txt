@@ -1,0 +1,334 @@
+API Documentation
+
+Introduction
+VocaBisnis is a game credit purchase and deposit platform for the needs of top up sales of game credits owned by partners by offering the best product prices and a varied selection of games. can be connected via API service.
+
+Getting Started
+Obtaining Secret Key & Merchant ID
+You can get an Merchant ID & Secret Key by authorizing at Bisnis Vocagame with your account. Secret Key used to generate signature.
+
+Generate Signature
+To make a transaction request, you must create a signature that will be validated by the VocaBisnis system to ensure data and sender integrity when transmitted to the VocaBisnis system. On a new Transaction request, this signature is created from a combination of the Merchant ID and Endpoint.
+
+Endpoints
+/merchant
+/products
+/products/:productId
+/products/:productId/items
+/transaction/:referenceId
+/transaction/:invoiceId/detail
+
+The datas are hashed using the HMAC-SHA256 algorithm type which is locked with a Secret Key. Here is an example of creating a signature.
+
+Example:
+import { createHmac } from 'crypto';
+const merchantId = "xxxx-xxx-xx-xxx-xxxxxx";
+const endpoint = "/merchant";
+const secretKey = "xxxxxxxxxxxxx";
+const signature = createHmac('sha256', secretKey)
+  .update(merchantId + endpoint)
+  .digest('hex');
+
+
+API Service
+
+Merchant Detail
+For check merchant account details
+Get Merchant Secret Key from Dashboard Integration
+
+import { createHmac } from 'crypto';
+const merchantId = "xxxx-xxx-xx-xxx-xxxxxx";
+const endpoint = "/merchant";
+const secretKey = "xxxxxxxxxxxxx";
+const signature = createHmac('sha256', secretKey)
+  .update(merchantId + endpoint)
+  .digest('hex');
+
+Method: GET
+Headers:
+- X-Merchant: YOUR-MERCHANT-ID-HERE
+Endpoint: https://api-bisnis.vocagame.com/v1/core/merchant?signature=YOUR-SIGNATURE-HERE
+
+{
+  "message": "Success",
+  "data": {
+    "firstName": "User",
+    "lastName": "Dev",
+    "fullName": "User Dev",
+    "phoneNumber": "0832198772211",
+    "email": "hi@vocagame.com",
+    "balance": 69000
+  }
+}
+
+Products List
+For check products list
+
+import { createHmac } from 'crypto';
+const merchantId = "xxxx-xxx-xx-xxx-xxxxxx";
+const endpoint = "/products";
+const secretKey = "xxxxxxxxxxxxx";
+const signature = createHmac('sha256', secretKey)
+  .update(merchantId + endpoint)
+  .digest('hex');
+
+Method: GET
+Headers:
+- X-Merchant: YOUR-MERCHANT-ID-HERE
+Endpoint: https://api-bisnis.vocagame.com/v1/core/products?signature=YOUR-SIGNATURE-HERE
+
+{
+  "message": "Success",
+  "data": [
+    {
+      "id": 2,
+      "title": "Mobile Legend",
+      "code": "MOBILE_LEGENDS",
+      "type": "topup"
+    },
+    ...
+  ]
+}
+
+Products Detail
+For check products detail
+
+import { createHmac } from 'crypto';
+const merchantId = "xxxx-xxx-xx-xxx-xxxxxx";
+const productId = 2
+const endpoint = "/products";
+const secretKey = "xxxxxxxxxxxxx";
+const signature = createHmac('sha256', secretKey)
+  .update(merchantId + endpoint + productId)
+  .digest('hex');
+
+Method: GET
+Headers:
+- X-Merchant: YOUR-MERCHANT-ID-HERE
+Endpoint: https://api-bisnis.vocagame.com/v1/core/products/:productId?signature=YOUR-SIGNATURE-HERE
+Params:
+- productId: ID of product
+
+{
+  "message": "Success",
+  "data": {
+    "id": 2,
+    "title": "Mobile Legend",
+    "code": "MOBILE_LEGENDS",
+    "type": "topup",
+    "logoUrl": "http://api-bisnis.com/assets/logo.png",
+    "helperUrl": "http://api-bisnis.com/assets/logo.png",
+    "userInput": {
+      "instructionText": "Untuk mengetahui User ID Anda. klik profile anda",
+      "fields": [
+        {
+          "tag": "input",
+          "attrs": {
+            "name": "userId",
+            "placeholder": "Masukkan User ID",
+            "type": "tel",
+            "length": 10
+          }
+        },
+        {
+          "tag": "input",
+          "attrs": {
+            "name": "zoneId",
+            "placeholder": "Masukkan Zone ID",
+            "type": "tel",
+            "length": 5
+          }
+        }
+      ]
+    }
+  }
+}
+
+Products Items
+For check products items
+
+import { createHmac } from 'crypto';
+const merchantId = "xxxx-xxx-xx-xxx-xxxxxx";
+const productId = 2
+const endpoint = `/products/${productId}/items`;
+const secretKey = "xxxxxxxxxxxxx";
+const signature = createHmac('sha256', secretKey)
+  .update(merchantId + endpoint)
+  .digest('hex');
+
+Method: GET
+Headers:
+- X-Merchant: YOUR-MERCHANT-ID-HERE
+Endpoint: https://api-bisnis.vocagame.com/v1/core/products/:productId/items?signature=YOUR-SIGNATURE-HERE
+Params:
+- productId: ID of product
+
+{
+  "message": "Success",
+  "data": [
+    {
+      "id": 6,
+      "name": "86 Diamonds",
+      "price": 19500,
+      "iconUrl": "string"
+    },
+    ...
+  ]
+}
+
+Transaction
+Start make transaction
+NB: No need to input User ID and Zone ID in voucher transaction.
+
+import { createHmac } from 'crypto';
+const merchantId = "xxxx-xxx-xx-xxx-xxxxxx";
+const reference = "reference-xx"
+const endpoint = `/transaction/${reference}`;
+const secretKey = "xxxxxxxxxxxxx";
+const signature = createHmac('sha256', secretKey)
+  .update(merchantId + endpoint)
+  .digest('hex');
+
+Method: POST
+Headers:
+- X-Merchant: YOUR-MERCHANT-ID-HERE
+Endpoint: https://api-bisnis.vocagame.com/v1/core/transaction?signature=YOUR-SIGNATURE-HERE
+
+{
+  "productId": 2, // Product ID
+  "productItemId": 6, // Product Item ID
+  "data": { // Get object from user input within endpoint /products/detail
+    "userId": "123456",
+    "zoneId": "1234" // Optional
+  },
+  "price": 24000, // Price equals from items
+  "clientIp": "x.xxx.xx", // Buyer Ip
+  "reference": "reference-xx", // Your reference ID
+  "callbackUrl": "http://localhost/your-callback" // Set your endpoint callback
+}
+
+{
+  "message": "Purchase Successful. Your request has been submitted, Please check Transaction for status.",
+  "data": {
+    "invoiceId": "ML-XXXX",
+    "reference": "reference-xx",
+    "totalAmount": 19500, // Amount for process
+    "sn": "IGN: 4SEHAT5NELONGSO. Ref: ML-XXXX",
+    "productName": "Mobile Legend",
+    "productItemName": "86 Diamonds",
+    "data": {
+      "userId": "123456",
+      "zoneId": "1234"
+    },
+    "trxDate": "2022-08-23T10:12:47.886Z",
+    "callbackUrl": "http://localhost/your-callback"
+  }
+}
+
+OTOMAX
+Method: GET
+Endpoint: https://api-bisnis.vocagame.com/v1/core/transaction/otomax?productId=2&productItemId=6&target=535498292012&reference={{transaction_reference}}&callbackUrl=https%3A%2F%2Fdemo1592203.mockable.io%2Fcallback&price=6032&merchantId=7f1a0829-563d-411f-abac-fe913804e5de&secret=8fad2026dc00ff062296957834fdc87244b494a81a45c1bda5d5937c9aabe91a
+
+IRS
+Method: GET
+Endpoint: https://api-bisnis.vocagame.com/v1/core/transaction/irs?productId=2&productItemId=6&target=535498292012&reference={{transaction_reference}}&callbackUrl=https%3A%2F%2Fdemo1592203.mockable.io%2Fcallback&price=6032&merchantId=7f1a0829-563d-411f-abac-fe913804e5de&secret=8fad2026dc00ff062296957834fdc87244b494a81a45c1bda5d5937c9aabe91a
+
+FLASH MACHINE
+Method: GET
+Endpoint: https://api-bisnis.vocagame.com/v1/core/transaction/flash-machine?productId=2&productItemId=6&target=535498292012&reference={{transaction_reference}}&callbackUrl=https%3A%2F%2Fdemo1592203.mockable.io%2Fcallback&price=6032&merchantId=7f1a0829-563d-411f-abac-fe913804e5de&secret=8fad2026dc00ff062296957834fdc87244b494a81a45c1bda5d5937c9aabe91a
+
+GET Method Response
+Message:statusCode: 200, message: Purchase Successful. Your request has been submitted, Please check Transaction for status., invoiceId: FFX18C67F4189627B5977E591508, reference: 1702551098947, totalAmount: 50000, sn: IGN: LㅤforㅤLiaaa.. Ref: FFX18C67F4189627B5977E591508, productName: Free Fire, productItemName: 355 Diamonds, target: 2497326099, trxDate: 2023-12-14T10:51:39.553Z, currentBalance: 980839178
+
+Transaction Detail
+Check transaction detail
+
+import { createHmac } from 'crypto';
+const merchantId = "xxxx-xxx-xx-xxx-xxxxxx";
+const reference = "reference-xx"
+const endpoint = `/transaction/${reference}/detail`;
+const secretKey = "xxxxxxxxxxxxx";
+const signature = createHmac('sha256', secretKey)
+  .update(merchantId + endpoint)
+  .digest('hex');
+
+Method: GET
+Headers:
+- X-Merchant: YOUR-MERCHANT-ID-HERE
+Endpoint: https://api-bisnis.vocagame.com/v1/core/transaction/:invoiceId/detail?signature=YOUR-SIGNATURE-HERE
+Params:
+- invoiceId: Invoice ID get from response when created transaction
+
+{
+  "message": "Success",
+  "data": {
+    "invoiceId": "ML-XXXX",
+    "reference": "reference-xx",
+    "totalAmount": 19500, // Amount for process
+    "status": "Success", // "Processing" | "Success" | "Refunded"
+    "productName": "Mobile Legend",
+    "productItemName": "86 Diamonds",
+    "data": {
+      "userId": "123456",
+      "zoneId": "1234"
+    },
+    "trxDate": "2022-08-23T10:12:47.886Z",
+    "sn": "IGN: 4SEHAT5NELONGSO. Ref: ML-XXXX"
+  }
+}
+
+Callback
+Callback mechanism is back-end activity that to notify merchant system once there are changes on any purchase status.
+Merchant can provide the Callback URL on body payload in order. Callback URL can be activated for better merchant purchase system communication.
+
+Verify events are sent from Bisnis Vocagame
+Vocagame can optionally sign the callback events it sends to your endpoints. We do so by including a token in each event's X-Callback-Key header. This allows you to verify that the events were sent by Vocagame, not by a third party.
+
+Method: POST
+Endpoint: Provided by your request payload
+Headers:
+- X-Callback-Key: Get on panel dashboard
+
+{
+  "reference": "reference-id-3",
+  "status": "Success", // "Processing" | "Success" | "Refunded"
+  "productName": "Mobile Legend",
+  "productItemName": "86 Diamonds",
+  "data": {
+    "userId": "123456",
+    "zoneId": "1234",
+    "ign": "4SEHAT5NELONGSO"
+  },
+  "sn": "reference-xxx;4SEHAT5NELONGSO;ML-XXX"
+}
+
+Errors
+Your integration might have to deal with errors at some point when making API requests to VocaBisnis. These errors fall into a few major details:
+
+{
+  "statusCode": 401,
+  "message": "Invalid Merchant",
+  "error": "Unauthorized"
+}
+
+{
+  "statusCode": 401,
+  "message": "Invalid signature",
+  "error": "Unauthorized"
+}
+
+{
+  "statusCode": 404,
+  "message": "User tidak ditemukan"
+}
+
+{
+  "statusCode": 500,
+  "message": "Internal Server Error"
+}
+
+Staging Credentials ---
+Hostname: https://api-staging-bisnis.vocagame.com
+Merchant ID: f4e60c3e-e266-4baa-91d2-18ec0e1fcb30
+Secret Key: ffe4a94ab4bab222dc5fbed1c0de7a9d4ad414ac5bd573ec9e578657aa2fbe37
+Callback Key: b3bb34ec841265b8171463454464

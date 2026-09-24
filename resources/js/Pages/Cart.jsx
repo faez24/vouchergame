@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useState } from 'react';
-import { Head, Link } from '@inertiajs/react';
+import { Head, Link, router } from '@inertiajs/react';
 import SmokeBackground from '../Components/SmokeBackground';
 import Navbar from '../Components/Navbar';
 import Footer from '../Components/Footer';
@@ -29,6 +29,8 @@ export default function Cart() {
     const [editItem, setEditItem] = useState(null);
     const [editUid, setEditUid] = useState('');
     const [editZone, setEditZone] = useState('');
+    const [checkoutError, setCheckoutError] = useState(null);
+    const [checkingOut, setCheckingOut] = useState(false);
 
     useEffect(() => {
         setCart(getCart());
@@ -77,10 +79,34 @@ export default function Cart() {
     };
 
     const confirmPayment = () => {
-        localStorage.setItem('gv_checkout_total', fmt(total));
-        const remaining = cart.filter((i) => !checked.includes(i.id));
-        saveCart(remaining);
-        window.location.href = '/checkout';
+        // NOTE: cart items must carry productId/productItemId (from the VocaBisnis
+        // product catalog) for the backend to price and fulfill them. If whatever
+        // adds items to `gv_cart` doesn't store those yet, this request is rejected
+        // by the backend (422) rather than silently checking out wrong items.
+        const missingProductInfo = selected.some((i) => !i.productId || !i.productItemId);
+        if (missingProductInfo) {
+            setCheckoutError('Beberapa item di keranjang tidak memiliki data produk yang lengkap. Coba tambahkan ulang dari halaman Top Up.');
+            return;
+        }
+
+        setCheckoutError(null);
+        setCheckingOut(true);
+
+        router.post('/cart/checkout', {
+            items: selected.map((i) => ({
+                product_id: i.productId,
+                product_item_id: i.productItemId,
+                user_id_ingame: i.userId,
+                zone_id: i.zoneId,
+            })),
+        }, {
+            onSuccess: () => {
+                const remaining = cart.filter((i) => !checked.includes(i.id));
+                saveCart(remaining);
+            },
+            onError: () => setCheckoutError('Gagal memproses checkout. Silakan coba lagi.'),
+            onFinish: () => setCheckingOut(false),
+        });
     };
 
     return (
@@ -223,7 +249,10 @@ export default function Cart() {
                                         <span className="text-gray-300 text-sm font-bold">Total Pembayaran</span>
                                         <span className="text-green-500 font-black text-xl">{fmt(total)}</span>
                                     </div>
-                                    <button onClick={confirmPayment} className="w-full py-3.5 rounded-xl text-white font-black text-sm tracking-wider" style={{ background: 'linear-gradient(135deg,#3b82f6,#8b5cf6)' }}>✓ KONFIRMASI & BAYAR</button>
+                                    {checkoutError && <p className="text-red-400 text-xs mb-3">{checkoutError}</p>}
+                                    <button onClick={confirmPayment} disabled={checkingOut} className="w-full py-3.5 rounded-xl text-white font-black text-sm tracking-wider disabled:opacity-60" style={{ background: 'linear-gradient(135deg,#3b82f6,#8b5cf6)' }}>
+                                        {checkingOut ? 'Memproses...' : '✓ KONFIRMASI & BAYAR'}
+                                    </button>
                                 </>
                             )}
                         </div>

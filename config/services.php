@@ -49,4 +49,13 @@ return [
         'proxy' => env('VOCABISNIS_PROXY_URL'),
     ],
 
+    'midtrans' => [
+        'server_key' => env('MIDTRANS_SERVER_KEY'),
+        'client_key' => env('MIDTRANS_CLIENT_KEY'),
+        'merchant_id' => env('MIDTRANS_MERCHANT_ID'),
+        'is_production' => (bool) env('MIDTRANS_IS_PRODUCTION', false),
+        'webhook_api_key' => env('WARGAME_MIDTRANS_WEBHOOK_API_KEY'),
+        'order_id_prefix' => env('MIDTRANS_ORDER_ID_PREFIX', 'GAME-'),
+    ],
+
 ];
