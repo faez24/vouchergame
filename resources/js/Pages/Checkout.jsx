@@ -18,7 +18,9 @@ export default function Checkout() {
 
     return (
         <div className="min-h-screen bg-[#344050] text-white font-sans overflow-x-hidden flex flex-col" style={{ fontFamily: 'Poppins, sans-serif' }}>
-            <Head title="Pembayaran QRIS | WarGame" />
+            <Head title="Pembayaran QRIS | WarGame">
+                <meta name="robots" content="noindex, nofollow" />
+            </Head>
             <style>{`@keyframes scan { 0% { top: 1rem; opacity: 0; } 10% { opacity: 1; } 90% { opacity: 1; } 100% { top: calc(100% - 1.2rem); opacity: 0; } }`}</style>
 
             <div className="pointer-events-none fixed inset-0 z-0 overflow-hidden">

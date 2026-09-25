@@ -2,6 +2,7 @@ import { Head, Link } from '@inertiajs/react';
 import SmokeBackground from '../Components/SmokeBackground';
 import Navbar from '../Components/Navbar';
 import Footer from '../Components/Footer';
+import ImageWithSkeleton from '../Components/ImageWithSkeleton';
 
 const formatRupiah = (value) => `Rp ${Number(value ?? 0).toLocaleString('id-ID')}`;
 
@@ -17,7 +18,11 @@ export default function Welcome({
 }) {
     return (
         <div className="min-h-screen bg-[#344050] text-white font-sans selection:bg-green-500 selection:text-white overflow-x-hidden relative bg-noise flex flex-col" style={{ fontFamily: 'Poppins, sans-serif' }}>
-            <Head title={`${appName} | Top Up Game & Voucher Digital`} />
+            <Head title={`${appName} | Top Up Game & Voucher Digital`}>
+                <meta name="description" content={message || 'Marketplace game top up dan voucher digital dengan tampilan premium dark.'} />
+                <meta property="og:title" content={`${appName} | Top Up Game & Voucher Digital`} />
+                <meta property="og:description" content={message || 'Marketplace game top up dan voucher digital dengan tampilan premium dark.'} />
+            </Head>
             <style>{`
                 .bg-noise { background-image: radial-gradient(rgba(255,255,255,0.025) 0.8px, transparent 0.8px); background-size: 18px 18px; }
                 .card-img-wrap { position: relative; width: 100%; padding-bottom: 100%; overflow: hidden; }
@@ -85,9 +90,12 @@ export default function Welcome({
                                     {flashDeals.map((deal) => (
                                         <Link href={`/topup/${deal.id}`} key={deal.id} className="shrink-0 w-[calc(33.333%-0.5rem)] sm:w-[calc(33.333%-1rem)]">
                                             <div className="bg-[#1c2030] border border-white/10 rounded-2xl overflow-hidden shadow-[0_8px_30px_rgba(0,0,0,0.6)] hover:shadow-[0_0_30px_rgba(34,211,238,0.25)] hover:border-cyan-500/40 transition-all duration-300 hover:-translate-y-1 h-full">
-                                                <div className="h-28 sm:h-32 bg-[#1a1f2e] relative overflow-hidden">
-                                                    <img src={deal.image} className="w-full h-full object-cover opacity-70" alt={deal.title} />
-                                                </div>
+                                                <ImageWithSkeleton
+                                                    src={deal.image}
+                                                    alt={deal.title}
+                                                    className="h-28 sm:h-32 bg-[#1a1f2e]"
+                                                    imgClassName="w-full h-full object-cover opacity-70"
+                                                />
                                                 <div className="p-3 flex flex-col items-center text-center">
                                                     <h4 className="font-bold text-[11px] text-gray-300">{deal.title}</h4>
                                                     <p className="font-black text-white text-xs mt-0.5">{deal.subtitle}</p>
@@ -119,7 +127,7 @@ export default function Welcome({
                                                 title={game.name}
                                                 className="shrink-0 w-16 h-16 sm:w-20 sm:h-20 rounded-xl overflow-hidden border border-white/10 hover:border-green-400/60 hover:-translate-y-1 transition-all duration-200 shadow-[0_6px_16px_rgba(0,0,0,0.5)]"
                                             >
-                                                <img src={game.image} alt={game.name} className="w-full h-full object-cover" />
+                                                <ImageWithSkeleton src={game.image} alt={game.name} className="w-full h-full" imgClassName="w-full h-full object-cover" />
                                             </Link>
                                         ))}
                                     </div>
@@ -148,7 +156,12 @@ export default function Welcome({
                                         key={cat.slug}
                                         className="relative rounded-xl overflow-hidden bg-[#161920]/80 backdrop-blur-md border border-white/5 hover:border-green-500/50 group transition-all duration-300 block aspect-[4/3]"
                                     >
-                                        <img src={cat.image} alt={cat.name} className="absolute inset-0 w-full h-full object-cover opacity-50 group-hover:opacity-70 group-hover:scale-105 transition-all duration-300" />
+                                        <ImageWithSkeleton
+                                            src={cat.image}
+                                            alt={cat.name}
+                                            className="absolute inset-0 w-full h-full"
+                                            imgClassName="absolute inset-0 w-full h-full object-cover opacity-50 group-hover:opacity-70 group-hover:scale-105 transition-all duration-300"
+                                        />
                                         <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent" />
                                         <div className="absolute inset-x-0 bottom-0 p-3">
                                             <h3 className="text-sm sm:text-base font-black text-white">{cat.name}</h3>
@@ -176,7 +189,7 @@ export default function Welcome({
                             <div className="grid grid-cols-3 sm:grid-cols-4 lg:grid-cols-5 gap-2 sm:gap-4">
                                 {popularGames.slice(0, 10).map((game) => (
                                     <Link href={`/topup/${game.id}`} key={game.id} className="relative rounded-lg overflow-hidden bg-[#161920]/80 backdrop-blur-md border border-white/5 card-3d hover:border-green-500/50 group transition-all duration-300 block">
-                                        <div className="card-img-wrap bg-[#1a1f2e]"><img src={game.image} alt={game.name} /></div>
+                                        <ImageWithSkeleton src={game.image} alt={game.name} className="card-img-wrap bg-[#1a1f2e]" imgClassName="absolute inset-0 w-full h-full object-cover" />
                                         <div className="p-3 bg-transparent">
                                             {game.badge ? <div className={`inline-block px-2 py-0.5 rounded-full text-white text-[10px] font-bold shadow-[0_0_8px_rgba(249,115,22,0.6)] ${game.badgeStyle}`}>{game.badge}</div> : null}
                                             <h3 className="mt-2 text-sm font-extrabold">{game.name}</h3>
@@ -210,7 +223,7 @@ export default function Welcome({
                             <div className="grid grid-cols-3 sm:grid-cols-4 lg:grid-cols-5 gap-2 sm:gap-4">
                                 {entertainmentProducts.map((item) => (
                                     <Link href={`/topup/${item.id}`} key={item.id} className="relative rounded-lg overflow-hidden bg-[#161920]/80 backdrop-blur-md border border-white/5 card-3d hover:border-green-500/50 group transition-all duration-300 block">
-                                        <div className="card-img-wrap"><img src={item.image} alt={item.name} /></div>
+                                        <ImageWithSkeleton src={item.image} alt={item.name} className="card-img-wrap" imgClassName="absolute inset-0 w-full h-full object-cover" />
                                         <div className="p-3 bg-transparent">
                                             {item.badge ? <div className={`inline-block px-2 py-0.5 rounded-full text-white text-[10px] font-bold shadow-[0_0_8px_rgba(249,115,22,0.6)] ${item.badgeStyle}`}>{item.badge}</div> : null}
                                             <h3 className="mt-2 text-sm font-extrabold">{item.name}</h3>
@@ -244,7 +257,7 @@ export default function Welcome({
                             <div className="grid grid-cols-3 sm:grid-cols-4 lg:grid-cols-5 gap-2 sm:gap-4">
                                 {newestProducts.map((item) => (
                                     <Link href={`/topup/${item.id}`} key={item.id} className="relative rounded-lg overflow-hidden bg-[#161920]/80 backdrop-blur-md border border-white/5 card-3d hover:border-green-500/50 group transition-all duration-300 block">
-                                        <div className="card-img-wrap bg-[#1a1f2e]"><img src={item.image} alt={item.name} /></div>
+                                        <ImageWithSkeleton src={item.image} alt={item.name} className="card-img-wrap bg-[#1a1f2e]" imgClassName="absolute inset-0 w-full h-full object-cover" />
                                         <div className="p-3 bg-transparent">
                                             <div className={`inline-block px-2 py-0.5 rounded-full text-white text-[10px] font-bold shadow-[0_0_8px_rgba(34,197,94,0.6)] ${item.badgeStyle}`}>{item.badge}</div>
                                             <h3 className="mt-2 text-sm font-extrabold">{item.name}</h3>
@@ -278,7 +291,7 @@ export default function Welcome({
                             <div className="grid grid-cols-3 sm:grid-cols-4 lg:grid-cols-5 gap-2 sm:gap-4">
                                 {voucherProducts.map((item) => (
                                     <Link href={`/topup/${item.id}`} key={item.id} className="relative rounded-lg overflow-hidden bg-[#161920]/80 backdrop-blur-md border border-white/5 card-3d hover:border-green-500/50 group transition-all duration-300 block">
-                                        <div className="card-img-wrap"><img src={item.image} alt={item.name} /></div>
+                                        <ImageWithSkeleton src={item.image} alt={item.name} className="card-img-wrap" imgClassName="absolute inset-0 w-full h-full object-cover" />
                                         <div className="p-3 bg-transparent">
                                             {item.badge ? <div className={`inline-block px-2 py-0.5 rounded-full text-white text-[10px] font-bold shadow-[0_0_8px_rgba(249,115,22,0.6)] ${item.badgeStyle}`}>{item.badge}</div> : null}
                                             <h3 className="mt-2 text-sm font-extrabold">{item.name}</h3>

@@ -3,7 +3,26 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>{{ config('app.name', 'Laravel') }}</title>
+        <title>{{ config('app.name') }} | Top Up Game & Voucher Digital</title>
+        <meta name="description" content="WarGame - platform top up game dan voucher digital terpercaya di Indonesia. Top up Mobile Legends, Free Fire, PUBG Mobile, dan ratusan game lainnya secara instan, aman, dan harga terbaik.">
+        <meta name="robots" content="index, follow">
+        <link rel="canonical" href="{{ url()->current() }}">
+
+        <meta property="og:site_name" content="{{ config('app.name') }}">
+        <meta property="og:type" content="website">
+        <meta property="og:title" content="{{ config('app.name') }} | Top Up Game & Voucher Digital">
+        <meta property="og:description" content="Top up game dan voucher digital instan, aman, dan harga terbaik di Indonesia.">
+        <meta property="og:image" content="{{ asset('logo.png') }}">
+        <meta property="og:url" content="{{ url()->current() }}">
+        <meta property="og:locale" content="id_ID">
+
+        <meta name="twitter:card" content="summary_large_image">
+        <meta name="twitter:title" content="{{ config('app.name') }} | Top Up Game & Voucher Digital">
+        <meta name="twitter:description" content="Top up game dan voucher digital instan, aman, dan harga terbaik di Indonesia.">
+        <meta name="twitter:image" content="{{ asset('logo.png') }}">
+
+        <link rel="icon" href="{{ asset('icon.png') }}" type="image/png">
+        <link rel="apple-touch-icon" href="{{ asset('icon.png') }}">
 
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>

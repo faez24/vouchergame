@@ -3,6 +3,7 @@ import { Head, router } from '@inertiajs/react';
 import SmokeBackground from '../Components/SmokeBackground';
 import Navbar from '../Components/Navbar';
 import Footer from '../Components/Footer';
+import ImageWithSkeleton from '../Components/ImageWithSkeleton';
 
 const payments = [
     { id: 'qris', name: 'QRIS', desc: 'Gopay, OVO, Dana, LinkAja', icon: 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a2/Logo_QRIS.svg/1200px-Logo_QRIS.svg.png' },
@@ -44,7 +45,12 @@ export default function Topup({ product, items }) {
 
     return (
         <div className="min-h-screen bg-[#344050] text-white font-sans selection:bg-green-500 selection:text-white overflow-x-hidden" style={{ fontFamily: 'Poppins, sans-serif' }}>
-            <Head title={`Top Up ${product?.title ?? ''} | WarGame`} />
+            <Head title={`Top Up ${product?.title ?? ''} | WarGame`}>
+                <meta name="description" content={`Top up ${product?.title ?? 'game'} murah, instan, dan aman di WarGame. Berbagai pilihan nominal tersedia dengan harga terbaik.`} />
+                <meta property="og:title" content={`Top Up ${product?.title ?? ''} | WarGame`} />
+                <meta property="og:description" content={`Top up ${product?.title ?? 'game'} murah, instan, dan aman di WarGame.`} />
+                {product?.logoUrl && <meta property="og:image" content={product.logoUrl} />}
+            </Head>
             <div className="relative min-h-screen bg-[#344050] bg-noise overflow-hidden flex flex-col">
                 <SmokeBackground />
                 <Navbar />
@@ -54,13 +60,18 @@ export default function Topup({ product, items }) {
 
                         <div className="relative rounded-2xl overflow-hidden border border-white/10 shadow-[0_8px_40px_rgba(0,0,0,0.6)]">
                             <div className="absolute inset-0">
-                                <img src={product?.helperUrl || 'https://images.unsplash.com/photo-1556438064-2d7646166914?w=1200&h=400&fit=crop'} alt={product?.title} className="w-full h-full object-cover opacity-40" />
+                                <ImageWithSkeleton
+                                    src={product?.helperUrl || 'https://images.unsplash.com/photo-1556438064-2d7646166914?w=1200&h=400&fit=crop'}
+                                    alt={product?.title}
+                                    className="absolute inset-0 w-full h-full"
+                                    imgClassName="absolute inset-0 w-full h-full object-cover opacity-40"
+                                />
                                 <div className="absolute inset-0 bg-gradient-to-r from-[#1e2433] via-[#1e2433]/70 to-transparent" />
                                 <div className="absolute inset-0 bg-gradient-to-t from-[#1e2433] via-transparent to-transparent" />
                             </div>
                             <div className="relative z-10 p-6 sm:p-8 flex items-center gap-5">
                                 <div className="w-20 h-20 sm:w-24 sm:h-24 rounded-2xl bg-gradient-to-br from-orange-400 to-orange-600 grid place-items-center shadow-[0_0_30px_rgba(249,115,22,0.5)] flex-shrink-0 border border-orange-400/30 overflow-hidden">
-                                    {product?.logoUrl ? <img src={product.logoUrl} alt={product.title} className="w-full h-full object-cover" /> : <span className="text-white font-black text-3xl sm:text-4xl">ML</span>}
+                                    {product?.logoUrl ? <ImageWithSkeleton src={product.logoUrl} alt={product.title} className="w-full h-full" imgClassName="w-full h-full object-cover" /> : <span className="text-white font-black text-3xl sm:text-4xl">ML</span>}
                                 </div>
                                 <div>
                                     <span className="inline-block px-2.5 py-0.5 rounded-full bg-orange-500 text-white text-[10px] font-black shadow-[0_0_8px_rgba(249,115,22,0.6)]">POPULER</span>

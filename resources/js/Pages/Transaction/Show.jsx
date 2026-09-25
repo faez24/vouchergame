@@ -12,7 +12,9 @@ const statusStyle = {
 export default function TransactionShow({ transaction }) {
     return (
         <div className="min-h-screen bg-[#344050] text-white font-sans overflow-x-hidden" style={{ fontFamily: 'Poppins, sans-serif' }}>
-            <Head title={`Transaksi ${transaction.invoice_id} | WarGame`} />
+            <Head title={`Transaksi ${transaction.invoice_id} | WarGame`}>
+                <meta name="robots" content="noindex, nofollow" />
+            </Head>
             <div className="relative min-h-screen bg-[#344050] bg-noise overflow-hidden flex flex-col">
                 <SmokeBackground variant="compact" />
                 <Navbar />
