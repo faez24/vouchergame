@@ -28,40 +28,33 @@ class TopupController extends Controller
             'zone_id' => ['nullable', 'string'],
         ]);
 
+        $product = $this->vocaBisnis->getProductDetail($productId);
         $items = $this->vocaBisnis->getProductItems($productId);
         $item = collect($items)->firstWhere('id', $validated['product_item_id']);
 
         abort_if(! $item, 422, 'Item tidak ditemukan.');
 
-        $reference = (string) Str::uuid();
-
-        $result = $this->vocaBisnis->createTransaction([
-            'productId' => $productId,
-            'productItemId' => $validated['product_item_id'],
+        // PENTING: belum panggil VocaBisnisService::createTransaction() di sini.
+        // Alur pembayaran (Midtrans) belum terpasang di branch ini, jadi transaksi
+        // cuma disimpan lokal berstatus "Pending Payment" dulu — VocaBisnis (yang
+        // benar-benar mengirim diamond) baru boleh dipanggil SETELAH pembayaran
+        // dikonfirmasi. Jangan panggil createTransaction sebelum itu terpasang.
+        $transaction = Transaction::create([
+            'user_id' => $request->user()?->id,
+            'reference' => (string) Str::uuid(),
+            'invoice_id' => null,
+            'product_id' => $productId,
+            'product_item_id' => $validated['product_item_id'],
+            'product_name' => $product['title'] ?? null,
+            'product_item_name' => $item['name'] ?? null,
+            'total_amount' => $item['price'],
+            'status' => 'Pending Payment',
             'data' => array_filter([
                 'userId' => $validated['user_id_ingame'] ?? null,
                 'zoneId' => $validated['zone_id'] ?? null,
             ]),
-            'price' => $item['price'],
-            'clientIp' => $request->ip(),
-            'reference' => $reference,
-            'callbackUrl' => route('vocabisnis.callback'),
         ]);
 
-        $transaction = Transaction::create([
-            'user_id' => $request->user()?->id,
-            'reference' => $result['reference'],
-            'invoice_id' => $result['invoiceId'],
-            'product_id' => $productId,
-            'product_item_id' => $validated['product_item_id'],
-            'product_name' => $result['productName'] ?? null,
-            'product_item_name' => $result['productItemName'] ?? null,
-            'total_amount' => $result['totalAmount'],
-            'status' => 'Processing',
-            'data' => $result['data'] ?? null,
-            'sn' => $result['sn'] ?? null,
-        ]);
-
-        return redirect()->route('transaction.show', $transaction->invoice_id);
+        return redirect()->route('transaction.show', $transaction->reference);
     }
 }

@@ -6,13 +6,16 @@ import Footer from '../../Components/Footer';
 const statusStyle = {
     Success: 'bg-green-500/20 text-green-400 border-green-500/30',
     Processing: 'bg-amber-500/20 text-amber-400 border-amber-500/30',
+    'Pending Payment': 'bg-blue-500/20 text-blue-400 border-blue-500/30',
     Refunded: 'bg-red-500/20 text-red-400 border-red-500/30',
 };
 
 export default function TransactionShow({ transaction }) {
+    const isPending = transaction.status === 'Pending Payment';
+
     return (
         <div className="min-h-screen bg-[#344050] text-white font-sans overflow-x-hidden" style={{ fontFamily: 'Poppins, sans-serif' }}>
-            <Head title={`Transaksi ${transaction.invoice_id} | WarGame`}>
+            <Head title={`Transaksi ${transaction.invoice_id ?? transaction.reference} | WarGame`}>
                 <meta name="robots" content="noindex, nofollow" />
             </Head>
             <div className="relative min-h-screen bg-[#344050] bg-noise overflow-hidden flex flex-col">
@@ -21,10 +24,15 @@ export default function TransactionShow({ transaction }) {
 
                 <div className="relative z-10 flex-1 max-w-[560px] mx-auto w-full px-4 pt-28 pb-20">
                     <div className="bg-[#252d40]/90 backdrop-blur-xl border border-white/10 rounded-3xl p-6 sm:p-8 shadow-[0_30px_80px_rgba(0,0,0,0.8)]">
+                        {isPending && (
+                            <div className="mb-5 rounded-xl bg-blue-500/10 border border-blue-500/30 px-4 py-3 text-blue-300 text-xs leading-relaxed">
+                                Fitur pembayaran belum aktif di versi ini — transaksi disimpan sebagai draft dan <strong>belum diproses ke VocaBisnis</strong>, jadi item belum dikirim ke akun game kamu.
+                            </div>
+                        )}
                         <div className="flex items-center justify-between mb-6 pb-6 border-b border-white/10">
                             <div>
-                                <p className="text-gray-400 text-xs font-semibold uppercase tracking-wider mb-1">Invoice</p>
-                                <p className="text-lg font-black text-white">{transaction.invoice_id}</p>
+                                <p className="text-gray-400 text-xs font-semibold uppercase tracking-wider mb-1">{transaction.invoice_id ? 'Invoice' : 'Referensi'}</p>
+                                <p className="text-lg font-black text-white">{transaction.invoice_id ?? transaction.reference}</p>
                             </div>
                             <span className={`px-3 py-1.5 rounded-full text-xs font-bold border ${statusStyle[transaction.status] ?? 'bg-white/10 text-gray-300 border-white/20'}`}>
                                 {transaction.status}
