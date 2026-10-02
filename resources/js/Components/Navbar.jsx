@@ -48,9 +48,8 @@ export default function Navbar() {
                 }`}
             >
                 <div className="mx-auto flex w-full max-w-[1440px] items-center justify-between gap-4 px-4 py-3 sm:px-6 lg:px-8">
-                    <Link href="/" className="flex items-center gap-3">
-                        <span className="hidden h-11 w-11 place-items-center rounded-2xl bg-gradient-to-r from-green-400 to-green-600 text-[15px] font-extrabold tracking-tight text-white shadow-[0_0_15px_rgba(34,197,94,0.5)] md:grid">GV</span>
-                        <span className="text-[1.6rem] font-bold tracking-tight text-white drop-shadow">WarGame</span>
+                    <Link href="/" className="relative flex items-center h-10 w-48 shrink-0">
+                        <img src="/logo.png" alt="WarGame" className="absolute left-0 top-1/2 -translate-y-1/2 h-42 w-auto max-w-none" />
                     </Link>
 
                     <nav className="hidden items-center gap-8 md:flex">

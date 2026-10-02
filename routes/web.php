@@ -4,16 +4,15 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\GoogleAuthController;
 use Inertia\Inertia;
+use App\Http\Controllers\CartController;
+use App\Http\Controllers\CheckoutController;
+use App\Http\Controllers\MidtransWebhookController;
 use App\Http\Controllers\TopupController;
 use App\Http\Controllers\TransactionController;
 use App\Http\Controllers\VocaBisnisCallbackController;
+use App\Http\Controllers\WelcomeController;
 
-Route::get('/', function () {
-    return Inertia::render('Welcome', [
-        'appName' => 'WarGame',
-        'message' => 'Marketplace game top up dan voucher digital dengan tampilan premium dark.',
-    ]);
-});
+Route::get('/', WelcomeController::class);
 
 Route::get('/topup/mobile-legends', [TopupController::class, 'show'])
     ->defaults('productId', 15)
@@ -37,19 +36,19 @@ Route::get('/cart', function () {
     return Inertia::render('Cart');
 })->name('cart');
 
-Route::get('/checkout', function () {
-    return Inertia::render('Checkout');
-})->name('checkout');
+Route::post('/cart/checkout', [CartController::class, 'checkout'])->name('cart.checkout');
+
+Route::get('/checkout', [CheckoutController::class, 'show'])->name('checkout');
+Route::get('/checkout/{batch}/status', [CheckoutController::class, 'status'])->name('checkout.status');
 
 Route::get('/voucher', function () {
     return Inertia::render('Voucher');
 })->name('voucher');
 
-Route::get('/games', function () {
-    return Inertia::render('Games');
-})->name('games');
+Route::get('/games', \App\Http\Controllers\GamesController::class)->name('games');
 
 Route::get('/topup/{productId}', [TopupController::class, 'show'])->name('topup.show');
 Route::post('/topup/{productId}/checkout', [TopupController::class, 'store'])->name('topup.checkout');
 Route::get('/transaction/{invoiceId}', [TransactionController::class, 'show'])->name('transaction.show');
 Route::post('/callback/vocabisnis', VocaBisnisCallbackController::class)->name('vocabisnis.callback');
+Route::post('/payment/midtrans/update', MidtransWebhookController::class)->name('midtrans.webhook');
