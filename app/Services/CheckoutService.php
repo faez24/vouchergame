@@ -139,6 +139,60 @@ class CheckoutService
     }
 
     /**
+     * Charge a QRIS payment for a batch via Midtrans Core API and stamp the
+     * resulting order id / QR string on every row. Only callable once per
+     * batch (guarded by caller) — reuse the stored QR string on reload.
+     */
+    public function createQrisForBatch(string $batchId): array
+    {
+        $transactions = $this->batchTransactions($batchId);
+
+        abort_if($transactions->isEmpty(), 404, 'Batch tidak ditemukan.');
+        abort_if($transactions->contains(fn (Transaction $t) => $t->midtrans_order_id !== null), 409, 'Pembayaran untuk batch ini sudah dibuat.');
+
+        $orderId = config('services.midtrans.order_id_prefix').$batchId;
+        $grossAmount = (int) $transactions->sum('total_amount');
+
+        $itemDetails = $transactions->map(fn (Transaction $t) => [
+            'id' => (string) $t->product_item_id,
+            'price' => (int) $t->total_amount,
+            'quantity' => 1,
+            'name' => mb_substr($t->product_item_name ?? "Item #{$t->item_index}", 0, 50),
+        ])->values()->all();
+
+        $user = $transactions->first()->user;
+
+        $result = $this->midtrans->chargeQris([
+            'transaction_details' => [
+                'order_id' => $orderId,
+                'gross_amount' => $grossAmount,
+            ],
+            'item_details' => $itemDetails,
+            'customer_details' => array_filter([
+                'first_name' => $user?->name ?? 'Guest',
+                'email' => $user?->email,
+            ]),
+        ]);
+
+        $qrString = $result['qr_string'] ?? null;
+        $expiryTime = isset($result['expiry_time']) ? \Illuminate\Support\Carbon::parse($result['expiry_time']) : null;
+
+        Transaction::where('batch_id', $batchId)->update([
+            'midtrans_order_id' => $orderId,
+            'midtrans_transaction_id' => $result['transaction_id'] ?? null,
+            'payment_type' => 'qris',
+            'midtrans_qr_string' => $qrString,
+            'midtrans_qr_expiry_at' => $expiryTime,
+        ]);
+
+        return [
+            'qr_string' => $qrString,
+            'expiry_time' => $expiryTime?->toIso8601String(),
+            'order_id' => $orderId,
+        ];
+    }
+
+    /**
      * Handle an incoming (already API-key authenticated) Midtrans notification
      * forwarded by the centralized webhook service.
      *

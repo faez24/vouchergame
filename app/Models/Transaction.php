@@ -25,6 +25,8 @@ class Transaction extends Model
         'midtrans_order_id',
         'midtrans_transaction_id',
         'payment_type',
+        'midtrans_qr_string',
+        'midtrans_qr_expiry_at',
         'paid_at',
         'granted_at',
         'data',
@@ -37,6 +39,7 @@ class Transaction extends Model
             'data' => 'array',
             'paid_at' => 'datetime',
             'granted_at' => 'datetime',
+            'midtrans_qr_expiry_at' => 'datetime',
         ];
     }
 

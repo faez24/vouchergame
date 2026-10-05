@@ -1,45 +1,35 @@
 import { useEffect, useRef, useState } from 'react';
 import { Head, Link } from '@inertiajs/react';
+import { QRCodeSVG } from 'qrcode.react';
 import Navbar from '../Components/Navbar';
 
 function formatRupiah(num) {
     return 'Rp ' + Number(num).toLocaleString('id-ID');
 }
 
-export default function Checkout({ batchId, items, total, paymentStatus: initialStatus, snapToken, clientKey, isProduction }) {
+function formatCountdown(ms) {
+    if (ms <= 0) return '00:00';
+    const totalSeconds = Math.floor(ms / 1000);
+    const minutes = Math.floor(totalSeconds / 60);
+    const seconds = totalSeconds % 60;
+    return `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+}
+
+export default function Checkout({ batchId, items, total, paymentStatus: initialStatus, qrString, qrExpiryAt }) {
     const [paymentStatus, setPaymentStatus] = useState(initialStatus);
-    const [snapLoaded, setSnapLoaded] = useState(false);
-    // snapFinished hanya sinyal UX bahwa user sudah selesai di Snap UI.
-    // Source of truth tetap dari polling backend, BUKAN dari onSuccess Snap.
-    const [snapFinished, setSnapFinished] = useState(false);
+    const [msLeft, setMsLeft] = useState(() => (qrExpiryAt ? new Date(qrExpiryAt).getTime() - Date.now() : 0));
     const pollRef = useRef(null);
 
     useEffect(() => {
-        if (!clientKey) return;
-        const script = document.createElement('script');
-        script.src = isProduction ? 'https://app.midtrans.com/snap/snap.js' : 'https://app.sandbox.midtrans.com/snap/snap.js';
-        script.setAttribute('data-client-key', clientKey);
-        script.onload = () => setSnapLoaded(true);
-        document.body.appendChild(script);
-        return () => document.body.removeChild(script);
-    }, [clientKey, isProduction]);
+        if (!qrExpiryAt) return;
+        const expiry = new Date(qrExpiryAt).getTime();
+        const tick = () => setMsLeft(expiry - Date.now());
+        tick();
+        const timer = setInterval(tick, 1000);
+        return () => clearInterval(timer);
+    }, [qrExpiryAt]);
 
     useEffect(() => {
-        if (snapLoaded && snapToken && window.snap) {
-            window.snap.embed(snapToken, {
-                embedId: 'snap-container',
-                // onSuccess: hanya untuk UX — TIDAK mengubah payment_status DB.
-                // Polling backend tetap berjalan hingga DB confirm SUCCESS.
-                onSuccess: () => setSnapFinished(true),
-                onPending: () => setSnapFinished(true),
-                onError: () => setSnapFinished(true),
-            });
-        }
-    }, [snapLoaded, snapToken]);
-
-    useEffect(() => {
-        // Polling hanya berhenti jika backend (DB) sudah return SUCCESS/FAILED/EXPIRED.
-        // onSuccess dari Snap TIDAK menghentikan polling.
         if (paymentStatus === 'SUCCESS' || paymentStatus === 'FAILED' || paymentStatus === 'EXPIRED' || !batchId) return;
 
         pollRef.current = setInterval(async () => {
@@ -57,8 +47,7 @@ export default function Checkout({ batchId, items, total, paymentStatus: initial
     }, [batchId, paymentStatus]);
 
     const success = paymentStatus === 'SUCCESS';
-    // Tampilkan pesan "sedang memverifikasi" jika Snap selesai tapi backend belum confirm.
-    const verifying = snapFinished && paymentStatus === 'WAITING';
+    const expired = paymentStatus === 'EXPIRED' || (qrExpiryAt && msLeft <= 0 && !success);
 
     return (
         <div className="min-h-screen bg-[#344050] text-white font-sans overflow-x-hidden flex flex-col" style={{ fontFamily: 'Poppins, sans-serif' }}>
@@ -75,7 +64,7 @@ export default function Checkout({ batchId, items, total, paymentStatus: initial
             <div className="relative z-10 flex-1 max-w-[500px] mx-auto w-full px-4 pt-28 pb-20 flex flex-col justify-center">
                 <div className="text-center mb-8">
                     <h1 className="text-2xl sm:text-3xl font-black text-white tracking-tight">Selesaikan Pembayaran</h1>
-                    <p className="text-gray-400 text-sm mt-2">Bayar melalui Midtrans dengan metode pilihanmu.</p>
+                    <p className="text-gray-400 text-sm mt-2">Scan QRIS pakai e-wallet atau mobile banking favoritmu.</p>
                 </div>
 
                 <div className="bg-[#252d40]/90 backdrop-blur-xl border border-white/10 rounded-3xl p-6 sm:p-8 shadow-[0_30px_80px_rgba(0,0,0,0.8)] relative overflow-hidden">
@@ -94,20 +83,7 @@ export default function Checkout({ batchId, items, total, paymentStatus: initial
                         </div>
                     </div>
 
-                    {!success ? (
-                        <>
-                            {verifying && (
-                                <div className="mb-4 flex items-center gap-3 rounded-xl bg-yellow-500/10 border border-yellow-500/30 px-4 py-3">
-                                    <svg className="w-5 h-5 text-yellow-400 animate-spin flex-shrink-0" fill="none" viewBox="0 0 24 24">
-                                        <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
-                                        <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8z" />
-                                    </svg>
-                                    <span className="text-yellow-300 text-sm font-medium">Memverifikasi pembayaran… mohon tunggu.</span>
-                                </div>
-                            )}
-                            <div id="snap-container" className="min-h-[400px]" />
-                        </>
-                    ) : (
+                    {success ? (
                         <div className="flex flex-col items-center justify-center py-8">
                             <div className="w-24 h-24 rounded-full bg-emerald-500 flex items-center justify-center mb-4">
                                 <svg className="w-14 h-14 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5">
@@ -118,6 +94,57 @@ export default function Checkout({ batchId, items, total, paymentStatus: initial
                             <p className="text-center text-xs mt-3 text-emerald-500/80 max-w-[250px]">
                                 Pesanan kamu sedang diproses dan akan segera dikirimkan. Terima kasih!
                             </p>
+                        </div>
+                    ) : expired ? (
+                        <div className="flex flex-col items-center justify-center py-8">
+                            <div className="w-24 h-24 rounded-full bg-red-500/20 border border-red-500/40 flex items-center justify-center mb-4">
+                                <svg className="w-12 h-12 text-red-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5">
+                                    <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+                                </svg>
+                            </div>
+                            <span className="font-bold text-red-400 text-lg">QR Code Kedaluwarsa</span>
+                            <p className="text-center text-xs mt-3 text-gray-400 max-w-[250px]">
+                                Waktu pembayaran habis. Silakan ulangi pemesanan untuk mendapatkan QR baru.
+                            </p>
+                        </div>
+                    ) : qrString ? (
+                        <div className="flex flex-col items-center">
+                            <div className="flex items-center gap-2 mb-4">
+                                <span className="inline-flex items-center gap-1.5 bg-green-500/10 border border-green-500/30 text-green-400 text-xs font-bold px-3 py-1 rounded-full">
+                                    <svg className="w-3.5 h-3.5" viewBox="0 0 24 24" fill="currentColor"><rect x="3" y="3" width="7" height="7" /><rect x="14" y="3" width="7" height="7" /><rect x="3" y="14" width="7" height="7" /><rect x="14" y="14" width="3" height="3" /><rect x="18" y="18" width="3" height="3" /><rect x="14" y="18" width="3" height="3" /><rect x="18" y="14" width="3" height="3" /></svg>
+                                    QRIS
+                                </span>
+                                {qrExpiryAt && (
+                                    <span className="text-xs font-semibold text-gray-400">
+                                        Berakhir dalam <span className="text-white tabular-nums">{formatCountdown(msLeft)}</span>
+                                    </span>
+                                )}
+                            </div>
+
+                            <div className="bg-white rounded-2xl p-4 shadow-lg">
+                                <QRCodeSVG value={qrString} size={240} level="M" marginSize={0} />
+                            </div>
+
+                            <div className="mt-5 flex items-center gap-3 rounded-xl bg-white/5 border border-white/10 px-4 py-3 w-full">
+                                <svg className="w-5 h-5 text-green-400 animate-spin flex-shrink-0" fill="none" viewBox="0 0 24 24">
+                                    <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
+                                    <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8z" />
+                                </svg>
+                                <span className="text-gray-300 text-sm font-medium">Menunggu pembayaran…</span>
+                            </div>
+
+                            <ol className="mt-6 w-full text-xs text-gray-400 space-y-1.5 list-decimal list-inside">
+                                <li>Buka aplikasi e-wallet atau m-banking yang mendukung QRIS.</li>
+                                <li>Pilih menu Scan / Bayar, lalu arahkan kamera ke QR di atas.</li>
+                                <li>Periksa nominal, lalu selesaikan pembayaran.</li>
+                            </ol>
+                        </div>
+                    ) : (
+                        <div className="flex items-center justify-center py-12">
+                            <svg className="w-6 h-6 text-gray-400 animate-spin" fill="none" viewBox="0 0 24 24">
+                                <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
+                                <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8z" />
+                            </svg>
                         </div>
                     )}
                 </div>
