@@ -18,6 +18,7 @@
         "@inertiajs/core": "^3.7.1",
         "@inertiajs/react": "^3.7.1",
         "@vitejs/plugin-react": "^5.2.0",
+        "qrcode.react": "^4.2.0",
         "react": "^19.3.0",
         "react-dom": "^19.3.0"
     }
