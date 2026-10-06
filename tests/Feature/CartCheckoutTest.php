@@ -159,10 +159,10 @@ class CartCheckoutTest extends TestCase
         $batchId = Transaction::first()->batch_id;
 
         $midtransMock = \Mockery::mock(MidtransService::class);
-        $midtransMock->shouldReceive('createSnapTransaction')
+        $midtransMock->shouldReceive('chargeQris')
             ->once()
             ->withArgs(fn (array $payload) => $payload['transaction_details']['gross_amount'] === 29500)
-            ->andReturn(['token' => 'snap-token-xyz', 'redirect_url' => 'https://example.test']);
+            ->andReturn(['transaction_id' => 'txn-xyz', 'qr_string' => 'qris-string-xyz', 'expiry_time' => now()->addMinutes(15)->toDateTimeString()]);
         $this->app->instance(MidtransService::class, $midtransMock);
 
         $this->get("/checkout?batch={$batchId}")->assertOk();

@@ -41,10 +41,41 @@ class MidtransService
         return $response->json();
     }
 
+    /**
+     * Charge a QRIS payment via the Midtrans Core API and return the decoded
+     * response (contains `transaction_id`, `qr_string`, `expiry_time`, …).
+     */
+    public function chargeQris(array $payload): array
+    {
+        $response = Http::withBasicAuth($this->serverKey, '')
+            ->acceptJson()
+            ->post("{$this->coreApiBaseUrl()}/v2/charge", [
+                ...$payload,
+                'payment_type' => 'qris',
+                'qris' => ['acquirer' => 'gopay'],
+            ]);
+
+        if ($response->failed()) {
+            throw new RuntimeException(
+                'Midtrans QRIS charge error: '.($response->json('status_message') ?? $response->json('error_messages.0') ?? $response->body()),
+                $response->status()
+            );
+        }
+
+        return $response->json();
+    }
+
     private function snapBaseUrl(): string
     {
         return $this->isProduction
             ? 'https://app.midtrans.com'
             : 'https://app.sandbox.midtrans.com';
+    }
+
+    private function coreApiBaseUrl(): string
+    {
+        return $this->isProduction
+            ? 'https://api.midtrans.com'
+            : 'https://api.sandbox.midtrans.com';
     }
 }

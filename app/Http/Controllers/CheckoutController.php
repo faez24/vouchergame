@@ -19,12 +19,11 @@ class CheckoutController extends Controller
         $transactions = $this->checkout->batchTransactions($batchId);
         abort_if($transactions->isEmpty(), 404);
 
-        $snapToken = null;
         $first = $transactions->first();
 
         if (! $first->midtrans_order_id && $first->payment_status === Transaction::PAYMENT_WAITING) {
-            $snap = $this->checkout->createSnapForBatch($batchId);
-            $snapToken = $snap['snap_token'];
+            $this->checkout->createQrisForBatch($batchId);
+            $first->refresh();
         }
 
         return Inertia::render('Checkout', [
@@ -35,9 +34,8 @@ class CheckoutController extends Controller
             ]),
             'total' => $transactions->sum('total_amount'),
             'paymentStatus' => $first->payment_status,
-            'snapToken' => $snapToken,
-            'clientKey' => config('services.midtrans.client_key'),
-            'isProduction' => config('services.midtrans.is_production'),
+            'qrString' => $first->midtrans_qr_string,
+            'qrExpiryAt' => $first->midtrans_qr_expiry_at?->toIso8601String(),
         ]);
     }
 
